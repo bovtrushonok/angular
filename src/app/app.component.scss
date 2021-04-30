@@ -1,0 +1,115 @@
+$primaryTextColor: rgb(126, 126, 126);
+$primaryBcgColor: rgba(126, 126, 126, 0.2);
+
+.profile-wrapper,
+.header,
+.profile-main,
+.profile-content,
+.navbar,
+.wishes-field {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  max-height: 100%;
+}
+
+.wishes-field {
+  padding: 20px 0;
+}
+
+.profile-content {
+  padding: 10px 30px 5px 60px;
+  width: 70%;
+}
+
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  .header-icon {
+    border: none;
+    margin-left: 10px;
+    color: $primaryTextColor;
+  }
+}
+
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: $primaryTextColor;
+}
+
+.search-field {
+  input {
+    background-color: $primaryBcgColor;
+    border: none;
+    padding: 5px 7px;
+    &:focus {
+      outline: 1px solid black;
+    }
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  flex-flow: row nowrap;
+  width: 45%;
+  justify-self: center;
+}
+
+.profile-sidebar {
+  width: 25%;
+  max-width: 282px;
+  display: flex;
+  align-items: center;
+  background: url("../assets/images/bcgImg2.png") 100% 100% no-repeat, url("../assets/images/bcgImg.png") 100% 100% no-repeat;
+  background-size: cover, cover;
+}
+
+.profile-description {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40%;
+}
+
+.profile-pic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 70%;
+  border-radius: 50%;
+  background-color: $primaryBcgColor;
+  margin-bottom: 30px;
+}
+
+.wish-card {
+  width: 27%;
+  height: 250px;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 10px 15px 10px 0;
+  border: 1px solid $primaryTextColor;
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+
+  img,
+  .no-image {
+    width: 85%;
+    height: 50%;
+  }
+
+  a {
+    text-decoration: none;
+    color:$primaryTextColor;
+  }
+}

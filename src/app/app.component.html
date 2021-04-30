@@ -1,0 +1,43 @@
+<div class="profile-wrapper">
+  <div class="header">
+    <mat-icon class="header-icon" aria-hidden="false" aria-label="account icon">account_circle</mat-icon>
+    <mat-icon class="header-icon" aria-hidden="false" aria-label="settings icon">settings</mat-icon>
+  </div>
+  <div class="profile-main">
+    <div class="profile-sidebar">
+      <div class="profile-description">
+        <div class="profile-pic">
+          <p>Your picture</p>
+        </div>
+        <p>Some text about yourself</p>
+      </div>
+    </div>
+    <div class="profile-content">
+      <div class="menu">
+        <div class="search-field">
+          <input matInput type="text" placeholder="Search">
+        </div>
+        <div class="create-modal">
+         <button mat-button> + Create </button>
+        </div>
+      </div>
+      <mat-nav-list class="navbar">
+        <a mat-list-item> My wishes </a>
+        <a mat-list-item> My friends' wishes </a>
+      </mat-nav-list>
+      <div class="wishes-field">
+        <mat-card class="wish-card" *ngFor="let wish of wishes">
+          <mat-card-title>{{ wish.title }}</mat-card-title>
+          <img [src]="wish.imgSrc" alt="product image" *ngIf="wish.imgSrc; else noImage">
+          <ng-template #noImage>
+            <div class="no-image"></div>
+          </ng-template>   
+          <mat-card-content>
+            <p class="mat-caption"> {{ wish.link }} <a [href]="wish.link"></a></p>
+            <p> {{ wish.description }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
