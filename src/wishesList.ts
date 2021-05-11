@@ -1,4 +1,4 @@
-import { IWish } from "./interface";
+import { IWish } from './interface';
 
 export const wishes: IWish[] = [
   {
@@ -31,4 +31,4 @@ export const wishes: IWish[] = [
     link: '',
     imgSrc: '',
   },
-]
+];

@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+
+:host {
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  max-height: 100%;
+  .header-icon {
+    border: none;
+    margin-left: 10px;
+    color: $primaryTextColor;
+  }
+}
+
+   

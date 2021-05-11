@@ -1,0 +1,36 @@
+@import '../../styles/variables';
+
+:host {
+  width: 25%;
+  max-width: 282px;
+  display: flex;
+}
+
+.profile-sidebar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: url("../../assets/images/bcgImg2.png") 100% 100% no-repeat, url("../../assets/images/bcgImg.png") 100% 100% no-repeat;
+  background-size: cover, cover;
+}
+ 
+.profile-description {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40%;
+}
+  
+.profile-pic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 70%;
+  border-radius: 50%;
+  background-color: $primaryBcgColor;
+  margin-bottom: 30px;
+}
+  

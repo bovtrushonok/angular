@@ -9,10 +9,19 @@ import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import { HeaderComponent } from './header/header.component';
+import { ProfileSidebarComponent } from './profile-sidebar/profile-sidebar.component';
+import { WishCardComponent } from './wish-card/wish-card.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { SearchInputComponent } from './search-input/search-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    ProfileSidebarComponent,
+    WishCardComponent,
+    SearchInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +30,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatListModule,
     MatInputModule,
+    MatAutocompleteModule,
     MatCardModule,
     MatIconModule,
   ],
