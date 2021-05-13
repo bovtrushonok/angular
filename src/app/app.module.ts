@@ -10,11 +10,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatTabsModule} from '@angular/material/tabs';
 import { HeaderComponent } from './header/header.component';
 import { ProfileSidebarComponent } from './profile-sidebar/profile-sidebar.component';
 import { WishCardComponent } from './wish-card/wish-card.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
+import { EmptyFieldComponent } from './empty-field/empty-field.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { ModalWindowComponent } from './modal-window/modal-window.component';
     WishCardComponent,
     SearchInputComponent,
     ModalWindowComponent,
+    EmptyFieldComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { ModalWindowComponent } from './modal-window/modal-window.component';
     MatAutocompleteModule,
     MatCardModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

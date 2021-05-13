@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IAppComponent } from 'src/interface';
-import { wishes } from 'src/wishesList';
+import { IWish } from 'src/interface';
+import { friendWishes, wishes } from 'src/wishesList';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,7 @@ import { wishes } from 'src/wishesList';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements IAppComponent {
-  wishes = wishes;
+export class AppComponent {
+  public wishes: IWish[] | [] = wishes;
+  public friendWishes: IWish[] | [] = friendWishes;
 }

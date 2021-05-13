@@ -9,13 +9,40 @@
          <button mat-button> + Create </button>
         </div>
       </div>
-      <mat-nav-list class="navbar">
+      <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="My wishes"> 
+          <div *ngIf="wishes.length > 0; else empty">
+            <div class="wishes-field">
+              <app-wish-card *ngFor="let wish of wishes" [wish]="wish"></app-wish-card>
+            </div>
+          </div>
+          <ng-template #empty>
+            <app-empty-field></app-empty-field>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="My friends' wishes"> 
+          <div *ngIf="friendWishes.length > 0; else empty">
+            <div class="wishes-field">
+              <app-wish-card *ngFor="let wish of friendWishes" [wish]="wish"></app-wish-card>
+            </div>
+            <ng-template #empty>
+              <app-empty-field></app-empty-field>
+            </ng-template>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+      <!--<mat-nav-list class="navbar">
         <a mat-list-item> My wishes </a>
         <a mat-list-item> My friends' wishes </a>
       </mat-nav-list>
       <div class="wishes-field">
-        <app-wish-card *ngFor="let wish of wishes" [wish]="wish"></app-wish-card>
-      </div>
+        <router-outlet>
+          <app-wish-card *ngIf="wishes.length > 0; else empty" *ngFor="let wish of wishes" [wish]="wish"></app-wish-card>
+          <ng-template #empty>
+            <app-empty-field></app-empty-field>
+          </ng-template>
+        </router-outlet>
+      </div> -->
     </div>
   </div>
 </div>
