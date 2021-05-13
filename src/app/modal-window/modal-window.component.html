@@ -1,0 +1,6 @@
+<div mat-dialog-title><mat-icon mat-button mat-dialog-close>close</mat-icon></div>
+<div mat-dialog-content>Are you sure you want to delete?</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close class="cancel-btn modal-btn">Cancel</button>
+  <button mat-button [mat-dialog-close]="true" class="ok-btn modal-btn">Ok</button>
+</div>

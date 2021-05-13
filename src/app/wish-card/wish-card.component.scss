@@ -3,7 +3,7 @@
 :host {
   width: 30%;
   min-width: 180px;
-  height: 280px;
+  height: 350px;
   margin: 10px 5px;
   display: flex;
   flex-flow: row wrap;
@@ -17,6 +17,10 @@
   .mat-card-title {
     display: flex;
     justify-content: flex-end;
+    font-size: 10px;
+    mat-icon:hover {
+      cursor: pointer;
+    }
   }
   .wish-img {
     width: 85%;
@@ -24,6 +28,11 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+  .no-image {
+    width: 95%;
+    height: 50%;
+    background-color: $primaryBcgColor;
   }
   .wish-link {
     text-decoration: none;

@@ -1,13 +1,15 @@
 <mat-card class="wish-card">
-    <mat-card-title></mat-card-title>
-    <mat-card-subtitle>{{ wish.title }}</mat-card-subtitle>
-    <!--<img [src]="wish.imgSrc" alt="product image" *ngIf="wish.imgSrc; else noImage" class="wish-img"> 
-    <ng-template #noImage>
-      <div class="no-image"></div>
-    </ng-template>   -->
-    <div class="wish-img" [style.backgroundImage]="'url('+ wish.imgSrc +')'"></div>
-    <mat-card-content>
-      <p class="mat-caption"> {{ wish.link }} <a [href]="wish.link" class="wish-link"></a></p>
-      <p> {{ wish.description }}</p>
-    </mat-card-content>
-  </mat-card>
+  <mat-card-title>
+    <mat-icon mat-button (click)="openDialog()">delete</mat-icon>
+    <mat-icon>share</mat-icon>
+  </mat-card-title>
+  <mat-card-subtitle>{{ wish.title }}</mat-card-subtitle>
+  <div class="wish-img" [style.backgroundImage]="'url('+ wish.imgSrc +')'" *ngIf="wish.imgSrc; else noImage"></div>
+  <ng-template #noImage>
+    <div class="no-image"></div>
+  </ng-template>
+  <mat-card-content>
+    <p class="mat-caption"> {{ wish.link }} <a [href]="wish.link" class="wish-link"></a></p>
+    <p> {{ wish.description }}</p>
+  </mat-card-content>
+</mat-card>
