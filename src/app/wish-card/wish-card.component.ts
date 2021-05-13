@@ -1,7 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IWish } from '../../interface';
-import { ModalWindowComponent } from '../modal-window/modal-window.component';
 
 @Component({
   selector: 'app-wish-card',
@@ -10,14 +8,9 @@ import { ModalWindowComponent } from '../modal-window/modal-window.component';
 })
 export class WishCardComponent {
   @Input() wish: IWish;
+  @Output() wishCardEvent = new EventEmitter<void>();
 
-  constructor(public dialog: MatDialog) {}
-
-  openDialog() {
-    this.dialog.open(ModalWindowComponent, {
-      width: '370px',
-      maxWidth: '80%',
-      height: '200px',
-    });
+  deleteWish() {
+    this.wishCardEvent.emit();
   }
 }
