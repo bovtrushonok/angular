@@ -8,9 +8,9 @@ import { IWish } from '../../interface';
 })
 export class WishCardComponent {
   @Input() wish: IWish;
-  @Output() wishCardEvent = new EventEmitter<void>();
+  @Output() wishCardEvent = new EventEmitter<IWish>();
 
   deleteWish() {
-    this.wishCardEvent.emit();
+    this.wishCardEvent.emit(this.wish);
   }
 }

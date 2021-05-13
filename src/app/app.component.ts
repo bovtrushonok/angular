@@ -16,12 +16,21 @@ export class AppComponent {
 
   constructor(public dialog: MatDialog) {}
 
-  openDialog() {
-    console.log('open dialog bitch');
-    this.dialog.open(ModalWindowComponent, {
+  openDialog(currentWish: IWish) {
+    const modalRef = this.dialog.open(ModalWindowComponent, {
       width: '370px',
       maxWidth: '80%',
       height: '200px',
     });
+
+    modalRef.afterClosed().subscribe(result => {
+      if (!result) return;
+      this.deleteWish(currentWish);
+    })
+  }
+
+  deleteWish(currentWish: IWish) {
+    const wishIdx = this.wishes.findIndex((wish:IWish) => currentWish.id === wish.id);
+    wishes.splice(wishIdx, 1);
   }
 }

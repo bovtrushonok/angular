@@ -16,7 +16,7 @@
               <app-wish-card 
                 *ngFor="let wish of wishes" 
                 [wish]="wish" 
-                (wishCardEvent)="openDialog()"
+                (wishCardEvent)="openDialog($event)"
               ></app-wish-card>
             </div>
           </div>
@@ -30,7 +30,7 @@
               <app-wish-card 
                 *ngFor="let wish of friendWishes" 
                 [wish]="wish" 
-                (wishCardEvent)="openDialog()"
+                (wishCardEvent)="openDialog(wish)"
               ></app-wish-card>
             </div>
           </div>

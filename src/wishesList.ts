@@ -7,6 +7,7 @@ export const wishes: IWish[] | [] = [
     link: 'https://www.lamoda.by/p/rtlaaf428501/accs-fabretti-ochki-solntsezaschitnye/',
     imgSrc: '',
     userId: '0',
+    id: 0,
   },
   {
     title: 'Bag',
@@ -14,6 +15,7 @@ export const wishes: IWish[] | [] = [
     link: 'https://www.lamoda.by/p/ka025bwjsjz2/bags-karllagerfeld-sumka/',
     imgSrc: '',
     userId: '0',
+    id: 1,
   },
   {
     title: 'Ring',
@@ -21,6 +23,7 @@ export const wishes: IWish[] | [] = [
     link: 'https://www.lamoda.by/p/ma002dwmpms0/accs-mango-koltso/',
     imgSrc: '',
     userId: '0',
+    id: 2,
   },
   {
     title: 'Perfume',
@@ -28,6 +31,7 @@ export const wishes: IWish[] | [] = [
     link: 'https://shop.cravt.by/parfyumernaya_voda_lady_million_80_ml-78817-p',
     imgSrc: 'https://shop.cravt.by/upload/Sh/imageCache/898/6ae/829785c141a7dc842e439fa3436d349f.jpg.webp',
     userId: '0',
+    id: 3,
   },
   {
     title: 'spine MRI',
@@ -35,6 +39,7 @@ export const wishes: IWish[] | [] = [
     link: '',
     imgSrc: '',
     userId: '0',
+    id: 4,
   },
 ];
 

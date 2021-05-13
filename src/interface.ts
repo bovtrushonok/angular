@@ -3,6 +3,7 @@ export interface IWish {
   description: string;
   link: string;
   imgSrc: string;
+  id: number;
   userId: string;
 }
 
