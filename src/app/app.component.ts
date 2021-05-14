@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
 import { IWish } from 'src/interface';
-import { friendWishes, wishes } from 'src/wishesList';
-import { ModalWindowComponent } from './modal-window/modal-window.component';
+import { getWishes } from './shared/get-data.service';
 
 @Component({
   selector: 'app-root',
@@ -10,27 +8,20 @@ import { ModalWindowComponent } from './modal-window/modal-window.component';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
-  public wishes: IWish[] | [] = wishes;
-  public friendWishes: IWish[] | [] = friendWishes;
+export class AppComponent implements OnInit {
+  public wishes: IWish[];
+  public friendWishes: IWish[] | [] = [];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(private wishService: getWishes) {}
 
-  openDialog(currentWish: IWish) {
-    const modalRef = this.dialog.open(ModalWindowComponent, {
-      width: '370px',
-      maxWidth: '80%',
-      height: '200px',
-    });
-
-    modalRef.afterClosed().subscribe(result => {
-      if (!result) return;
-      this.deleteWish(currentWish);
-    })
+  ngOnInit() {
+    this.wishService.getWishes('../assets/myWishes.json').subscribe(wishes => {
+      this.wishes = wishes;
+    });;
   }
 
   deleteWish(currentWish: IWish) {
     const wishIdx = this.wishes.findIndex((wish:IWish) => currentWish.id === wish.id);
-    wishes.splice(wishIdx, 1);
+    this.wishes.splice(wishIdx, 1);
   }
 }

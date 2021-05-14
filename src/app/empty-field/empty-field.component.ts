@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { emptyFieldMsg } from 'src/constants/messages';
 
 @Component({
   selector: 'app-empty-field',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./empty-field.component.scss']
 })
 export class EmptyFieldComponent implements OnInit {
+  public emptyFieldMsg = emptyFieldMsg;
 
   constructor() { }
 

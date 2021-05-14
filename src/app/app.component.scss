@@ -33,9 +33,10 @@
   color: $primaryTextColor;
 }
 
-.navbar {
-  display: flex;
-  flex-flow: row nowrap;
-  width: 50%;
-  justify-self: center;
+.mat-tab-group {
+  .mat-tab-labels {
+    .mat-ink-bar {
+      background-color: $underlineColor;
+    }
+  }
 }

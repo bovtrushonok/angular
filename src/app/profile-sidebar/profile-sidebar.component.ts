@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { statusExample } from 'src/constants/messages';
 
 @Component({
   selector: 'app-profile-sidebar',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-sidebar.component.scss']
 })
 export class ProfileSidebarComponent implements OnInit {
+  public statusExample = statusExample;
 
   constructor() { }
 
