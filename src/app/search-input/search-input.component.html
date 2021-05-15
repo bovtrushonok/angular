@@ -1,3 +1,15 @@
-<input type="text" placeholder="Search" [matAutocomplete]="auto" class="global-search-input">
+<form>
+<input 
+  type="text"
+  placeholder="Search"
+  [matAutocomplete]="auto"
+  [formControl]="control"
+  class="global-search-input"
+  (focus)="updateText()"
+>
 <mat-autocomplete #auto="matAutocomplete">
+  <mat-option *ngFor="let wish of wishes" [value]="wish.title">
+    {{wish.title}}
+  </mat-option>
 </mat-autocomplete>
+</form>

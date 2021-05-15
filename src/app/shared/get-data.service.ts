@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IWish } from 'src/interface';
 
-@Injectable ({
-  providedIn: 'root',
-})
+@Injectable ()
 
 export class getWishes {
   constructor (private http: HttpClient) {}

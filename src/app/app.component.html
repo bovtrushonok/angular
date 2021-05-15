@@ -4,21 +4,30 @@
     <app-profile-sidebar></app-profile-sidebar>
     <div class="profile-content">
       <div class="menu">
-        <app-search-input></app-search-input>
+        <app-search-input [wishes]="wishes" [search]="searchText" (updateSearchText)="searchText=$event; filter($event)"></app-search-input>
         <div class="create-modal">
          <button mat-button> + Create </button>
         </div>
       </div>
       <mat-tab-group mat-align-tabs="center">
-        <mat-tab label="My wishes"> 
+        <mat-tab label="My wishes">
           <div *ngIf="wishes.length > 0; else empty">
-            <div class="wishes-field">
-              <app-wish-card 
-                *ngFor="let wish of wishes" 
-                [wish]="wish" 
-                (wishCardEvent)="deleteWish($event)"
-              ></app-wish-card>
+            <div *ngIf="filteredWishes.length > 0; else allWishes">
+              <div class="wishes-field">
+                <app-wish-card 
+                  *ngFor="let wish of filteredWishes"
+                  [wish]="wish"
+                  (wishCardEvent)="deleteWish($event)"></app-wish-card>
+              </div>
             </div>
+            <ng-template #allWishes>
+              <div class="wishes-field">
+                <app-wish-card 
+                  *ngFor="let wish of wishes"
+                  [wish]="wish"
+                  (wishCardEvent)="deleteWish($event)"></app-wish-card>
+              </div>
+            </ng-template>
           </div>
           <ng-template #empty>
             <app-empty-field></app-empty-field>

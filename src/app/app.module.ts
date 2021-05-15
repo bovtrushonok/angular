@@ -18,6 +18,7 @@ import { WishCardComponent } from './wish-card/wish-card.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { EmptyFieldComponent } from './empty-field/empty-field.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { EmptyFieldComponent } from './empty-field/empty-field.component';
     MatCardModule,
     MatIconModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
