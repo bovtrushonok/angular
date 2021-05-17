@@ -1,4 +1,4 @@
-<mat-card class="wish-card">
+<mat-card class="wish-card" [class.hide]="!isSelected">
   <mat-card-title>
     <mat-icon mat-button (click)="openDialog()">delete</mat-icon>
     <mat-icon>share</mat-icon>

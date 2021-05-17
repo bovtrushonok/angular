@@ -4,7 +4,10 @@
     <app-profile-sidebar></app-profile-sidebar>
     <div class="profile-content">
       <div class="menu">
-        <app-search-input [wishes]="wishes" [search]="searchText" (updateSearchText)="searchText=$event; filter($event)"></app-search-input>
+        <app-search-input 
+          [wishes]="wishes" 
+          [search]="searchText" 
+          (updateSearchText)="searchText=$event; filter($event)"></app-search-input>
         <div class="create-modal">
          <button mat-button> + Create </button>
         </div>
@@ -12,22 +15,13 @@
       <mat-tab-group mat-align-tabs="center">
         <mat-tab label="My wishes">
           <div *ngIf="wishes.length > 0; else empty">
-            <div *ngIf="filteredWishes.length > 0; else allWishes">
-              <div class="wishes-field">
-                <app-wish-card 
-                  *ngFor="let wish of filteredWishes"
-                  [wish]="wish"
-                  (wishCardEvent)="deleteWish($event)"></app-wish-card>
-              </div>
+            <div class="wishes-field">
+              <app-wish-card 
+                *ngFor="let wish of wishes"
+                [wish]="wish"
+                [filteredWishes]="filteredWishes"
+                (wishCardEvent)="deleteWish($event)"></app-wish-card>
             </div>
-            <ng-template #allWishes>
-              <div class="wishes-field">
-                <app-wish-card 
-                  *ngFor="let wish of wishes"
-                  [wish]="wish"
-                  (wishCardEvent)="deleteWish($event)"></app-wish-card>
-              </div>
-            </ng-template>
           </div>
           <ng-template #empty>
             <app-empty-field></app-empty-field>
@@ -39,6 +33,7 @@
               <app-wish-card 
                 *ngFor="let wish of friendWishes" 
                 [wish]="wish" 
+                [filteredWishes]="filteredWishes"
                 (wishCardEvent)="deleteWish(wish)"
               ></app-wish-card>
             </div>

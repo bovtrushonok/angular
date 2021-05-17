@@ -10,9 +10,9 @@ import { environment } from 'src/environments/environment';
 })
 export class ProfileSidebarComponent implements OnInit {
   public statusExample = statusExample;
-  private imageSearch = new GoogleImageSearch(environment.API, environment.searchKey);
   public imgSrc: string;
-  public searchKeywords: Array<string> = ['applefruit', 'cat', 'elephant', 'flower', 'rain', 'vacation']
+  private imageSearch = new GoogleImageSearch(environment.API, environment.searchKey);
+  private searchKeywords: Array<string> = ['applefruit', 'cat', 'elephant', 'flower', 'rain', 'vacation']
   constructor() { }
 
   ngOnInit(): void {

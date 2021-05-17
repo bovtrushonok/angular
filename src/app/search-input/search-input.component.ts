@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { IWish } from 'src/interface';
 
@@ -7,11 +7,11 @@ import { IWish } from 'src/interface';
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.scss']
 })
-export class SearchInputComponent {
-  @Input() wishes: IWish[];
-  @Input() search: string;
+export class SearchInputComponent  {
+  @Input() public wishes: IWish[];
+  @Input() public search: string;
   @Output() updateSearchText = new EventEmitter<string>();
-  control = new FormControl();
+  public control = new FormControl();
   constructor() { }
 
   updateText() {
