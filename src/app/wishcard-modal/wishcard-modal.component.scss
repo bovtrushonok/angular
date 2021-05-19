@@ -1,0 +1,43 @@
+@import '../../styles/variables';
+
+.mat-dialog-title {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+  .mat-icon {
+    font-size: small;
+  }
+  .mat-icon:hover {
+    cursor: pointer;
+  }
+}
+
+.mat-dialog-content {
+  display: flex;
+  flex-flow: row wrap;
+  height: 90%;
+  form {
+    height: 100%;
+  }
+  input {
+    width: 87%;
+    margin: 5px;
+    padding: 5px 7px;
+  }
+}
+
+.mat-dialog-actions {
+  justify-content: flex-end;
+  align-content: flex-end;
+  .modal-btn {
+    color: $secondaryTextColor;
+    border-radius: 0%;
+    margin-right: 30px;
+  }
+  .cancel-btn {
+    background-color: $primaryTextColor;
+  }
+  .ok-btn {
+    background-color: $secondaryBcgColor;
+  }
+}

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core
 import { MatDialog } from '@angular/material/dialog';
 import { IWish } from '../../interface';
 import { ModalWindowComponent } from '../modal-window/modal-window.component';
+import { WishcardModalComponent } from '../wishcard-modal/wishcard-modal.component';
 
 @Component({
   selector: 'app-wish-card',
@@ -11,16 +12,17 @@ import { ModalWindowComponent } from '../modal-window/modal-window.component';
 export class WishCardComponent implements OnChanges {
   @Input() public wish: IWish;
   @Input() public filteredWishes: IWish[];
-  @Output() public wishCardEvent = new EventEmitter<IWish>();
+  @Output() public wishCardDeleteEvent = new EventEmitter<IWish>();
+  @Output() public wishCardEditEvent = new EventEmitter<IWish>();
   public isSelected: boolean = true;
 
   constructor(public dialog: MatDialog) {}
 
   deleteWish(): void {
-    this.wishCardEvent.emit(this.wish);
+    this.wishCardDeleteEvent.emit(this.wish);
   }
 
-  openDialog(): void {
+  openModalToDelete(): void {
     const modalRef = this.dialog.open(ModalWindowComponent, {
       width: '370px',
       maxWidth: '80%',
@@ -33,8 +35,20 @@ export class WishCardComponent implements OnChanges {
     })
   }
 
+  openModalToEdit():void {
+    const modalRef = this.dialog.open(WishcardModalComponent, {
+      width: '30%',
+      height: '340px',
+      data: this.wish,
+    });
+
+    modalRef.afterClosed().subscribe(result => {
+      this.wish = result;
+      this.wishCardEditEvent.emit(this.wish)
+    })
+  }
+
   ngOnChanges(): void {
-    console.log('on changes', this.filteredWishes);
     if (this.filteredWishes.length === 0 || this.filteredWishes.includes(this.wish)) {
       this.isSelected = true;
     } else {

@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IWish } from 'src/interface';
 
-@Injectable ()
+@Injectable ({providedIn: 'root'})
 
-export class getWishes {
+export class WishesService {
   constructor (private http: HttpClient) {}
 
   public getWishes(path: string): Observable<IWish[]> {

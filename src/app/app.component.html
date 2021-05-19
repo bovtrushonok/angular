@@ -9,7 +9,7 @@
           [search]="searchText" 
           (updateSearchText)="searchText=$event; filter($event)"></app-search-input>
         <div class="create-modal">
-         <button mat-button> + Create </button>
+         <button mat-button (click)="openWishCardModal()"> + Create </button>
         </div>
       </div>
       <mat-tab-group mat-align-tabs="center">
@@ -20,7 +20,8 @@
                 *ngFor="let wish of wishes"
                 [wish]="wish"
                 [filteredWishes]="filteredWishes"
-                (wishCardEvent)="deleteWish($event)"></app-wish-card>
+                (wishCardDeleteEvent)="deleteWish($event)"
+                (wishCardEditEvent)="updateWishes($event)"></app-wish-card>
             </div>
           </div>
           <ng-template #empty>
@@ -34,7 +35,6 @@
                 *ngFor="let wish of friendWishes" 
                 [wish]="wish" 
                 [filteredWishes]="filteredWishes"
-                (wishCardEvent)="deleteWish(wish)"
               ></app-wish-card>
             </div>
           </div>

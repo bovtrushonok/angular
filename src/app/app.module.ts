@@ -19,6 +19,7 @@ import { SearchInputComponent } from './search-input/search-input.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { EmptyFieldComponent } from './empty-field/empty-field.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SearchInputComponent,
     ModalWindowComponent,
     EmptyFieldComponent,
+    WishcardModalComponent,
   ],
   imports: [
     BrowserModule,

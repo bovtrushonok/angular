@@ -1,0 +1,16 @@
+<div mat-dialog-title>
+  <mat-icon mat-button mat-dialog-close>close</mat-icon>
+</div>
+<div mat-dialog-content>
+  <form #wishForm="ngForm">
+    <input type="text" matInput placeholder="Wish" name="title" [(ngModel)]="wish.title">
+    <input type="text" matInput placeholder="Wish image link" name="imgSrc" [(ngModel)]="wish.imgSrc">
+    <input type="text" matInput placeholder="Wish link" name="link" [(ngModel)]="wish.link">
+    <input type="text" matInput placeholder="Wish description" name="description" [(ngModel)]="wish.description">
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close class="cancel-btn modal-btn">Cancel</button>
+      <button mat-button [mat-dialog-close]="wish" type="submit" class="ok-btn modal-btn">Save</button>
+    </mat-dialog-actions>
+  </form>
+</div>
+
