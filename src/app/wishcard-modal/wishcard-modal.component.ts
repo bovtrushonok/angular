@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IWish } from 'src/interface';
 
 @Component({
@@ -18,8 +18,7 @@ export class WishcardModalComponent implements OnInit {
     userId: '',
   };
   
-  constructor(public dialogRef: MatDialogRef<WishcardModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IWish) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: IWish) {}
 
   ngOnInit() {
     if (this.data) this.wish = this.data;

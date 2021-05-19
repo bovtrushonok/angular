@@ -16,13 +16,13 @@ export class WishCardComponent implements OnChanges {
   @Output() public wishCardEditEvent = new EventEmitter<IWish>();
   public isSelected: boolean = true;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) {}
 
-  deleteWish(): void {
+  public deleteWish(): void {
     this.wishCardDeleteEvent.emit(this.wish);
   }
 
-  openModalToDelete(): void {
+  public openModalToDelete(): void {
     const modalRef = this.dialog.open(ModalWindowComponent, {
       width: '370px',
       maxWidth: '80%',
@@ -35,7 +35,7 @@ export class WishCardComponent implements OnChanges {
     })
   }
 
-  openModalToEdit():void {
+  public openModalToEdit():void {
     const modalRef = this.dialog.open(WishcardModalComponent, {
       width: '30%',
       height: '340px',
@@ -55,5 +55,4 @@ export class WishCardComponent implements OnChanges {
       this.isSelected = false;
     }
   }
-
 }

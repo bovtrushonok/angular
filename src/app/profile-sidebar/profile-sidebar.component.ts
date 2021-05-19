@@ -21,7 +21,7 @@ export class ProfileSidebarComponent implements OnInit {
     })
   }
 
-  getRandomKeyword():string {
+  private getRandomKeyword():string {
     return this.searchKeywords[Math.floor(Math.random() * this.searchKeywords.length)];
   }
 }

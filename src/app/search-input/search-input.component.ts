@@ -14,7 +14,7 @@ export class SearchInputComponent  {
   public control = new FormControl();
   constructor() { }
 
-  updateText() {
+  public updateText() {
     this.search = this.control.value;
     this.updateSearchText.emit(this.search);
   }

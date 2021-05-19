@@ -20,31 +20,33 @@ export class AppComponent implements OnInit {
   constructor(private wishService: WishesService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.wishService.getWishes(myWishesURL).subscribe(wishes => this.wishes = wishes);
-    this.wishService.getWishes(friendWishesURL)
-      .subscribe(wishes => this.friendWishes = wishes);
+    //this.wishService.getWishes(myWishesURL).subscribe(wishes => this.wishes = wishes);
+    //this.wishService.getWishes(friendWishesURL)
+     // .subscribe(wishes => this.friendWishes = wishes);
+    this.wishService.getWishes(myWishesURL).then(json => this.wishes = json);
+    this.wishService.getWishes(friendWishesURL).then(json => this.friendWishes = json)
   }
 
   private detectWishID(currentWish: IWish): number {
     return this.wishes.findIndex((wish:IWish) => currentWish.id === wish.id);
   }
 
-  deleteWish(currentWish: IWish): void {
+  public deleteWish(currentWish: IWish): void {
     const wishIdx = this.detectWishID(currentWish);
     this.wishes.splice(wishIdx, 1);
     this.filteredWishes.splice(wishIdx, 1);
   }
 
-  updateWishes(currentWish: IWish): void {
+  public updateWishes(currentWish: IWish): void {
     const wishIdx = this.detectWishID(currentWish);
     this.wishes[wishIdx] = currentWish;
   }
 
-  filter(value: string): void {
+  public filter(value: string): void {
     this.filteredWishes = this.wishes.filter(wish => wish.title === value);
   }
 
-  openWishCardModal():void {
+  public openWishCardModal():void {
     const dialogRef = this.dialog.open(WishcardModalComponent, {
       width: '30%',
       height: '340px',
