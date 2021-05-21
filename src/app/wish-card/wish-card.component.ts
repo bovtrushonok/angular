@@ -43,6 +43,7 @@ export class WishCardComponent implements OnChanges {
     });
 
     modalRef.afterClosed().subscribe(result => {
+      if (!result) return;
       this.wish = result;
       this.wishCardEditEvent.emit(this.wish)
     })
