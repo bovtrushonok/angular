@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { statusExample } from 'src/constants/messages';
+import { statusExample } from 'src/app/constants/messages';
 import { GoogleImageSearch } from 'simple-google-image-search';
 import { environment } from 'src/environments/environment';
 

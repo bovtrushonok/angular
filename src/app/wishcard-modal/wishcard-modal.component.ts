@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { wishFormMsg } from 'src/app/constants/messages';
 import { IWish } from 'src/interface';
 
 @Component({
@@ -17,6 +18,8 @@ export class WishcardModalComponent implements OnInit {
     imgSrc: '',
     userId: '',
   };
+
+  public wishFormMsg: string = wishFormMsg;
   
   constructor(@Inject(MAT_DIALOG_DATA) public data: IWish) {}
 

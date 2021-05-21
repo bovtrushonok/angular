@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { emptyFieldMsg } from 'src/constants/messages';
+import { emptyFieldMsg } from 'src/app/constants/messages';
 
 @Component({
   selector: 'app-empty-field',

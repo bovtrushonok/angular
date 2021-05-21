@@ -8,7 +8,7 @@ import { IWish } from 'src/interface';
 export class WishesService {
   //constructor (private http: HttpClient) {}
 
-  public async getWishes(path: string) {
+  public async getWishes(path: string): Promise<IWish[]> {
     //return this.http.get<IWish[]>(path);
     const result = await fetch(path);
     const data = await result.json();

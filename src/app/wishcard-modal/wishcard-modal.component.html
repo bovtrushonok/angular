@@ -1,13 +1,15 @@
 <div mat-dialog-title>
   <mat-icon mat-button mat-dialog-close>close</mat-icon>
+  <h2>{{wishFormMsg}}</h2>
 </div>
 <div mat-dialog-content>
   <form #wishForm="ngForm">
     <input type="text" 
+      required
       placeholder="Wish"
       name="title"
       [(ngModel)]="wish.title"
-      required>
+    >
     <input 
       type="text"
       matInput
@@ -28,7 +30,13 @@
       [(ngModel)]="wish.description">
     <mat-dialog-actions>
       <button mat-button mat-dialog-close class="cancel-btn modal-btn">Cancel</button>
-      <button mat-button [mat-dialog-close]="wish" type="submit" class="ok-btn modal-btn">Save</button>
+      <button 
+        mat-button
+        [mat-dialog-close]="wish"
+        type="submit"
+        class="ok-btn modal-btn"
+        [disabled]="!wishForm.valid"
+      >Save</button>
     </mat-dialog-actions>
   </form>
 </div>

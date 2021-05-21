@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { friendWishesURL, myWishesURL } from 'src/constants/path';
+import { friendWishesURL, myWishesURL } from 'src/app/constants/path';
 import { IWish } from 'src/interface';
 import { WishesService } from './shared/get-data.service';
 import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.component';
@@ -49,11 +49,12 @@ export class AppComponent implements OnInit {
   public openWishCardModal():void {
     const dialogRef = this.dialog.open(WishcardModalComponent, {
       width: '30%',
-      height: '340px',
+      height: '370px',
+      panelClass: 'wish-modal',
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.wishes.push(result);
+      if (result) this.wishes.push(result);
     });
   }
 }
