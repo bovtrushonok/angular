@@ -11,3 +11,9 @@ export interface IAppComponent {
   wishes: Array<IWish>;
   friendWishes: Array<IWish>;
 }
+
+export interface IUserInfo {
+  userName: string,
+  userDescription?: string,
+  userPictureURL?: string,
+}

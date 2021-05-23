@@ -1,0 +1,24 @@
+<form [formGroup]="profileEditForm" (ngSubmit)="onSubmit()">
+  <label>
+    Edit your name:
+    <input 
+      type="text"
+      formControlName="userName"
+      required>
+  </label>
+  <label>
+    Insert picture URL:
+    <input type="text" formControlName="userPictureURL">
+  </label>
+  <label>
+    Add something about yourself:
+    <input type="text" formControlName="userDescription">
+  </label>
+  <div class="actions">
+    <button mat-button mat-dialog-close class="cancel-btn modal-btn">Cancel</button>
+    <button mat-button mat-dialog-close
+      type="submit"
+      [disabled]="!profileEditForm.valid"
+      class="ok-btn modal-btn">Submit</button>
+  </div>
+</form>

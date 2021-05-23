@@ -1,0 +1,25 @@
+@import '../styles/variables';
+
+input {
+  width: 87%;
+  margin: 5px;
+  padding: 5px 7px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+  margin-top: 10px;
+  .modal-btn {
+    color: $secondaryTextColor;
+    border-radius: 0%;
+    margin-right: 30px;
+  }
+  .cancel-btn {
+    background-color: $primaryTextColor;
+  }
+  .ok-btn {
+    background-color: $secondaryBcgColor;
+  }
+}

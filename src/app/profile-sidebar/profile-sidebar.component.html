@@ -1,7 +1,15 @@
 <div class="profile-sidebar">
   <div class="profile-description">
-    <div class="profile-pic" [style.backgroundImage]="'url('+ imgSrc +')'">
-    </div>
-    <p class="profile-status">{{ statusExample }}</p>
+    <div class="userName" *ngIf="userService.userInfo.userName">{{userService.userInfo.userName}}</div>
+    <div 
+      class="profile-pic"
+      *ngIf="userService.userInfo.userPictureURL"
+      [style.backgroundImage]="'url('+ userService.userInfo.userPictureURL +')'"
+    ></div>
+    <div 
+    *ngIf="!userService.userInfo.userPictureURL"
+      class="profile-pic"
+      [style.backgroundImage]="'url('+ imgSrc +')'"></div>
+    <p class="profile-status">{{ userService.userInfo.userDescription }}</p>
   </div>
 </div>

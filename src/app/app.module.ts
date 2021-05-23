@@ -20,6 +20,8 @@ import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { EmptyFieldComponent } from './empty-field/empty-field.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.component';
+import { ProfileModalComponent } from './profile-modal/profile-modal.component';
+import { ProfileEditFormComponent } from './profile-edit-form/profile-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.componen
     ModalWindowComponent,
     EmptyFieldComponent,
     WishcardModalComponent,
+    ProfileModalComponent,
+    ProfileEditFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { wishFormMsg } from 'src/app/constants/messages';
-import { IWish } from 'src/interface';
+import { IWish } from 'src/app/interface';
 
 @Component({
   selector: 'app-wishcard-modal',

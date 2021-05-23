@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IWish } from 'src/interface';
+import { IWish } from 'src/app/interface';
 
 @Injectable ({providedIn: 'root'})
 

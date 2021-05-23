@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ProfileModalComponent } from '../profile-modal/profile-modal.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
-  ngOnInit(): void {
+  public openProfileModal(): void {
+    this.dialog.open(ProfileModalComponent, {
+      width: '30%',
+      height: '370px',
+    });
   }
 
 }

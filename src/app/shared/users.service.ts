@@ -1,0 +1,24 @@
+import { Injectable } from '@angular/core';
+import { statusExample } from '../constants/messages';
+import { IUserInfo } from '../interface';
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class UsersService {
+  public userInfo: IUserInfo = {
+    userName: '',
+    userDescription: statusExample,
+    userPictureURL: '',
+  };
+  constructor() { }
+
+  public saveUserInfo(userInfo: IUserInfo):void{
+    this.userInfo = userInfo;
+  }
+
+  public getUserUnfo(): IUserInfo {
+    return this.userInfo;
+  }
+}

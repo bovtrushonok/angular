@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { IWish } from 'src/interface';
+import { IWish } from 'src/app/interface';
 
 @Component({
   selector: 'app-search-input',

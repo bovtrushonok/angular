@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { friendWishesURL, myWishesURL } from 'src/app/constants/path';
-import { IWish } from 'src/interface';
-import { WishesService } from './shared/get-data.service';
+import { friendWishesURL, myWishesURL } from './constants/path';
+import { IWish } from 'src/app/interface';
+import { WishesService } from './shared/wishes.service';
 import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.component';
 
 @Component({
