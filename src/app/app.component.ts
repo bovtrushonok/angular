@@ -44,6 +44,7 @@ export class AppComponent implements OnInit {
 
   public filter(value: string): void {
     this.filteredWishes = this.wishes.filter(wish => wish.title === value);
+    if (this.filteredWishes.length === 0) this.filteredWishes[0] = null;
   }
 
   public openWishCardModal():void {

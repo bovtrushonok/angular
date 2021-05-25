@@ -14,7 +14,7 @@
       </div>
       <mat-tab-group mat-align-tabs="center">
         <mat-tab label="My wishes">
-          <div *ngIf="wishes.length > 0; else empty">
+          <div *ngIf="wishes.length > 0 && filteredWishes[0]!==null; else empty">
             <div class="wishes-field">
               <app-wish-card 
                 *ngFor="let wish of wishes"
