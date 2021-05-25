@@ -34,6 +34,7 @@
 }
 
 .mat-tab-group {
+  min-width: 100%;
   .mat-tab-labels {
     .mat-ink-bar {
       background-color: $underlineColor;

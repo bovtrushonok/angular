@@ -1,10 +1,7 @@
 @import '../styles/variables';
 
 :host {
-  width: 30%;
-  min-width: 180px;
-  min-height: 350px;
-  margin: 10px 5px;
+  max-width: 30%;
   display: flex;
   flex-flow: row wrap;
 }
@@ -15,6 +12,9 @@
 
 .wish-card {
   width: 100%;
+  min-width: 180px;
+  min-height: 350px;
+  margin: 10px 5px;
   white-space: pre-wrap;
   word-break: break-word;
   word-wrap: break-word;
