@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from '../shared/users.service';
 
 @Component({
@@ -9,15 +9,15 @@ import { UsersService } from '../shared/users.service';
 })
 export class ProfileEditFormComponent {
 
-  constructor(private userService: UsersService) { }
+  constructor(private userService: UsersService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
-  public profileEditForm = new FormGroup({
-    userName: new FormControl('', Validators.required),
-    userDescription: new FormControl(''),
-    userPictureURL: new FormControl(''),
+  public profileEditForm = this.fb.group({
+    userName: [this.userService.userInfo.userName || '', Validators.required],
+    userDescription: [this.userService.userInfo.userDescription || ''],
+    userPictureURL: [this.userService.userInfo.userPictureURL || ''],
   })
 
   public onSubmit():void {
