@@ -12,8 +12,14 @@
   box-sizing: border-box;
   max-height: 100%;
 }
+
 .profile-main {
   flex-flow: row nowrap;
+}
+
+.profile-wrapper {
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .wishes-field {

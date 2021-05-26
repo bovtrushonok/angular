@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
 import { HeaderComponent } from './header/header.component';
 import { ProfileSidebarComponent } from './profile-sidebar/profile-sidebar.component';
 import { WishCardComponent } from './wish-card/wish-card.component';
@@ -22,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.component';
 import { ProfileModalComponent } from './profile-modal/profile-modal.component';
 import { ProfileEditFormComponent } from './profile-edit-form/profile-edit-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { ProfileEditFormComponent } from './profile-edit-form/profile-edit-form.
     WishcardModalComponent,
     ProfileModalComponent,
     ProfileEditFormComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { ProfileEditFormComponent } from './profile-edit-form/profile-edit-form.
     MatDialogModule,
     MatTabsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

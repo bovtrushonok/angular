@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   public filteredWishes: IWish[] = [];
   public friendWishes: IWish[] | [] = [];
   public searchText: string = '';
+  public isLoggedIn: boolean = true;
 
   constructor(private wishService: WishesService, private dialog: MatDialog) {}
 
@@ -45,7 +46,7 @@ export class AppComponent implements OnInit {
   public filter(value: string): void {
     this.filteredWishes = this.wishes.filter(wish => wish.title === value);
     if (this.filteredWishes.length === 0) this.filteredWishes[0] = null;
-    if(!value) this.filteredWishes.length = 0;
+    if (!value) this.filteredWishes.length = 0;
   }
 
   public openWishCardModal():void {
@@ -58,5 +59,9 @@ export class AppComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) this.wishes.push(result);
     });
+  }
+
+  public logOut(): void {
+    this.isLoggedIn = false;
   }
 }

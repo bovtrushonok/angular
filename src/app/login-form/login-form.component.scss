@@ -1,0 +1,22 @@
+@import '../styles/variables';
+:host {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+}
+form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-self: center;
+  align-self: center;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  border-radius: 4px;
+
+  input {
+    width: 87%;
+    margin: 5px;
+    padding: 5px 7px;
+  }
+}

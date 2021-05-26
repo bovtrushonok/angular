@@ -1,4 +1,13 @@
 <div class="header">
-    <mat-icon class="header-icon" aria-hidden="false" aria-label="account icon" (click)="openProfileModal()">account_circle</mat-icon>
+    <mat-icon
+        class="header-icon"
+        aria-hidden="false"
+        aria-label="account icon"
+        [matMenuTriggerFor]="menu" #menuTrigger
+    >account_circle</mat-icon>
     <mat-icon class="header-icon" aria-hidden="false" aria-label="settings icon">settings</mat-icon>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="openProfileModal()">Edit profile</button>
+        <button mat-menu-item (click)="logUserOut()">Log out</button>
+      </mat-menu>
 </div>
