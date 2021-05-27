@@ -12,7 +12,8 @@ export class SearchInputComponent  {
   @Input() public search: string;
   @Output() updateSearchText = new EventEmitter<string>();
   public control = new FormControl();
-  constructor() { }
+  
+  constructor() {}
 
   public updateText() {
     this.search = this.control.value;

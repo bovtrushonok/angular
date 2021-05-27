@@ -16,8 +16,8 @@
           <button mat-button (click)="openWishCardModal()"> + Create </button>
           </div>
         </div>
-        <mat-tab-group mat-align-tabs="center" selectedIndex="0">
-          <mat-tab isActive label="My wishes" position="0">
+        <mat-tab-group mat-align-tabs="center">
+          <mat-tab label="My wishes">
             <div *ngIf="wishes.length > 0 && filteredWishes[0] !== null; else empty">
               <div class="wishes-field">
                 <app-wish-card 

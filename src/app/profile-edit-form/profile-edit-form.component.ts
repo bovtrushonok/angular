@@ -9,10 +9,7 @@ import { ProfileService } from '../shared/profile.service';
 })
 export class ProfileEditFormComponent {
 
-  constructor(private userService: ProfileService, private fb: FormBuilder) { }
-
-  ngOnInit(): void {
-  }
+  constructor(private userService: ProfileService, private fb: FormBuilder) {}
 
   public profileEditForm = this.fb.group({
     userName: [this.userService.userInfo.userName || '', Validators.required],

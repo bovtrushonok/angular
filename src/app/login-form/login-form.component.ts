@@ -12,6 +12,7 @@ import { UsersService } from '../shared/users.service';
 export class LoginFormComponent {
   public constants = m;
   @Output() logInEvent = new EventEmitter<boolean>();
+
   constructor(private fb: FormBuilder, private userService: UsersService) {}
 
   public LogInForm = this.fb.group({
@@ -21,13 +22,11 @@ export class LoginFormComponent {
   })
 
   public onSubmit(): void {
-    //this.userService.getUsers()
-    //  .then(() => this.userService.confirmCredentials(this.LogInForm.value));
     if (this.userService.confirmCredentials(this.LogInForm.value)) {
       this.logInEvent.emit(true);
     };
   }
 
-  public get name() { return this.LogInForm.controls.name}
-  public get password() { return this.LogInForm.controls.password}
+  public get name() { return this.LogInForm.controls.name }
+  public get password() { return this.LogInForm.controls.password }
 }
