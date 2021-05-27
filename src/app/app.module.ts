@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { HeaderComponent } from './header/header.component';
 import { ProfileSidebarComponent } from './profile-sidebar/profile-sidebar.component';
 import { WishCardComponent } from './wish-card/wish-card.component';
@@ -54,7 +55,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     MatTabsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,7 +6,7 @@ import { IUserInfo } from '../interface';
   providedIn: 'root'
 })
 
-export class UsersService {
+export class ProfileService {
   public userInfo: IUserInfo = {
     userName: '',
     userDescription: statusExample,

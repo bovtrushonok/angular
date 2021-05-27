@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { statusExample } from 'src/app/constants/messages';
 import { GoogleImageSearch } from 'simple-google-image-search';
 import { environment } from 'src/environments/environment';
-import { UsersService } from '../shared/users.service';
+import { ProfileService } from '../shared/profile.service';
 
 @Component({
   selector: 'app-profile-sidebar',
@@ -16,7 +16,7 @@ export class ProfileSidebarComponent implements OnInit {
   private imageSearch = new GoogleImageSearch(environment.API, environment.searchKey);
   private searchKeywords: Array<string> = ['applefruit', 'cat', 'elephant', 'flower', 'rain', 'vacation']
   
-  constructor(public userService: UsersService) { }
+  constructor(public userService: ProfileService) { }
 
   ngOnInit(): void {
     this.imageSearch.getImageUrl(this.getRandomKeyword()).then((res) => {

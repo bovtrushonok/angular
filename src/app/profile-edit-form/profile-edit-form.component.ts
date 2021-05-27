@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { UsersService } from '../shared/users.service';
+import { ProfileService } from '../shared/profile.service';
 
 @Component({
   selector: 'app-profile-edit-form',
@@ -9,7 +9,7 @@ import { UsersService } from '../shared/users.service';
 })
 export class ProfileEditFormComponent {
 
-  constructor(private userService: UsersService, private fb: FormBuilder) { }
+  constructor(private userService: ProfileService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }

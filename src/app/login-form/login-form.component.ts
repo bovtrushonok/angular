@@ -10,8 +10,15 @@ export class LoginFormComponent {
   constructor(private fb: FormBuilder) {}
 
   public LogInForm = this.fb.group({
-    login: ['', Validators.required, Validators.minLength(4)],
-    password: ['', Validators.required,
-      Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]
+    name: ['', [Validators.required, Validators.minLength(4)]],
+    password: ['', [Validators.required,
+      Validators.minLength(8)]]
   })
+
+  public onSubmit(): void {
+    return console.log(this.LogInForm.value);
+  }
+
+  get name() { return this.LogInForm.controls.name}
+  get password() { return this.LogInForm.controls.password}
 }

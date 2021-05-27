@@ -15,6 +15,7 @@
 
 .profile-main {
   flex-flow: row nowrap;
+  padding: 0;
 }
 
 .profile-wrapper {
@@ -40,10 +41,5 @@
 }
 
 .mat-tab-group {
-  min-width: 100%;
-  .mat-tab-labels {
-    .mat-ink-bar {
-      background-color: $underlineColor;
-    }
-  }
+  margin-bottom: 48px;
 }

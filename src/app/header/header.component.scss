@@ -1,11 +1,7 @@
 @import '../styles/variables';
 
-:host {
-  width: 100%;
-}
-
 .header {
-  width: 100%;
+  min-width: 100%;
   max-width: 100%;
   display: flex;
   flex-flow: row nowrap;
