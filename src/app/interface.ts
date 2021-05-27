@@ -14,6 +14,13 @@ export interface IAppComponent {
 
 export interface IUserInfo {
   userName: string,
+  userPassword?: string,
+  userId?: number,
   userDescription?: string,
   userPictureURL?: string,
+}
+
+export interface ICredentials {
+  name: string,
+  password: string,
 }

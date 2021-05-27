@@ -1,21 +1,21 @@
 [
   {
-    "name": "alex09",
-    "password": "123jkl90",
+    "userName": "alex09",
+    "userPassword": "123jkl90",
     "userDescription": "",
     "userPictureURL": "",
     "userId": 2
   },
   {
-    "name": "milann",
-    "password": "345the98",
+    "userName": "milann",
+    "userPassword": "345the98",
     "userDescription": "",
     "userPictureURL": "",
     "userId": 3
   },
   {
-    "name": "nastiek",
-    "password": "uier76lk",
+    "userName": "nastiek",
+    "userPassword": "uier76lk",
     "userDescription": "",
     "userPictureURL": "",
     "userId": 4

@@ -1,13 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import * as m from '../constants/messages';
+import { UsersService } from '../shared/users.service';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
+
 export class LoginFormComponent {
-  constructor(private fb: FormBuilder) {}
+  public constants = m;
+  @Output() logInEvent = new EventEmitter<boolean>();
+  constructor(private fb: FormBuilder, private userService: UsersService) {}
 
   public LogInForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(4)]],
@@ -16,9 +21,13 @@ export class LoginFormComponent {
   })
 
   public onSubmit(): void {
-    return console.log(this.LogInForm.value);
+    //this.userService.getUsers()
+    //  .then(() => this.userService.confirmCredentials(this.LogInForm.value));
+    if (this.userService.confirmCredentials(this.LogInForm.value)) {
+      this.logInEvent.emit(true);
+    };
   }
 
-  get name() { return this.LogInForm.controls.name}
-  get password() { return this.LogInForm.controls.password}
+  public get name() { return this.LogInForm.controls.name}
+  public get password() { return this.LogInForm.controls.password}
 }

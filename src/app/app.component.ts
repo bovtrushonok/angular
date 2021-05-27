@@ -4,6 +4,7 @@ import { friendWishesURL, myWishesURL } from './constants/path';
 import { IWish } from 'src/app/interface';
 import { WishesService } from './shared/wishes.service';
 import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.component';
+import { UsersService } from './shared/users.service';
 
 @Component({
   selector: 'app-root',
@@ -16,14 +17,16 @@ export class AppComponent implements OnInit {
   public filteredWishes: IWish[] = [];
   public friendWishes: IWish[] | [] = [];
   public searchText: string = '';
-  public isLoggedIn: boolean = true;
+  public isLoggedIn: boolean = false;
 
-  constructor(private wishService: WishesService, private dialog: MatDialog) {}
+  constructor(private wishService: WishesService,
+    private dialog: MatDialog, private userService: UsersService) {}
 
   ngOnInit(): void {
     //this.wishService.getWishes(myWishesURL).subscribe(wishes => this.wishes = wishes);
     //this.wishService.getWishes(friendWishesURL)
      // .subscribe(wishes => this.friendWishes = wishes);
+    this.userService.getUsers();
     this.wishService.getWishes(myWishesURL).then(json => this.wishes = json);
     this.wishService.getWishes(friendWishesURL).then(json => this.friendWishes = json)
   }
@@ -63,5 +66,9 @@ export class AppComponent implements OnInit {
 
   public logOut(): void {
     this.isLoggedIn = false;
+  }
+
+  public logIn(): void {
+    this.isLoggedIn = true;
   }
 }

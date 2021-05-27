@@ -51,6 +51,6 @@
     </div>
   </div>
   <ng-template #LogInForm>
-    <app-login-form></app-login-form>
+    <app-login-form (logInEvent)="logIn()"></app-login-form>
   </ng-template>
 </div>
