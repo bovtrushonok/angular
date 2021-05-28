@@ -9,3 +9,4 @@ export const passwordLengthError: string = 'Password must be at least 8 characte
 export const noNameError: string = 'Name is required.';
 export const nameLengthError: string = 'Name must be at least 8 characters long.';
 export const loginFormHint: string = 'Don\'t have an account yet?';
+export const noUserFound: string = 'No user is found, please check the credentials';

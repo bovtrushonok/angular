@@ -11,6 +11,7 @@ import { UsersService } from '../shared/users.service';
 
 export class LoginFormComponent {
   public constants = m;
+  public submitError: boolean = false;
   @Output() logInEvent = new EventEmitter<boolean>();
 
   constructor(private fb: FormBuilder, private userService: UsersService) {}
@@ -24,7 +25,7 @@ export class LoginFormComponent {
   public onSubmit(): void {
     if (this.userService.confirmCredentials(this.LogInForm.value)) {
       this.logInEvent.emit(true);
-    };
+    } else this.submitError = true;
   }
 
   public get name() { return this.LogInForm.controls.name }

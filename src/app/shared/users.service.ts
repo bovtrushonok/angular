@@ -7,7 +7,7 @@ import { ICredentials, IUserInfo } from '../interface';
 
 export class UsersService {
   public users: IUserInfo[];
-  constructor() { }
+  constructor() {}
 
   public async getUsers() {
     const result = await fetch('../assets/userList.json');
@@ -16,7 +16,8 @@ export class UsersService {
   }
 
   public confirmCredentials(value: ICredentials): boolean {
-    const checkResult = this.users.filter((user) => user.userName === value.name && user.userPassword === value.password);
+    const checkResult = this.users.filter((user) => user.userName === value.name
+      && user.userPassword === value.password);
     if (checkResult.length > 0) return true;
     return false;
   }

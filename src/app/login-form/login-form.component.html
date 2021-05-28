@@ -1,33 +1,36 @@
 <form [formGroup]="LogInForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="outline">
     <mat-label> {{constants.nameFormLabel}} </mat-label>
     <input matInput type="text" formControlName="name" required>
-    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
-      <div *ngIf="name.errors?.required">
-        {{constants.noNameError}}
-      </div>
-      <div *ngIf="name.errors?.minlength">
-        {{constants.nameLengthError}}
-      </div>
-    </div>
   </mat-form-field>
-  <mat-form-field appearance="fill">
+  <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+    <div *ngIf="name.errors?.required">
+      {{constants.noNameError}}
+    </div>
+    <div *ngIf="name.errors?.minlength">
+      {{constants.nameLengthError}}
+    </div>
+  </div>
+  <mat-form-field appearance="outline">
   <mat-label> {{constants.passwordFormNameLabel}} </mat-label>
     <input matInput type="password" formControlName="password">
-    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-      <div *ngIf="password.errors?.required">
-        {{constants.noPasswordError}}
-      </div>
-      <div *ngIf="password.errors?.minlength">
-        {{constants.passwordLengthError}}
-      </div>
-    </div>
   </mat-form-field>
+  <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
+    <div *ngIf="password.errors?.required">
+      {{constants.noPasswordError}}
+    </div>
+    <div *ngIf="password.errors?.minlength">
+      {{constants.passwordLengthError}}
+    </div>
+  </div>
   <div class="actions">
     <button mat-button
       type="submit"
       class="ok-btn modal-btn">Login</button>
-      <mat-hint>{{constants.loginFormHint}}</mat-hint>
+      <div *ngIf="submitError" class="alert">
+        <p> {{constants.noUserFound}}</p>
+      </div>
+      <mat-hint >{{constants.loginFormHint}}</mat-hint>
     <button mat-button class="cancel-btn modal-btn">SignUp</button>
   </div>
 </form>
