@@ -19,7 +19,6 @@
 }
 
 .profile-wrapper {
-  justify-content: center;
   min-height: 100vh;
 }
 
@@ -29,7 +28,7 @@
 
 .profile-content {
   padding-left: 60px;
-  width: 70%;
+  min-width: 75%;
   justify-content: center;
 }
 
@@ -41,5 +40,6 @@
 }
 
 .mat-tab-group {
+  min-width: 100%;
   margin-bottom: 48px;
 }
