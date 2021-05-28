@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { friendWishesURL, myWishesURL } from './constants/path';
 import { IWish } from 'src/app/interface';
 import { WishesService } from './shared/wishes.service';
 import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.component';
 import { UsersService } from './shared/users.service';
+import { MatTabGroup } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit {
   public friendWishes: IWish[] | [] = [];
   public searchText: string = '';
   public isLoggedIn: boolean = false;
+  @ViewChild(MatTabGroup) public matTab: MatTabGroup;
 
   constructor(private wishService: WishesService,
     private dialog: MatDialog, private userService: UsersService) {}
@@ -50,6 +52,7 @@ export class AppComponent implements OnInit {
     this.filteredWishes = this.wishes.filter(wish => wish.title === value);
     if (this.filteredWishes.length === 0) this.filteredWishes[0] = null;
     if (!value) this.filteredWishes.length = 0;
+    this.matTab.realignInkBar();
   }
 
   public openWishCardModal():void {
@@ -72,3 +75,5 @@ export class AppComponent implements OnInit {
     this.isLoggedIn = true;
   }
 }
+
+

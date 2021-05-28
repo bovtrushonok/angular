@@ -25,6 +25,7 @@ import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.componen
 import { ProfileModalComponent } from './profile-modal/profile-modal.component';
 import { ProfileEditFormComponent } from './profile-edit-form/profile-edit-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
     ProfileModalComponent,
     ProfileEditFormComponent,
     LoginFormComponent,
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,
