@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { statusExample } from 'src/app/constants/messages';
 import { GoogleImageSearch } from 'simple-google-image-search';
 import { environment } from 'src/environments/environment';
-import { ProfileService } from '../shared/profile.service';
+import { ProfileService } from '../services/profile.service';
 
 @Component({
   selector: 'app-profile-sidebar',

@@ -1,7 +1,5 @@
-@import './styles/variables';
+@import '../styles/variables';
 
-.wrapper,
-.main,
 .profile-content,
 .wishes-field {
   width: 100%;
@@ -11,15 +9,6 @@
   padding: 10px 20px;
   box-sizing: border-box;
   max-height: 100%;
-}
-
-.profile-main {
-  flex-flow: row nowrap;
-  padding: 0;
-}
-
-.profile-wrapper {
-  min-height: 100vh;
 }
 
 .wishes-field {

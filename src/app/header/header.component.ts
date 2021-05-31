@@ -9,8 +9,7 @@ import { ProfileModalComponent } from '../profile-modal/profile-modal.component'
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  @Input() public isLoggedIn: boolean;
-  @Output() public logOutEvent = new EventEmitter<boolean>();
+  @Output() public logOutEvent = new EventEmitter();
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
   constructor(private dialog: MatDialog) { }
@@ -26,8 +25,6 @@ export class HeaderComponent {
   }
 
   public logUserOut(): void {
-    this.isLoggedIn = !this.isLoggedIn;
-    console.log(this.isLoggedIn);
-    this.logOutEvent.emit(this.isLoggedIn);
+    this.logOutEvent.emit();
   }
 }

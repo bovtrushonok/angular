@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ProfileService } from '../shared/profile.service';
+import { ProfileService } from '../services/profile.service';
 
 @Component({
   selector: 'app-profile-edit-form',

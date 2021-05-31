@@ -26,6 +26,14 @@ import { ProfileModalComponent } from './profile-modal/profile-modal.component';
 import { ProfileEditFormComponent } from './profile-edit-form/profile-edit-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { RouterModule, Routes } from '@angular/router';
+import { MainPageContentComponent } from './main-page-content/main-page-content.component';
+import { MainPageComponent } from './main-page/main-page.component';
+
+const appRoutes: Routes = [
+  {path: '', component: LoginFormComponent},
+  {path: 'main', component: MainPageComponent},
+];
 
 @NgModule({
   declarations: [
@@ -41,6 +49,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     ProfileEditFormComponent,
     LoginFormComponent,
     RegisterFormComponent,
+    MainPageContentComponent,
+    MainPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +68,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     FormsModule,
     ReactiveFormsModule,
     MatMenuModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
