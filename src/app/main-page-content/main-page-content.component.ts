@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTabGroup } from '@angular/material/tabs';
 import { friendWishesURL, myWishesURL } from '../constants/path';
-import { IWish } from '../interface';
+import { IWish, WishType } from '../interface';
 import { WishesService } from '../services/wishes.service';
 import { WishcardModalComponent } from '../wishcard-modal/wishcard-modal.component';
 
@@ -13,42 +13,29 @@ import { WishcardModalComponent } from '../wishcard-modal/wishcard-modal.compone
 })
 
 export class MainPageContentComponent implements OnInit {
-  public wishes: IWish[] = [];
-  public filteredWishes: IWish[] = [];
-  public friendWishes: IWish[] | [] = [];
   public searchText: string = '';
   @ViewChild(MatTabGroup) public matTab: MatTabGroup;
 
-  constructor(private wishService: WishesService,
-    private dialog: MatDialog) {}
+  constructor(public wishService: WishesService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     //this.wishService.getWishes(myWishesURL).subscribe(wishes => this.wishes = wishes);
     //this.wishService.getWishes(friendWishesURL)
      // .subscribe(wishes => this.friendWishes = wishes);
-    this.wishService.getWishes(myWishesURL).then(json => this.wishes = json);
-    this.wishService.getWishes(friendWishesURL).then(json => this.friendWishes = json)
-  }
-
-  private detectWishID(currentWish: IWish): number {
-    return this.wishes.findIndex((wish:IWish) => currentWish.id === wish.id);
+    this.wishService.getWishes(myWishesURL, WishType.myWishes);
+    this.wishService.getWishes(friendWishesURL);
   }
 
   public deleteWish(currentWish: IWish): void {
-    const wishIdx = this.detectWishID(currentWish);
-    this.wishes.splice(wishIdx, 1);
-    this.filteredWishes.splice(wishIdx, 1);
+    this.wishService.deleteWish(currentWish);
   }
 
   public updateWishes(currentWish: IWish): void {
-    const wishIdx = this.detectWishID(currentWish);
-    this.wishes[wishIdx] = currentWish;
+    this.wishService.deleteWish(currentWish)
   }
 
   public filter(value: string): void {
-    this.filteredWishes = this.wishes.filter(wish => wish.title === value);
-    if (this.filteredWishes.length === 0) this.filteredWishes[0] = null;
-    if (!value) this.filteredWishes.length = 0;
+    this.wishService.filter(value);
     this.matTab.realignInkBar();
   }
 
@@ -60,7 +47,7 @@ export class MainPageContentComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) this.wishes.push(result);
+      if (result) this.wishService.addNewWish(result);
     });
   }
 

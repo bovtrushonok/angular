@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core
 import { MatDialog } from '@angular/material/dialog';
 import { IWish } from '../interface';
 import { ModalWindowComponent } from '../modal-window/modal-window.component';
+import { WishesService } from '../services/wishes.service';
 import { WishcardModalComponent } from '../wishcard-modal/wishcard-modal.component';
 
 @Component({
@@ -16,10 +17,10 @@ export class WishCardComponent implements OnChanges {
   @Output() public wishCardEditEvent = new EventEmitter<IWish>();
   public isSelected: boolean = true;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, public wishService: WishesService) {}
 
-  public deleteWish(): void {
-    this.wishCardDeleteEvent.emit(this.wish);
+  private deleteWish(): void {
+    this.wishService.deleteWish(this.wish);
   }
 
   public openModalToDelete(): void {
@@ -45,7 +46,7 @@ export class WishCardComponent implements OnChanges {
     modalRef.afterClosed().subscribe(result => {
       if (!result) return;
       this.wish = result;
-      this.wishCardEditEvent.emit(this.wish)
+      this.wishService.updateWishes(this.wish)
     })
   }
 

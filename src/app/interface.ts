@@ -24,3 +24,8 @@ export interface ICredentials {
   name: string,
   password: string,
 }
+
+export const enum WishType {
+  myWishes,
+  friendWishes,
+}
