@@ -1,9 +1,6 @@
 @import './styles/variables';
 
-.wrapper,
-.main,
-.profile-content,
-.wishes-field {
+.wrapper {
   width: 100%;
   max-width: 100%;
   display: flex;
@@ -11,35 +8,5 @@
   padding: 10px 20px;
   box-sizing: border-box;
   max-height: 100%;
-}
-
-.profile-main {
-  flex-flow: row nowrap;
-  padding: 0;
-}
-
-.profile-wrapper {
   min-height: 100vh;
-}
-
-.wishes-field {
-  padding: 20px 0;
-}
-
-.profile-content {
-  padding-left: 60px;
-  min-width: 75%;
-  justify-content: center;
-}
-
-.menu {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  color: $primaryTextColor;
-}
-
-.mat-tab-group {
-  min-width: 100%;
-  margin-bottom: 48px;
 }

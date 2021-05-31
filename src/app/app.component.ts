@@ -17,9 +17,4 @@ export class AppComponent implements OnInit {
      // .subscribe(wishes => this.friendWishes = wishes);
     this.userService.getUsers();
    }
-
-
-
 }
-
-
