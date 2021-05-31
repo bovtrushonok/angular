@@ -13,8 +13,6 @@ import { WishcardModalComponent } from '../wishcard-modal/wishcard-modal.compone
 export class WishCardComponent implements OnChanges {
   @Input() public wish: IWish;
   @Input() public filteredWishes: IWish[];
-  @Output() public wishCardDeleteEvent = new EventEmitter<IWish>();
-  @Output() public wishCardEditEvent = new EventEmitter<IWish>();
   public isSelected: boolean = true;
 
   constructor(private dialog: MatDialog, public wishService: WishesService) {}

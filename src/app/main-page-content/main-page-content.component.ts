@@ -22,8 +22,8 @@ export class MainPageContentComponent implements OnInit {
     //this.wishService.getWishes(myWishesURL).subscribe(wishes => this.wishes = wishes);
     //this.wishService.getWishes(friendWishesURL)
      // .subscribe(wishes => this.friendWishes = wishes);
-    this.wishService.getWishes(myWishesURL, WishType.myWishes);
-    this.wishService.getWishes(friendWishesURL);
+     this.wishService.getWishes(myWishesURL, WishType.myWishes);
+     this.wishService.getWishes(friendWishesURL);
   }
 
   public deleteWish(currentWish: IWish): void {
@@ -31,7 +31,7 @@ export class MainPageContentComponent implements OnInit {
   }
 
   public updateWishes(currentWish: IWish): void {
-    this.wishService.deleteWish(currentWish)
+    this.wishService.updateWishes(currentWish);
   }
 
   public filter(value: string): void {

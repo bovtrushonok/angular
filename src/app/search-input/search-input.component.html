@@ -6,10 +6,9 @@
   [formControl]="control"
   class="global-search-input"
   (blur)="updateText()"
-  [(value)]="search"
 >
 <mat-autocomplete #auto="matAutocomplete">
-  <mat-option *ngFor="let wish of wishes" [value]="wish.title">
+  <mat-option *ngFor="let wish of this.wishService.wishes" [value]="wish.title">
     {{wish.title}}
   </mat-option>
 </mat-autocomplete>
