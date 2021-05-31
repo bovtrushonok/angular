@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { Router } from '@angular/router';
 import { ProfileModalComponent } from '../profile-modal/profile-modal.component';
 
 @Component({
@@ -12,7 +13,7 @@ export class HeaderComponent {
   @Output() public logOutEvent = new EventEmitter();
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private router: Router) { }
 
   public openProfileModal(): void {
     const dialogRef = this.dialog.open(ProfileModalComponent, {
@@ -25,6 +26,6 @@ export class HeaderComponent {
   }
 
   public logUserOut(): void {
-    this.logOutEvent.emit();
+    this.router.navigateByUrl('');
   }
 }
