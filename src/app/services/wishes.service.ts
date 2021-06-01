@@ -17,7 +17,7 @@ export class WishesService {
     const result = await fetch(path);
     const data = await result.json();
     if (type === WishType.myWishes) this.wishes = data;
-    this.friendWishes = data;
+    else this.friendWishes = data;
   }
 
   public getCurrentWishes() {
@@ -48,5 +48,4 @@ export class WishesService {
   public addNewWish(value: IWish): void {
     this.wishes.push(value);
   }
-
 }

@@ -1,0 +1,14 @@
+:host {
+  min-width: 100%;
+}
+
+.main {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 0;
+  box-sizing: border-box;
+  max-height: 100%;
+}
+

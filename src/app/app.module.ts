@@ -22,18 +22,23 @@ import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { EmptyFieldComponent } from './empty-field/empty-field.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.component';
-import { ProfileModalComponent } from './profile-modal/profile-modal.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { ProfileEditFormComponent } from './profile-edit-form/profile-edit-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MainPageContentComponent } from './main-page-content/main-page-content.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import { AddWishModalComponent } from './add-wish-modal/add-wish-modal.component';
+import { AddWishBlockComponent } from './add-wish-block/add-wish-block.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginFormComponent},
-  {path: 'main', component: MainPageComponent},
+  {path: 'main', component: MainPageComponent, 
+    children: [
+      {path: '', component: MainPageContentComponent},
+      {path: 'edit-my-profile', component: ProfileEditFormComponent }
+    ]
+  },
 ];
 
 @NgModule({
@@ -46,13 +51,13 @@ const appRoutes: Routes = [
     ModalWindowComponent,
     EmptyFieldComponent,
     WishcardModalComponent,
-    ProfileModalComponent,
+    ProfilePageComponent,
     ProfileEditFormComponent,
     LoginFormComponent,
     RegisterFormComponent,
     MainPageContentComponent,
     MainPageComponent,
-    AddWishModalComponent,
+    AddWishBlockComponent,
   ],
   imports: [
     BrowserModule,
