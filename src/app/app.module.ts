@@ -29,6 +29,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MainPageContentComponent } from './main-page-content/main-page-content.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { AddWishModalComponent } from './add-wish-modal/add-wish-modal.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginFormComponent},
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
     RegisterFormComponent,
     MainPageContentComponent,
     MainPageComponent,
+    AddWishModalComponent,
   ],
   imports: [
     BrowserModule,

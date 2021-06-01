@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { MatTabGroup } from '@angular/material/tabs';
 import { friendWishesURL, myWishesURL } from '../constants/path';
 import { IWish, WishType } from '../interface';
 import { WishesService } from '../services/wishes.service';
-import { WishcardModalComponent } from '../wishcard-modal/wishcard-modal.component';
 
 @Component({
   selector: 'app-main-page-content',
@@ -16,7 +14,7 @@ export class MainPageContentComponent implements OnInit {
   public searchText: string = '';
   @ViewChild(MatTabGroup) public matTab: MatTabGroup;
 
-  constructor(public wishService: WishesService, private dialog: MatDialog) {}
+  constructor(public wishService: WishesService) {}
 
   ngOnInit(): void {
     //this.wishService.getWishes(myWishesURL).subscribe(wishes => this.wishes = wishes);
@@ -38,17 +36,4 @@ export class MainPageContentComponent implements OnInit {
     this.wishService.filter(value);
     this.matTab.realignInkBar();
   }
-
-  public openWishCardModal():void {
-    const dialogRef = this.dialog.open(WishcardModalComponent, {
-      width: '30%',
-      height: '370px',
-      panelClass: 'wish-modal',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) this.wishService.addNewWish(result);
-    });
-  }
-
 }
