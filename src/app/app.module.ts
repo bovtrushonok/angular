@@ -30,10 +30,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainPageContentComponent } from './main-page-content/main-page-content.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AddWishModalComponent } from './add-wish-modal/add-wish-modal.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginFormComponent},
   {path: 'main', component: MainPageComponent},
+  {path: '**', component: ErrorPageComponent}
 ];
 
 @NgModule({
@@ -53,6 +55,7 @@ const appRoutes: Routes = [
     MainPageContentComponent,
     MainPageComponent,
     AddWishModalComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
