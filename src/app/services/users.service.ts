@@ -9,7 +9,7 @@ export class UsersService {
   public users: IUserInfo[];
   constructor() {}
 
-  public async getUsers() {
+  public async getUsers(): Promise<void> {
     const result = await fetch('../assets/userList.json');
     const data = await result.json();
     this.users = data;

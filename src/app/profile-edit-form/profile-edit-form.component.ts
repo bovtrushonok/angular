@@ -15,9 +15,9 @@ export class ProfileEditFormComponent {
     userName: [this.userService.userInfo.userName || '', Validators.required],
     userDescription: [this.userService.userInfo.userDescription || ''],
     userPictureURL: [this.userService.userInfo.userPictureURL || ''],
-  })
+  });
 
-  public onSubmit():void {
+  public onSubmit(): void {
     return this.userService.saveUserInfo(this.profileEditForm.value);
   }
 }
