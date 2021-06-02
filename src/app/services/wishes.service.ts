@@ -39,10 +39,10 @@ export class WishesService {
     this.wishes[wishIdx] = currentWish;
   }
 
-  public filter(value: string): void {
-    this.filteredWishes = this.wishes.filter(wish => wish.title === value);
+  public filterWishes(seacrhResult: string): void {
+    this.filteredWishes = this.wishes.filter(wish => wish.title === seacrhResult);
     if (this.filteredWishes.length === 0) this.filteredWishes[0] = null;
-    if (!value) this.filteredWishes.length = 0;
+    if (!seacrhResult) this.filteredWishes.length = 0;
   }
 
   public addNewWish(value: IWish): void {

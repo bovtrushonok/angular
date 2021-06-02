@@ -5,9 +5,9 @@
   </div>
   <mat-tab-group mat-align-tabs="center">
     <mat-tab label="My wishes">
-      <div *ngIf="this.wishService.wishes.length > 0 && this.wishService.filteredWishes[0] !== null; else empty">
+      <div *ngIf="this.wishesService.wishes.length && this.wishesService.filteredWishes[0] !== null; else empty">
         <div class="wishes-field">
-          <app-wish-card *ngFor="let wish of this.wishService.wishes" [wish]="wish" [filteredWishes]="this.wishService.filteredWishes"></app-wish-card>
+          <app-wish-card *ngFor="let wish of this.wishesService.wishes" [wish]="wish" [filteredWishes]="this.wishService.filteredWishes"></app-wish-card>
         </div>
       </div>
       <ng-template #empty>
@@ -15,9 +15,9 @@
       </ng-template>
     </mat-tab>
     <mat-tab label="My friends' wishes">
-      <div *ngIf="this.wishService.friendWishes.length > 0; else empty">
+      <div *ngIf="this.wishesService.friendWishes.length; else empty">
         <div class="wishes-field">
-          <app-wish-card *ngFor="let wish of this.wishService.friendWishes" [wish]="wish" [filteredWishes]="this.wishService.filteredWishes">
+          <app-wish-card *ngFor="let wish of this.wishesService.friendWishes" [wish]="wish" [filteredWishes]="this.wishService.filteredWishes">
           </app-wish-card>
         </div>
       </div>
