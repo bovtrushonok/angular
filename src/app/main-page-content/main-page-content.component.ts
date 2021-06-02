@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
 import { friendWishesURL, myWishesURL } from '../constants/path';
 import { IWish, WishType } from '../interface';
+import { ProfileService } from '../services/profile.service';
 import { WishesService } from '../services/wishes.service';
 
 @Component({
@@ -14,13 +15,13 @@ export class MainPageContentComponent implements OnInit {
   public searchText: string = '';
   @ViewChild(MatTabGroup) public matTab: MatTabGroup;
 
-  constructor(public wishesService: WishesService) {}
+  constructor(public wishesService: WishesService, private profileService: ProfileService) {}
 
   ngOnInit(): void {
     //this.wishService.getWishes(myWishesURL).subscribe(wishes => this.wishes = wishes);
     //this.wishService.getWishes(friendWishesURL)
      // .subscribe(wishes => this.friendWishes = wishes);
-     this.wishesService.getWishes(myWishesURL, WishType.myWishes);
+     this.wishesService.getWishes(myWishesURL, WishType.myWishes, this.profileService.getUserUnfo().userId);
      this.wishesService.getWishes(friendWishesURL);
   }
 
