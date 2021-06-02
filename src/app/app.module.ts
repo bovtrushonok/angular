@@ -22,7 +22,6 @@ import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { EmptyFieldComponent } from './empty-field/empty-field.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.component';
-import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { ProfileEditFormComponent } from './profile-edit-form/profile-edit-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
@@ -39,6 +38,7 @@ const appRoutes: Routes = [
       {path: 'edit-my-profile', component: ProfileEditFormComponent }
     ]
   },
+  
 ];
 
 @NgModule({
@@ -51,7 +51,6 @@ const appRoutes: Routes = [
     ModalWindowComponent,
     EmptyFieldComponent,
     WishcardModalComponent,
-    ProfilePageComponent,
     ProfileEditFormComponent,
     LoginFormComponent,
     RegisterFormComponent,
