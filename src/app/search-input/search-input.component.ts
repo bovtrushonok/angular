@@ -13,6 +13,6 @@ export class SearchInputComponent {
   constructor(public wishService: WishesService) {}
 
   public updateText() {
-    this.wishService.filter(this.control.value);
+    this.wishService.filterWishes(this.control.value);
   }
 }

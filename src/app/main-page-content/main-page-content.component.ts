@@ -14,26 +14,21 @@ export class MainPageContentComponent implements OnInit {
   public searchText: string = '';
   @ViewChild(MatTabGroup) public matTab: MatTabGroup;
 
-  constructor(public wishService: WishesService) {}
+  constructor(public wishesService: WishesService) {}
 
   ngOnInit(): void {
     //this.wishService.getWishes(myWishesURL).subscribe(wishes => this.wishes = wishes);
     //this.wishService.getWishes(friendWishesURL)
      // .subscribe(wishes => this.friendWishes = wishes);
-     this.wishService.getWishes(myWishesURL, WishType.myWishes);
-     this.wishService.getWishes(friendWishesURL);
+     this.wishesService.getWishes(myWishesURL, WishType.myWishes);
+     this.wishesService.getWishes(friendWishesURL);
   }
 
   public deleteWish(currentWish: IWish): void {
-    this.wishService.deleteWish(currentWish);
+    this.wishesService.deleteWish(currentWish);
   }
 
   public updateWishes(currentWish: IWish): void {
-    this.wishService.updateWishes(currentWish);
-  }
-
-  public filter(value: string): void {
-    this.wishService.filter(value);
-    this.matTab.realignInkBar();
+    this.wishesService.updateWishes(currentWish);
   }
 }
