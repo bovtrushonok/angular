@@ -1,0 +1,48 @@
+@import '../styles/variables';
+
+:host {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  margin: 0 auto;
+}
+
+form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  min-width: 620px;
+  border-radius: 4px;
+  mat-hint {
+    margin: 5px auto;
+  }
+}
+
+.alert div,
+.alert p {
+  background-color: $dangerBcgColor;
+  color: $dangerTxtColor;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.actions {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin-top: 10px;
+  .modal-btn {
+    color: $secondaryTextColor;
+    border-radius: 0%;
+    margin: 10px auto;
+  }
+  .cancel-btn {
+    background-color: $primaryTextColor;
+  }
+  .ok-btn {
+    background-color: $secondaryBcgColor;
+    width: 95%;
+  }
+}

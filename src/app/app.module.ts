@@ -30,10 +30,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainPageContentComponent } from './main-page-content/main-page-content.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AddWishModalComponent } from './add-wish-modal/add-wish-modal.component';
+import { PasswordMatchValidatorDirective } from './directives/password-match.directive';
 
 const appRoutes: Routes = [
   {path: '', component: LoginFormComponent},
   {path: 'main', component: MainPageComponent},
+  {path: 'sign-up', component: RegisterFormComponent}
 ];
 
 @NgModule({
@@ -53,6 +55,7 @@ const appRoutes: Routes = [
     MainPageContentComponent,
     MainPageComponent,
     AddWishModalComponent,
+    PasswordMatchValidatorDirective,
   ],
   imports: [
     BrowserModule,

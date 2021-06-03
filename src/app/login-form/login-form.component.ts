@@ -29,6 +29,10 @@ export class LoginFormComponent {
     } else this.submitError = true;
   }
 
+  public signUp(): void {
+    this.router.navigateByUrl('sign-up');
+  }
+
   public get name(): AbstractControl { return this.LogInForm.controls.name };
   public get password(): AbstractControl { return this.LogInForm.controls.password };
 }

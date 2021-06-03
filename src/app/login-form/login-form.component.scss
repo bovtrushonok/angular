@@ -22,8 +22,8 @@ form {
 
 .alert div,
 .alert p {
-  background-color: #fed3d3;
-  color: #820000;
+  background-color: $dangerBcgColor;
+  color: $dangerTxtColor;
   padding: 1rem;
   margin-bottom: 1rem;
 }
