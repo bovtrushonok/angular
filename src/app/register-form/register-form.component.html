@@ -27,14 +27,17 @@
     <mat-label> Re-enter password to check </mat-label>
     <input type="password" matInput formControlName="confirmPassword">
   </mat-form-field>
-  <div *ngIf="registerUserForm.errors?.passwordMismatch && (confirmPassword.touched || confirmPassword.dirty)"
-    class="alert">
+  <div *ngIf="registerUserForm.errors?.passwordMismatch &&
+    (confirmPassword.touched || confirmPassword.dirty)" class="alert">
     {{constants.passwordsMismatch}}
   </div>
   <mat-form-field appearance="outline">
     <mat-label> Enter your birthday </mat-label>
     <input type="text" placeholder="YYYY-MM-DD" matInput formControlName="birthDate">
   </mat-form-field>
+  <div *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)" class="alert">
+    {{constants.wrongDateFormat}}
+  </div>
   <div class="actions">
     <button mat-button type="submit" class="ok-btn modal-btn">Submit</button>
     <button mat-button class="cancel-btn modal-btn" (click)="cancel()">Cancel</button>

@@ -18,7 +18,8 @@ export class RegisterFormComponent {
     name: ['', [Validators.required, Validators.minLength(4)]],
     password: ['', [Validators.required, Validators.minLength(8)]],
     confirmPassword: ['', [Validators.required], Validators.minLength(8)],
-    birthDate: ['', [Validators.required]],
+    birthDate: ['', [Validators.required, 
+      Validators.pattern(/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/)]],
   }, { validators: PasswordMatchValidator })
 
   public onSubmit() {

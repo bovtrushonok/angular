@@ -11,3 +11,4 @@ export const nameLengthError = 'Name must be at least 8 characters long.';
 export const loginFormHint = 'Don\'t have an account yet?';
 export const noUserFound = 'No user is found, please check the credentials';
 export const passwordsMismatch = 'Passwords don\'t match';
+export const wrongDateFormat = 'Please add your birthday in DD-MM-YYYY format';
