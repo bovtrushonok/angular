@@ -15,7 +15,6 @@ export class HeaderComponent {
 
   public editUserProfile(): void {
     this.router.navigateByUrl('main/edit-my-profile');
-    this.menuTrigger.focus();
   }
 
   public logUserOut(): void {

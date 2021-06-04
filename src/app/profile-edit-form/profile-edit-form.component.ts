@@ -10,16 +10,16 @@ import { ProfileService } from '../services/profile.service';
 })
 export class ProfileEditFormComponent {
 
-  constructor(private userService: ProfileService, private fb: FormBuilder, private router: Router) {}
+  constructor(private profileService: ProfileService, private fb: FormBuilder, private router: Router) {}
 
   public profileEditForm = this.fb.group({
-    userName: [this.userService.userInfo.userName || '', Validators.required],
-    userDescription: [this.userService.userInfo.userDescription || ''],
-    userPictureURL: [this.userService.userInfo.userPictureURL || ''],
+    userName: [this.profileService.userInfo.userName || '', Validators.required],
+    userDescription: [this.profileService.userInfo.userDescription || ''],
+    userPictureURL: [this.profileService.userInfo.userPictureURL || ''],
   });
 
   public onSubmit():void {
+    this.profileService.saveUserInfo(this.profileEditForm.value);
     this.router.navigateByUrl('main');
-    this.userService.saveUserInfo(this.profileEditForm.value);
   }
 }
