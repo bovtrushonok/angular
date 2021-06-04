@@ -13,12 +13,12 @@ import { WishcardModalComponent } from '../wishcard-modal/wishcard-modal.compone
 export class WishCardComponent implements OnChanges {
   @Input() public wish: IWish;
   @Input() public filteredWishes: IWish[];
-  public isSelected: boolean = true;
+  public isSelected = true;
 
-  constructor(private dialog: MatDialog, public wishService: WishesService) {}
+  constructor(private dialog: MatDialog, public wishesService: WishesService) {}
 
   private deleteWish(): void {
-    this.wishService.deleteWish(this.wish);
+    this.wishesService.deleteWish(this.wish);
   }
 
   public openModalToDelete(): void {
@@ -31,10 +31,10 @@ export class WishCardComponent implements OnChanges {
     modalRef.afterClosed().subscribe(result => {
       if (!result) return;
       this.deleteWish();
-    })
+    });
   }
 
-  public openModalToEdit():void {
+  public openModalToEdit(): void {
     const modalRef = this.dialog.open(WishcardModalComponent, {
       width: '30%',
       height: '340px',
@@ -44,8 +44,8 @@ export class WishCardComponent implements OnChanges {
     modalRef.afterClosed().subscribe(result => {
       if (!result) return;
       this.wish = result;
-      this.wishService.updateWishes(this.wish)
-    })
+      this.wishesService.updateWishes(this.wish);
+    });
   }
 
   ngOnChanges(): void {

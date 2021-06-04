@@ -10,22 +10,22 @@ export class WishesService {
   public filteredWishes: IWish[] = [];
   public friendWishes: IWish[] | [] = [];
 
-  //constructor (private http: HttpClient) {}
+  // constructor (private http: HttpClient) {}
 
   public async getWishes(path: string, type?: WishType ): Promise<void> {
-    //return this.http.get<IWish[]>(path);
+    // return this.http.get<IWish[]>(path);
     const result = await fetch(path);
     const data = await result.json();
     if (type === WishType.myWishes) this.wishes = data;
     else this.friendWishes = data;
   }
 
-  public getCurrentWishes() {
+  public getCurrentWishes(): IWish[] {
     return this.wishes;
   }
 
   private detectWishID(currentWish: IWish): number {
-    return this.wishes.findIndex((wish:IWish) => currentWish.id === wish.id);
+    return this.wishes.findIndex((wish: IWish) => currentWish.id === wish.id);
   }
 
   public deleteWish(currentWish: IWish): void {

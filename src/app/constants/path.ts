@@ -1,2 +1,2 @@
-export const myWishesURL: string = '../assets/myWishes.json';
-export const friendWishesURL: string = '../assets/friendWishes.json';
+export const myWishesURL = '../assets/myWishes.json';
+export const friendWishesURL = '../assets/friendWishes.json';
