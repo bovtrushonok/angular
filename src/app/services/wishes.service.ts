@@ -10,7 +10,7 @@ export class WishesService {
   public filteredWishes: IWish[] = [];
   public friendWishes: IWish[] | [] = [];
 
-  //constructor (private http: HttpClient) {}
+  // constructor (private http: HttpClient) {}
 
   public async getWishes(path: string, type?: WishType, userId?: number ): Promise<void> {
     //return this.http.get<IWish[]>(path);
@@ -20,12 +20,12 @@ export class WishesService {
     this.friendWishes = data;
   }
 
-  public getCurrentWishes() {
+  public getCurrentWishes(): IWish[] {
     return this.wishes;
   }
 
   private detectWishID(currentWish: IWish): number {
-    return this.wishes.findIndex((wish:IWish) => currentWish.id === wish.id);
+    return this.wishes.findIndex((wish: IWish) => currentWish.id === wish.id);
   }
 
   public deleteWish(currentWish: IWish): void {
@@ -39,14 +39,13 @@ export class WishesService {
     this.wishes[wishIdx] = currentWish;
   }
 
-  public filterWishes(searchResult: string): void {
-    this.filteredWishes = this.wishes.filter(wish => wish.title === searchResult);
+  public filterWishes(seacrhResult: string): void {
+    this.filteredWishes = this.wishes.filter(wish => wish.title === seacrhResult);
     if (this.filteredWishes.length === 0) this.filteredWishes[0] = null;
-    if (!searchResult) this.filteredWishes.length = 0;
+    if (!seacrhResult) this.filteredWishes.length = 0;
   }
 
   public addNewWish(value: IWish): void {
     this.wishes.push(value);
   }
-
 }

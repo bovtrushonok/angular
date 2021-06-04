@@ -20,10 +20,10 @@ export class WishcardModalComponent implements OnInit {
   };
 
   public wishFormMsg: string = wishFormMsg;
-  
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: IWish) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.data) this.wish = this.data;
   }
 }

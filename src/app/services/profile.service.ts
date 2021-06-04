@@ -15,7 +15,7 @@ export class ProfileService {
   };
   constructor() { }
 
-  public saveUserInfo(userInfo: IUserInfo):void{
+  public saveUserInfo(userInfo: IUserInfo): void {
     this.userInfo = userInfo;
   }
 
