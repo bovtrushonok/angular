@@ -9,7 +9,7 @@ export class UsersService {
   public users: IUserInfo[];
   constructor() {}
 
-  public async getUsers() {
+  public async getUsers(): Promise<void> {
     const result = await fetch('../assets/userList.json');
     const data = await result.json();
     this.users = data;
@@ -18,7 +18,7 @@ export class UsersService {
   public confirmCredentials(value: ICredentials): boolean {
     const checkResult = this.users.filter((user) => user.userName === value.name
       && user.userPassword === value.password);
-    if (checkResult.length > 0) return true;
+    if (checkResult.length) return true;
     return false;
   }
 }
