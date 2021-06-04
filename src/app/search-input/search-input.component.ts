@@ -10,14 +10,9 @@ import { WishesService } from '../services/wishes.service';
 export class SearchInputComponent {
   public control = new FormControl();
 
-<<<<<<< HEAD
-  public updateText() {
-    this.wishService.filterWishes(this.control.value);
-=======
   constructor(public wishesService: WishesService) {}
 
   public updateText(): void {
     this.wishesService.filterWishes(this.control.value);
->>>>>>> routing
   }
 }
