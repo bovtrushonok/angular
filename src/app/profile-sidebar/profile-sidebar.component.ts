@@ -16,7 +16,7 @@ export class ProfileSidebarComponent implements OnInit {
   private imageSearch = new GoogleImageSearch(environment.API, environment.searchKey);
   private searchKeywords: Array<string> = ['applefruit', 'cat', 'elephant', 'flower', 'rain', 'vacation'];
 
-  constructor(public userService: ProfileService) { }
+  constructor(public profileService: ProfileService) { }
 
   ngOnInit(): void {
     this.imageSearch.getImageUrl(this.getRandomKeyword()).then((res) => {

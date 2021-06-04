@@ -10,7 +10,7 @@ import { ProfileService } from '../services/profile.service';
 })
 export class ProfileEditFormComponent {
 
-  constructor(private profileService: ProfileService, private fb: FormBuilder, private router: Router) {}
+  constructor(public profileService: ProfileService, private fb: FormBuilder, private router: Router) {}
 
   public profileEditForm = this.fb.group({
     userName: [this.profileService.userInfo.userName || '', Validators.required],
@@ -19,7 +19,7 @@ export class ProfileEditFormComponent {
   });
 
   public onSubmit():void {
-    this.profileService.saveUserInfo(this.profileEditForm.value);
+    this.profileService.updateUserInfo(this.profileEditForm.value);
     this.router.navigateByUrl('main');
   }
 }
