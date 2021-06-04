@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfileModalComponent } from './profile-modal.component';
+import { AddWishBlockComponent } from './add-wish-block.component';
 
-describe('ProfileModalComponent', () => {
-  let component: ProfileModalComponent;
-  let fixture: ComponentFixture<ProfileModalComponent>;
+describe('AddWishModalComponent', () => {
+  let component: AddWishBlockComponent;
+  let fixture: ComponentFixture<AddWishBlockComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileModalComponent ]
+      declarations: [ AddWishBlockComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfileModalComponent);
+    fixture = TestBed.createComponent(AddWishBlockComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ICredentials, IUserInfo } from '../interface';
+import { ProfileService } from './profile.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { ICredentials, IUserInfo } from '../interface';
 
 export class UsersService {
   public users: IUserInfo[];
-  constructor() {}
+  constructor(private profileService: ProfileService) {}
 
   public async getUsers(): Promise<void> {
     const result = await fetch('../assets/userList.json');
@@ -18,7 +19,10 @@ export class UsersService {
   public confirmCredentials(value: ICredentials): boolean {
     const checkResult = this.users.filter((user) => user.userName === value.name
       && user.userPassword === value.password);
-    if (checkResult.length) return true;
+    if (checkResult.length) {
+      this.profileService.saveUserInfo(checkResult[0]);
+      return true;
+    }
     return false;
   }
 }

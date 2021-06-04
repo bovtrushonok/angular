@@ -11,6 +11,7 @@ export class ProfileService {
     userName: '',
     userDescription: statusExample,
     userPictureURL: '',
+    userId: 0,
   };
   constructor() { }
 
