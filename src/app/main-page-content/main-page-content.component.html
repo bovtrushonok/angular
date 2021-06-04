@@ -1,0 +1,29 @@
+<div class="main-content">
+  <div class="menu">
+    <app-search-input></app-search-input>
+    <app-add-wish-block></app-add-wish-block>
+  </div>
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="My wishes">
+      <div *ngIf="this.wishesService.wishes.length && this.wishesService.filteredWishes[0] !== null; else empty">
+        <div class="wishes-field">
+          <app-wish-card *ngFor="let wish of this.wishesService.wishes" [wish]="wish" [filteredWishes]="this.wishesService.filteredWishes"></app-wish-card>
+        </div>
+      </div>
+      <ng-template #empty>
+        <app-empty-field></app-empty-field>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="My friends' wishes">
+      <div *ngIf="this.wishesService.friendWishes.length; else empty">
+        <div class="wishes-field">
+          <app-wish-card *ngFor="let wish of this.wishesService.friendWishes" [wish]="wish" [filteredWishes]="this.wishesService.filteredWishes">
+          </app-wish-card>
+        </div>
+      </div>
+      <ng-template #empty>
+        <app-empty-field></app-empty-field>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>

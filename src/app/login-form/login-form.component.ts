@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { Router, Routes } from '@angular/router';
 import * as m from '../constants/messages';
-import { UsersService } from '../shared/users.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-login-form',
@@ -11,23 +12,27 @@ import { UsersService } from '../shared/users.service';
 
 export class LoginFormComponent {
   public constants = m;
-  public submitError: boolean = false;
+  public submitError = false;
   @Output() logInEvent = new EventEmitter<boolean>();
 
-  constructor(private fb: FormBuilder, private userService: UsersService) {}
+  constructor(private fb: FormBuilder, private userService: UsersService, private router: Router) {}
 
   public LogInForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(4)]],
     password: ['', [Validators.required,
       Validators.minLength(8)]]
-  })
+  });
 
   public onSubmit(): void {
     if (this.userService.confirmCredentials(this.LogInForm.value)) {
-      this.logInEvent.emit(true);
+      this.router.navigateByUrl('main');
     } else this.submitError = true;
   }
 
-  public get name() { return this.LogInForm.controls.name }
-  public get password() { return this.LogInForm.controls.password }
+  public signUp(): void {
+    this.router.navigateByUrl('sign-up');
+  }
+
+  public get name(): AbstractControl { return this.LogInForm.controls.name };
+  public get password(): AbstractControl { return this.LogInForm.controls.password };
 }

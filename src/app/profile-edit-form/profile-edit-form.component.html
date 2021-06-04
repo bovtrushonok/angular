@@ -1,23 +1,19 @@
 <form [formGroup]="profileEditForm" (ngSubmit)="onSubmit()">
-  <label>
-    Edit your name:
-    <input 
-      type="text"
-      formControlName="userName"
-      required>
-  </label>
-  <label>
-    Insert picture URL:
-    <input type="text" formControlName="userPictureURL">
-    <input type="file" class="file-upload" onchange="console.log(event.target.files)">
-  </label>
-  <label>
-    Add something about yourself:
-    <input type="text" formControlName="userDescription">
-  </label>
+  <mat-form-field appearance="outline">
+    <mat-label>Edit your name:</mat-label>
+    <input matInput type="text" formControlName="userName" required>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Insert picture URL:</mat-label>
+    <input matInput type="text" formControlName="userPictureURL">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Add something about yourself:</mat-label>
+    <input matInput type="text" formControlName="userDescription">
+  </mat-form-field>
   <div class="actions">
-    <button mat-button mat-dialog-close class="cancel-btn modal-btn">Cancel</button>
-    <button mat-button mat-dialog-close
+    <button mat-button class="cancel-btn modal-btn">Cancel</button>
+    <button mat-button
       type="submit"
       [disabled]="!profileEditForm.valid"
       class="ok-btn modal-btn">Submit</button>

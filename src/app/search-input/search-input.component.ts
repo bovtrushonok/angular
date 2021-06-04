@@ -1,22 +1,18 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { IWish } from 'src/app/interface';
+import { WishesService } from '../services/wishes.service';
 
 @Component({
   selector: 'app-search-input',
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.scss']
 })
-export class SearchInputComponent  {
-  @Input() public wishes: IWish[];
-  @Input() public search: string;
-  @Output() updateSearchText = new EventEmitter<string>();
+export class SearchInputComponent {
   public control = new FormControl();
-  
-  constructor() {}
 
-  public updateText() {
-    this.search = this.control.value;
-    this.updateSearchText.emit(this.search);
+  constructor(public wishesService: WishesService) {}
+
+  public updateText(): void {
+    this.wishesService.filterWishes(this.control.value);
   }
 }

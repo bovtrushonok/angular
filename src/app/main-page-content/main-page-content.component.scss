@@ -1,0 +1,38 @@
+@import '../styles/variables';
+
+:host {
+  min-width: 75%;
+}
+
+.main--content,
+.wishes-field {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  max-height: 100%;
+}
+
+.wishes-field {
+  padding: 20px 0;
+}
+
+.main-content {
+  padding-left: 60px;
+  min-width: 75%;
+  justify-content: center;
+}
+
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: $primaryTextColor;
+}
+
+.mat-tab-group {
+  min-width: 100%;
+  margin-bottom: 48px;
+}
