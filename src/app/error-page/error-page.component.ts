@@ -11,7 +11,7 @@ export class ErrorPageComponent {
   public errorMsg = error404Msg;
   constructor(private router: Router) {}
 
-  public routeToMain(): void {
+  public navigateToMain(): void {
     this.router.navigateByUrl('main');
   }
 }

@@ -10,4 +10,4 @@ export const noNameError: string = 'Name is required.';
 export const nameLengthError: string = 'Name must be at least 8 characters long.';
 export const loginFormHint: string = 'Don\'t have an account yet?';
 export const noUserFound: string = 'No user is found, please check the credentials';
-export const error404Msg: string = 'Something went wrong, we suggest you to get back to main page';
+export const error404Msg: string = 'Something went wrong, we suggest you get back to main page';
