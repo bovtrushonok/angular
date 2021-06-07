@@ -32,6 +32,7 @@ export class WishesService {
     const wishIdx = this.detectWishID(currentWish);
     this.wishes.splice(wishIdx, 1);
     this.filteredWishes.splice(wishIdx, 1);
+    if (!this.filteredWishes.length) this.filteredWishes[0] = null;
   }
 
   public updateWishes(currentWish: IWish): void {
