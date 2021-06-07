@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { statusExample } from '../constants/messages';
 import { ProfileService } from '../services/profile.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class ProfileEditFormComponent {
 
   public profileEditForm = this.fb.group({
     userName: [this.profileService.userInfo.userName || '', Validators.required],
-    userDescription: [this.profileService.userInfo.userDescription || ''],
+    userDescription: [this.profileService.userInfo.userDescription || statusExample],
     userPictureURL: [this.profileService.userInfo.userPictureURL || ''],
   });
 

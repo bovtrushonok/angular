@@ -19,7 +19,6 @@ export class ProfileService {
 
   public saveUserInfo(userInfo: IUserInfo): void {
     this.userInfo = {...this.userInfo, ...userInfo};
-    console.log('user info saved', userInfo)
   }
 
   public getUserUnfo(): IUserInfo {

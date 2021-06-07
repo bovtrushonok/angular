@@ -31,8 +31,7 @@ export class WishesService {
   public deleteWish(currentWish: IWish): void {
     const wishIdx = this.detectWishID(currentWish);
     this.wishes.splice(wishIdx, 1);
-    this.filteredWishes.splice(wishIdx, 1);
-    if (!this.filteredWishes.length) this.filteredWishes[0] = null;
+    if (this.filteredWishes.length) this.filteredWishes[0] = null;
   }
 
   public updateWishes(currentWish: IWish): void {
@@ -42,7 +41,7 @@ export class WishesService {
 
   public filterWishes(seacrhResult: string): void {
     this.filteredWishes = this.wishes.filter(wish => wish.title === seacrhResult);
-    if (this.filteredWishes.length === 0) this.filteredWishes[0] = null;
+    if (!this.filteredWishes.length) this.filteredWishes[0] = null;
     if (!seacrhResult) this.filteredWishes.length = 0;
   }
 
