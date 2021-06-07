@@ -18,6 +18,6 @@ export class HeaderComponent {
   }
 
   public logUserOut(): void {
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('log-in');
   }
 }

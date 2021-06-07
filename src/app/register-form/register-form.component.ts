@@ -29,7 +29,7 @@ export class RegisterFormComponent {
   }
 
   public cancel(): void {
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('log-in');
   }
 
   public get name(): AbstractControl { return this.registerUserForm.controls.name; }

@@ -32,7 +32,7 @@ import { AddWishBlockComponent } from './add-wish-block/add-wish-block.component
 import { ErrorPageComponent } from './error-page/error-page.component';
 
 const appRoutes: Routes = [
-  {path: '', component: LoginFormComponent},
+  {path: 'log-in', component: LoginFormComponent},
   {path: 'main', component: MainPageComponent,
       children: [
       {path: '', component: MainPageContentComponent},
