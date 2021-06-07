@@ -19,7 +19,7 @@ export class ProfileEditFormComponent {
   });
 
   public onSubmit(): void {
-    this.profileService.updateUserInfo(this.profileEditForm.value);
+    this.profileService.saveUserInfo(this.profileEditForm.value);
     this.router.navigateByUrl('main');
   }
 }

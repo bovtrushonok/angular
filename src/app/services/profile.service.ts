@@ -11,21 +11,15 @@ import { IUserInfo } from '../interface';
 export class ProfileService {
   public userInfo: IUserInfo = {
     userName: '',
-    userDescription: '' || statusExample,
+    userDescription: statusExample,
     userPictureURL: '',
     userId: 0,
   };
   constructor() { }
 
   public saveUserInfo(userInfo: IUserInfo): void {
-    this.userInfo = userInfo;
-    console.log(this.userInfo, 'profile saved user info');
-  }
-
-  public updateUserInfo(userInfo: IUserInfo): void {
-   this.userInfo.userName = userInfo.userName;
-   this.userInfo.userPictureURL = userInfo.userPictureURL;
-   this.userInfo.userDescription = userInfo.userDescription || statusExample;
+    this.userInfo = {...this.userInfo, ...userInfo};
+    console.log('user info saved', userInfo)
   }
 
   public getUserUnfo(): IUserInfo {

@@ -17,12 +17,17 @@ export class UsersService {
   }
 
   public addNewUser(newUser: IUserInfo): void {
-    if (!this.users.find(user => user.userName === newUser.userName)) this.users.push(newUser);
+    if (!this.users.find(user => user.userName === newUser.userName)) {
+      const user = {...this.users[this.users.length -1], ...newUser };
+      user.userId += 1;
+      this.users.push(user);
+    }
   }
 
   public confirmCredentials(value: ICredentials): boolean {
     const checkResult = this.users.find((user) => user.userName === value.userName
       && user.userPassword === value.userPassword);
+
     if (checkResult) {
       this.profileService.saveUserInfo(checkResult);
       return true;

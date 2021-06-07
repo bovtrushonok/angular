@@ -15,10 +15,11 @@ export interface IAppComponent {
 export interface IUserInfo {
   userName: string;
   userPassword?: string;
+  confirmPassword?: string;
   userId?: number;
   userDescription?: string;
   userPictureURL?: string;
-  userBirthdate?: string;
+  birthdate?: string;
 }
 
 export interface ICredentials {

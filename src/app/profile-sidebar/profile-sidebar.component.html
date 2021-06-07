@@ -10,6 +10,6 @@
     *ngIf="!profileService.userInfo.userPictureURL"
       class="profile-pic"
       [style.backgroundImage]="'url('+ imgSrc +')'"></div>
-    <p class="profile-status">{{ profileService.userInfo.userDescription }}</p>
+    <p class="profile-status">{{ profileService.userInfo.userDescription || statusExample }}</p>
   </div>
 </div>

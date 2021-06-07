@@ -19,7 +19,6 @@ export class ProfileSidebarComponent implements OnInit {
   constructor(public profileService: ProfileService) { }
 
   ngOnInit(): void {
-    console.log('profile on init')
     this.imageSearch.getImageUrl(this.getRandomKeyword()).then((res) => {
       this.imgSrc = res;
     });

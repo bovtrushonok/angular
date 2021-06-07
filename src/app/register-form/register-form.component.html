@@ -13,7 +13,7 @@
   </div>
   <mat-form-field appearance="outline">
     <mat-label> Enter your password </mat-label>
-    <input type="userPassword" matInput formControlName="userPassword">
+    <input type="password" matInput formControlName="userPassword">
   </mat-form-field>
   <div *ngIf="userPassword.invalid && (userPassword.dirty || userPassword.touched)" class="alert">
     <div *ngIf="userPassword.errors?.required">
