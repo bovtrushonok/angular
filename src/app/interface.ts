@@ -18,11 +18,12 @@ export interface IUserInfo {
   userId?: number;
   userDescription?: string;
   userPictureURL?: string;
+  userBirthdate?: string;
 }
 
 export interface ICredentials {
-  name: string;
-  password: string;
+  userName: string;
+  userPassword: string;
 }
 
 export const enum WishType {

@@ -19,6 +19,7 @@ export class ProfileService {
 
   public saveUserInfo(userInfo: IUserInfo): void {
     this.userInfo = userInfo;
+    console.log(this.userInfo, 'profile saved user info');
   }
 
   public updateUserInfo(userInfo: IUserInfo): void {

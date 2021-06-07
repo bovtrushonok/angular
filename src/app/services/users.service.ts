@@ -16,9 +16,13 @@ export class UsersService {
     this.users = data;
   }
 
+  public addNewUser(newUser: IUserInfo): void {
+    this.users.push(newUser);
+  }
+
   public confirmCredentials(value: ICredentials): boolean {
-    const checkResult = this.users.find((user) => user.userName === value.name
-      && user.userPassword === value.password);
+    const checkResult = this.users.find((user) => user.userName === value.userName
+      && user.userPassword === value.userPassword);
     if (checkResult) {
       this.profileService.saveUserInfo(checkResult);
       return true;

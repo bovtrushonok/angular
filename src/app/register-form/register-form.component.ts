@@ -15,25 +15,26 @@ export class RegisterFormComponent {
   constructor(private fb: FormBuilder, private router: Router, private usersService: UsersService){}
 
   public registerUserForm = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(4)]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
-    confirmPassword: ['', [Validators.required], Validators.minLength(8)],
+    userName: ['', [Validators.required, Validators.minLength(4)]],
+    userPassword: ['', [Validators.required, Validators.minLength(8)]],
+    confirmPassword: ['', [Validators.required, Validators.minLength(8), PasswordMatchValidator]],
     birthDate: ['', [Validators.required,
       Validators.pattern(/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/)]],
-  }, { validators: PasswordMatchValidator });
+  });
 
   public onSubmit(): void {
-    this.usersService.users.push(this.registerUserForm.value);
-    this.usersService.confirmCredentials(this.registerUserForm.value);
-    this.router.navigateByUrl('main');
+    this.usersService.addNewUser(this.registerUserForm.value);
+    if (this.usersService.confirmCredentials(this.registerUserForm.value)) {
+      this.router.navigateByUrl('main');
+    }
   }
 
   public cancel(): void {
     this.router.navigateByUrl('log-in');
   }
 
-  public get name(): AbstractControl { return this.registerUserForm.controls.name; }
-  public get password(): AbstractControl { return this.registerUserForm.controls.password; }
+  public get userName(): AbstractControl { return this.registerUserForm.controls.userName; }
+  public get userPassword(): AbstractControl { return this.registerUserForm.controls.userPassword; }
   public get confirmPassword(): AbstractControl { return this.registerUserForm.controls
     .confirmPassword; }
   public get birthDate(): AbstractControl { return this.registerUserForm.controls.birthDate; }

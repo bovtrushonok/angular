@@ -18,8 +18,8 @@ export class LoginFormComponent {
   constructor(private fb: FormBuilder, private userService: UsersService, private router: Router) {}
 
   public LogInForm = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(4)]],
-    password: ['', [Validators.required,
+    userName: ['', [Validators.required, Validators.minLength(4)]],
+    userPassword: ['', [Validators.required,
       Validators.minLength(8)]]
   });
 
@@ -33,6 +33,6 @@ export class LoginFormComponent {
     this.router.navigateByUrl('sign-up');
   }
 
-  public get name(): AbstractControl { return this.LogInForm.controls.name; }
-  public get password(): AbstractControl { return this.LogInForm.controls.password; }
+  public get name(): AbstractControl { return this.LogInForm.controls.userName; }
+  public get password(): AbstractControl { return this.LogInForm.controls.userPassword; }
 }
