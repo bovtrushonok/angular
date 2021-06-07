@@ -12,6 +12,7 @@ import { UsersService } from '../services/users.service';
 })
 export class RegisterFormComponent {
   public constants = m;
+  public submitError = false;
   constructor(private fb: FormBuilder, private router: Router, private usersService: UsersService){}
 
   public registerUserForm = this.fb.group({
@@ -26,7 +27,7 @@ export class RegisterFormComponent {
     this.usersService.addNewUser(this.registerUserForm.value);
     if (this.usersService.confirmCredentials(this.registerUserForm.value)) {
       this.router.navigateByUrl('main');
-    }
+    } else this.submitError = true;
   }
 
   public cancel(): void {

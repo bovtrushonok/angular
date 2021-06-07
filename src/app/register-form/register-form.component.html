@@ -38,6 +38,9 @@
   <div *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)" class="alert">
     {{constants.wrongDateFormat}}
   </div>
+  <div *ngIf="submitError" class="alert">
+    <p> {{constants.duplicateUserError}}</p>
+  </div>
   <div class="actions">
     <button mat-button type="submit" class="ok-btn modal-btn">Submit</button>
     <button mat-button type="button" class="cancel-btn modal-btn" (click)="cancel()">Cancel</button>

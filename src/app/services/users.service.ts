@@ -17,7 +17,7 @@ export class UsersService {
   }
 
   public addNewUser(newUser: IUserInfo): void {
-    this.users.push(newUser);
+    if (!this.users.find(user => user.userName === newUser.userName)) this.users.push(newUser);
   }
 
   public confirmCredentials(value: ICredentials): boolean {

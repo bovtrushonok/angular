@@ -13,3 +13,4 @@ export const noUserFound = 'No user is found, please check the credentials';
 export const error404Msg = 'Something went wrong, we suggest you get back to main page';
 export const passwordsMismatch = 'Passwords don\'t match';
 export const wrongDateFormat = 'Please add your birthday in DD-MM-YYYY format';
+export const duplicateUserError = 'This name is taken, please try another';
