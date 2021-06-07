@@ -14,7 +14,7 @@ export const PasswordMatchValidator: ValidatorFn = (control: AbstractControl): V
   providers: [
     { provide: NG_VALIDATORS,
       useExisting: PasswordMatchValidatorDirective,
-      multi: true 
+      multi: true
     }
   ]
 })

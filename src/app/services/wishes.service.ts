@@ -13,7 +13,7 @@ export class WishesService {
   // constructor (private http: HttpClient) {}
 
   public async getWishes(path: string, type?: WishType, userId?: number ): Promise<void> {
-    //return this.http.get<IWish[]>(path);
+    // return this.http.get<IWish[]>(path);
     const result = await fetch(path);
     const data = await result.json();
     if (type === WishType.myWishes) this.wishes = data.filter(wish => wish.userId === userId);

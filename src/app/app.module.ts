@@ -33,8 +33,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginFormComponent},
-  {path: 'main', component: MainPageComponent, 
-    children: [
+  {path: 'main', component: MainPageComponent,
+      children: [
       {path: '', component: MainPageContentComponent},
       {path: 'edit-my-profile', component: ProfileEditFormComponent }
     ]

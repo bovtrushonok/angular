@@ -17,10 +17,10 @@ export class UsersService {
   }
 
   public confirmCredentials(value: ICredentials): boolean {
-    const checkResult = this.users.filter((user) => user.userName === value.name
+    const checkResult = this.users.find((user) => user.userName === value.name
       && user.userPassword === value.password);
-    if (checkResult.length) {
-      this.profileService.saveUserInfo(checkResult[0]);
+    if (checkResult) {
+      this.profileService.saveUserInfo(checkResult);
       return true;
     }
     return false;

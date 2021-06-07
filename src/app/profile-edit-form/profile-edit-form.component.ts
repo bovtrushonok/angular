@@ -18,7 +18,7 @@ export class ProfileEditFormComponent {
     userPictureURL: [this.profileService.userInfo.userPictureURL || ''],
   });
 
-  public onSubmit():void {
+  public onSubmit(): void {
     this.profileService.updateUserInfo(this.profileEditForm.value);
     this.router.navigateByUrl('main');
   }

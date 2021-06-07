@@ -49,10 +49,6 @@ export class WishCardComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-    if (this.filteredWishes.length === 0 || this.filteredWishes.includes(this.wish)) {
-      this.isSelected = true;
-    } else {
-      this.isSelected = false;
-    }
+    this.isSelected = this.filteredWishes.length === 0 || this.filteredWishes.includes(this.wish);
   }
 }

@@ -33,6 +33,6 @@ export class LoginFormComponent {
     this.router.navigateByUrl('sign-up');
   }
 
-  public get name(): AbstractControl { return this.LogInForm.controls.name };
-  public get password(): AbstractControl { return this.LogInForm.controls.password };
+  public get name(): AbstractControl { return this.LogInForm.controls.name; }
+  public get password(): AbstractControl { return this.LogInForm.controls.password; }
 }

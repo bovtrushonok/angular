@@ -12,7 +12,7 @@ export class AddWishBlockComponent {
 
   constructor(public wishService: WishesService, private dialog: MatDialog) { }
 
-  public openWishCardModal():void {
+  public openWishCardModal(): void {
     const dialogRef = this.dialog.open(WishcardModalComponent, {
       width: '30%',
       height: '370px',

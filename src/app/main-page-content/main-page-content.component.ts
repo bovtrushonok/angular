@@ -12,14 +12,14 @@ import { WishesService } from '../services/wishes.service';
 })
 
 export class MainPageContentComponent implements OnInit {
-  public searchText: string = '';
+  public searchText = '';
   @ViewChild(MatTabGroup) public matTab: MatTabGroup;
 
   constructor(public wishesService: WishesService, private profileService: ProfileService) {}
 
   ngOnInit(): void {
-    //this.wishService.getWishes(myWishesURL).subscribe(wishes => this.wishes = wishes);
-    //this.wishService.getWishes(friendWishesURL)
+    // this.wishService.getWishes(myWishesURL).subscribe(wishes => this.wishes = wishes);
+    // this.wishService.getWishes(friendWishesURL)
      // .subscribe(wishes => this.friendWishes = wishes);
      this.wishesService.getWishes(myWishesURL, WishType.myWishes, this.profileService.getUserUnfo().userId);
      this.wishesService.getWishes(friendWishesURL);

@@ -6,12 +6,6 @@ import { emptyFieldMsg } from 'src/app/constants/messages';
   templateUrl: './empty-field.component.html',
   styleUrls: ['./empty-field.component.scss']
 })
-export class EmptyFieldComponent implements OnInit {
+export class EmptyFieldComponent {
   public emptyFieldMsg = emptyFieldMsg;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -18,11 +18,11 @@ export class RegisterFormComponent {
     name: ['', [Validators.required, Validators.minLength(4)]],
     password: ['', [Validators.required, Validators.minLength(8)]],
     confirmPassword: ['', [Validators.required], Validators.minLength(8)],
-    birthDate: ['', [Validators.required, 
+    birthDate: ['', [Validators.required,
       Validators.pattern(/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/)]],
-  }, { validators: PasswordMatchValidator })
+  }, { validators: PasswordMatchValidator });
 
-  public onSubmit() {
+  public onSubmit(): void {
     this.usersService.users.push(this.registerUserForm.value);
     this.usersService.confirmCredentials(this.registerUserForm.value);
     this.router.navigateByUrl('main');
@@ -32,9 +32,9 @@ export class RegisterFormComponent {
     this.router.navigateByUrl('');
   }
 
-  public get name(): AbstractControl { return this.registerUserForm.controls.name };
-  public get password(): AbstractControl { return this.registerUserForm.controls.password };
+  public get name(): AbstractControl { return this.registerUserForm.controls.name; }
+  public get password(): AbstractControl { return this.registerUserForm.controls.password; }
   public get confirmPassword(): AbstractControl { return this.registerUserForm.controls
-    .confirmPassword };
-  public get birthDate(): AbstractControl { return this.registerUserForm.controls.birthDate };
+    .confirmPassword; }
+  public get birthDate(): AbstractControl { return this.registerUserForm.controls.birthDate; }
 }
