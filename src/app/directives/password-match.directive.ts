@@ -1,12 +1,12 @@
 import { Directive } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
 
-export const PasswordMatchValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-  const password = control.get('password');
+export const PasswordMatchValidator: ValidatorFn = (control: AbstractControl): null | ValidationErrors => {
+  const password = control.get('userPassword');
   const confirmPassword = control.get('confirmPassword');
 
-  return password && confirmPassword && password.value === confirmPassword.value ?
-    null : { passwordMismatch: true };
+  return (password && confirmPassword && password.value === confirmPassword.value) ?
+    null : { passwordMismatch: true }
 };
 
 @Directive({

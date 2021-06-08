@@ -25,7 +25,7 @@
   </div>
   <mat-form-field appearance="outline">
     <mat-label> Re-enter password to check </mat-label>
-    <input appPasswordMatch type="password" matInput formControlName="confirmPassword">
+    <input type="password" matInput formControlName="confirmPassword">
   </mat-form-field>
   <div *ngIf="registerUserForm.errors?.passwordMismatch &&
     (confirmPassword.touched || confirmPassword.dirty)" class="alert">
@@ -42,7 +42,11 @@
     <p> {{constants.duplicateUserError}}</p>
   </div>
   <div class="actions">
-    <button mat-button type="submit" class="ok-btn modal-btn">Submit</button>
+    <button 
+      mat-button
+      type="submit"
+      class="ok-btn modal-btn"
+      [disabled]="registerUserForm.invalid">Submit</button>
     <button mat-button type="button" class="cancel-btn modal-btn" (click)="cancel()">Cancel</button>
   </div>
 </form>

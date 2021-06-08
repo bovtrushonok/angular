@@ -18,10 +18,10 @@ export class RegisterFormComponent {
   public registerUserForm = this.fb.group({
     userName: ['', [Validators.required, Validators.minLength(4)]],
     userPassword: ['', [Validators.required, Validators.minLength(8)]],
-    confirmPassword: ['', [Validators.required, Validators.minLength(8), PasswordMatchValidator]],
+    confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
     birthDate: ['', [Validators.required,
       Validators.pattern(/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/)]],
-  });
+  }, { validators: PasswordMatchValidator });
 
   public onSubmit(): void {
     this.usersService.addNewUser(this.registerUserForm.value);
