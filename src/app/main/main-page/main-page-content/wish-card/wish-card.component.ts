@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { IWish } from '../interface';
-import { ModalWindowComponent } from '../modal-window/modal-window.component';
-import { WishesService } from '../services/wishes.service';
-import { WishcardModalComponent } from '../wishcard-modal/wishcard-modal.component';
+import { IWish } from '../../../../interface';
+import { ModalWindowComponent } from './modal-window/modal-window.component';
+import { WishesService } from '../../../../services/wishes.service';
+import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.component';
 
 @Component({
   selector: 'app-wish-card',

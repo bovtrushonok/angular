@@ -5,7 +5,7 @@
     <mat-icon mat-button (click)="openModalToEdit()">edit</mat-icon>
   </mat-card-title>
   <mat-card-subtitle>{{ wish?.title }}</mat-card-subtitle>
-  <div class="wish-img" [style.backgroundImage]="'url('+ wish.imgSrc +')'" *ngIf="wish.imgSrc; else noImage"></div>
+  <div class="wish-img" [style.backgroundImage]="'url('+ wish?.imgSrc +')'" *ngIf="wish.imgSrc; else noImage"></div>
   <ng-template #noImage>
     <div class="no-image"></div>
   </ng-template>

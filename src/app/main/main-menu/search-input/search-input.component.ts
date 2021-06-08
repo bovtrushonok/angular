@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { WishesService } from '../services/wishes.service';
+import { WishesService } from '../../../services/wishes.service';
 
 @Component({
   selector: 'app-search-input',

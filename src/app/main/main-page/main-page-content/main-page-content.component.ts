@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
-import { IWish } from '../interface';
-import { WishesService } from '../services/wishes.service';
+import { IWish } from '../../../interface';
+import { WishesService } from '../../../services/wishes.service';
 
 @Component({
   selector: 'app-main-page-content',

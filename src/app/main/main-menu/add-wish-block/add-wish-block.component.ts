@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { WishesService } from '../services/wishes.service';
-import { WishcardModalComponent } from '../wishcard-modal/wishcard-modal.component';
+import { WishesService } from '../../../services/wishes.service';
+import { WishcardModalComponent } from '../../main-page/main-page-content/wish-card/wishcard-modal/wishcard-modal.component';
 
 @Component({
   selector: 'app-add-wish-block',

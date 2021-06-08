@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { statusExample } from '../constants/messages';
-import { ProfileService } from '../services/profile.service';
+import { statusExample } from '../../../constants/messages';
+import { ProfileService } from '../../../services/profile.service';
 
 @Component({
   selector: 'app-profile-edit-form',
