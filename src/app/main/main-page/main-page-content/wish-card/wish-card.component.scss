@@ -2,6 +2,7 @@
 
 :host {
   max-width: 30%;
+  max-height: 370px;
   display: flex;
   flex-flow: row wrap;
 }
@@ -14,6 +15,7 @@
   width: 100%;
   min-width: 217px;
   min-height: 350px;
+  max-height: 370px;
   margin: 10px 5px;
   white-space: pre-wrap;
   word-break: break-word;
