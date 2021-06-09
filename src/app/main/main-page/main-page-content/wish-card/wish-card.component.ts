@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { IWish } from '../../../../interface';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { WishesService } from '../../../../services/wishes.service';
 import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wish-card',
@@ -15,7 +16,7 @@ export class WishCardComponent implements OnChanges {
   @Input() public filteredWishes: IWish[];
   public isSelected = true;
 
-  constructor(private dialog: MatDialog, public wishesService: WishesService) {}
+  constructor(private dialog: MatDialog, public wishesService: WishesService, private router: Router) {}
 
   private deleteWish(): void {
     this.wishesService.deleteWish(this.wish);
@@ -50,5 +51,9 @@ export class WishCardComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.isSelected = !this.filteredWishes.length || this.filteredWishes.includes(this.wish);
+  }
+
+  public navigateToDetails(): void {
+    this.router.navigate(['main/wish-details', this.wish.id]);
   }
 }

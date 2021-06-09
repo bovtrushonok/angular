@@ -1,4 +1,4 @@
-<mat-card class="wish-card" [class.hide]="!isSelected">
+<mat-card class="wish-card" [class.hide]="!isSelected" (click)="navigateToDetails()">
   <mat-card-title>
     <mat-icon mat-button (click)="openModalToDelete()">delete</mat-icon>
     <mat-icon>share</mat-icon>

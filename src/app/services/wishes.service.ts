@@ -48,4 +48,8 @@ export class WishesService {
   public addNewWish(value: IWish): void {
     this.wishes.push(value);
   }
+
+  public getWishById(id: number): IWish {
+    return this.wishes.find(wish => wish.id === id);
+  }
 }
