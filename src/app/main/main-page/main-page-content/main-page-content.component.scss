@@ -4,7 +4,7 @@
   min-width: 75%;
 }
 
-.main--content,
+.main-content,
 .wishes-field {
   width: 100%;
   max-width: 100%;
@@ -12,12 +12,10 @@
   flex-flow: row wrap;
   padding: 10px 20px;
   box-sizing: border-box;
-  max-height: 100%;
 }
 
 .wishes-field {
   padding: 20px 0;
-  min-height: 90vh;
 }
 
 .main-content {
