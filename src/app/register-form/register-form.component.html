@@ -5,10 +5,10 @@
   </mat-form-field>
   <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="alert">
     <div *ngIf="userName.errors?.required">
-      {{constants.noNameError}}
+      {{constants?.noNameError}}
     </div>
     <div *ngIf="userName.errors?.minlength">
-      {{constants.nameLengthError}}
+      {{constants?.nameLengthError}}
     </div>
   </div>
   <mat-form-field appearance="outline">
@@ -17,10 +17,10 @@
   </mat-form-field>
   <div *ngIf="userPassword.invalid && (userPassword.dirty || userPassword.touched)" class="alert">
     <div *ngIf="userPassword.errors?.required">
-      {{constants.noPasswordError}}
+      {{constants?.noPasswordError}}
     </div>
     <div *ngIf="userPassword.errors?.minlength">
-      {{constants.passwordLengthError}}
+      {{constants?.passwordLengthError}}
     </div>
   </div>
   <mat-form-field appearance="outline">
@@ -29,17 +29,17 @@
   </mat-form-field>
   <div *ngIf="registerUserForm.errors?.passwordMismatch &&
     (confirmPassword.touched || confirmPassword.dirty)" class="alert">
-    {{constants.passwordsMismatch}}
+    {{constants?.passwordsMismatch}}
   </div>
   <mat-form-field appearance="outline">
     <mat-label> Enter your birthday </mat-label>
     <input type="text" placeholder="YYYY-MM-DD" matInput formControlName="birthDate">
   </mat-form-field>
   <div *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)" class="alert">
-    {{constants.wrongDateFormat}}
+    {{constants?.wrongDateFormat}}
   </div>
   <div *ngIf="submitError" class="alert">
-    <p> {{constants.duplicateUserError}}</p>
+    <p> {{constants?.duplicateUserError}}</p>
   </div>
   <div class="actions">
     <button 

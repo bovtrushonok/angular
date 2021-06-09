@@ -30,14 +30,17 @@ import { MainPageContentComponent } from './main/main-page/main-page-content/mai
 import { MainPageComponent } from './main/main-page/main-page.component';
 import { CreateWishBlockComponent } from './main/main-menu/create-wish-block/create-wish-block.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { CanActivateGuard } from './guards/can-activate.guard';
 
 const appRoutes: Routes = [
   {path: 'log-in', component: LoginFormComponent},
-  {path: 'main', component: MainPageComponent,
+  {path: 'main', 
+    component: MainPageComponent,
       children: [
       {path: '', component: MainPageContentComponent},
       {path: 'edit-my-profile', component: ProfileEditFormComponent }
-    ]
+    ],
+    canActivate: [CanActivateGuard]
   },
   {path: 'sign-up', component: RegisterFormComponent},
   {path: '**', component: ErrorPageComponent}

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { friendWishesURL, myWishesURL } from '../constants/path';
 import { ICredentials, IUserInfo, WishType } from '../interface';
-import { ProfileService } from './profile.service';
-import { WishesService } from './wishes.service';
+import { InitService } from './init.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +8,7 @@ import { WishesService } from './wishes.service';
 
 export class UsersService {
   public users: IUserInfo[];
-  constructor(private profileService: ProfileService, private wishesService: WishesService) {}
+  constructor(private initService: InitService) {}
 
   public async getUsers(): Promise<void> {
     const result = await fetch('../assets/userList.json');
@@ -31,10 +29,7 @@ export class UsersService {
       && user.userPassword === value.userPassword);
 
     if (checkResult) {
-      this.profileService.saveUserInfo(checkResult);
-      this.wishesService.getWishes(myWishesURL, WishType.myWishes,
-        this.profileService.getUserUnfo().userId);
-      this.wishesService.getWishes(friendWishesURL);
+      this.initService.init(checkResult);
       return true;
     }
   
