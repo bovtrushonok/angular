@@ -32,7 +32,8 @@ export class UsersService {
 
     if (checkResult) {
       this.profileService.saveUserInfo(checkResult);
-      this.wishesService.getWishes(myWishesURL, WishType.myWishes, this.profileService.getUserUnfo().userId);
+      this.wishesService.getWishes(myWishesURL, WishType.myWishes,
+        this.profileService.getUserUnfo().userId);
       this.wishesService.getWishes(friendWishesURL);
       return true;
     }

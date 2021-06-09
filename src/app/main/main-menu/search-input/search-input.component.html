@@ -9,7 +9,7 @@
 >
 <mat-autocomplete #auto="matAutocomplete">
   <mat-option *ngFor="let wish of this.wishesService.wishes" [value]="wish.title">
-    {{wish.title}}
+    {{wish?.title}}
   </mat-option>
 </mat-autocomplete>
 </form>

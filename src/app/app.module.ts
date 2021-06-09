@@ -28,7 +28,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MainPageContentComponent } from './main/main-page/main-page-content/main-page-content.component';
 import { MainPageComponent } from './main/main-page/main-page.component';
-import { AddWishBlockComponent } from './main/main-menu/add-wish-block/add-wish-block.component';
+import { CreateWishBlockComponent } from './main/main-menu/create-wish-block/create-wish-block.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 
 const appRoutes: Routes = [
@@ -59,7 +59,7 @@ const appRoutes: Routes = [
     MainPageContentComponent,
     MainPageComponent,
     ErrorPageComponent,
-    AddWishBlockComponent,
+    CreateWishBlockComponent,
   ],
   imports: [
     BrowserModule,

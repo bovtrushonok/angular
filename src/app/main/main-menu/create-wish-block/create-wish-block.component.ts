@@ -4,11 +4,11 @@ import { WishesService } from '../../../services/wishes.service';
 import { WishcardModalComponent } from '../../main-page/main-page-content/wish-card/wishcard-modal/wishcard-modal.component';
 
 @Component({
-  selector: 'app-add-wish-block',
-  templateUrl: './add-wish-block.component.html',
-  styleUrls: ['./add-wish-block.component.scss']
+  selector: 'app-create-wish-block',
+  templateUrl: './create-wish-block.component.html',
+  styleUrls: ['./create-wish-block.component.scss']
 })
-export class AddWishBlockComponent {
+export class CreateWishBlockComponent {
 
   constructor(public wishService: WishesService, private dialog: MatDialog) { }
 

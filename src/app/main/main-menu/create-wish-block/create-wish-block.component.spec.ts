@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddWishBlockComponent } from './add-wish-block.component';
+import { CreateWishBlockComponent } from './create-wish-block.component';
 
-describe('AddWishModalComponent', () => {
-  let component: AddWishBlockComponent;
-  let fixture: ComponentFixture<AddWishBlockComponent>;
+describe('CreateWishModalComponent', () => {
+  let component: CreateWishBlockComponent;
+  let fixture: ComponentFixture<CreateWishBlockComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddWishBlockComponent ]
+      declarations: [CreateWishBlockComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddWishBlockComponent);
+    fixture = TestBed.createComponent(CreateWishBlockComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

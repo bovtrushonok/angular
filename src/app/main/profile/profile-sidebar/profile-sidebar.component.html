@@ -1,6 +1,6 @@
 <div class="profile-sidebar">
   <div class="profile-description">
-    <div class="userName" *ngIf="profileService.userInfo.userName">{{profileService.userInfo.userName}}</div>
+    <div class="userName" *ngIf="profileService.userInfo.userName">{{profileService.userInfo?.userName}}</div>
     <div 
       class="profile-pic"
       *ngIf="profileService.userInfo.userPictureURL"

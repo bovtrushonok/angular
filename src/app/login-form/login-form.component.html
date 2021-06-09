@@ -1,26 +1,26 @@
 <form [formGroup]="LogInForm" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="outline">
-    <mat-label> {{constants.nameFormLabel}} </mat-label>
+    <mat-label> {{constants?.nameFormLabel}} </mat-label>
     <input matInput type="text" formControlName="userName" required>
   </mat-form-field>
   <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
     <div *ngIf="name.errors?.required">
-      {{constants.noNameError}}
+      {{constants?.noNameError}}
     </div>
     <div *ngIf="name.errors?.minlength">
-      {{constants.nameLengthError}}
+      {{constants?.nameLengthError}}
     </div>
   </div>
   <mat-form-field appearance="outline">
-  <mat-label> {{constants.passwordFormNameLabel}} </mat-label>
+  <mat-label> {{constants?.passwordFormNameLabel}} </mat-label>
     <input matInput type="password" formControlName="userPassword">
   </mat-form-field>
   <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
     <div *ngIf="password.errors?.required">
-      {{constants.noPasswordError}}
+      {{constants?.noPasswordError}}
     </div>
     <div *ngIf="password.errors?.minlength">
-      {{constants.passwordLengthError}}
+      {{constants?.passwordLengthError}}
     </div>
   </div>
   <div class="actions">
@@ -28,9 +28,9 @@
       type="submit"
       class="ok-btn modal-btn">Login</button>
       <div *ngIf="submitError" class="alert">
-        <p> {{constants.noUserFound}}</p>
+        <p> {{constants?.noUserFound}}</p>
       </div>
-      <mat-hint >{{constants.loginFormHint}}</mat-hint>
+      <mat-hint >{{constants?.loginFormHint}}</mat-hint>
     <button mat-button 
       type="button"
       class="signup-btn modal-btn" (click)="signUp()">SignUp</button>
