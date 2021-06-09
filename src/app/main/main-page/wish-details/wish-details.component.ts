@@ -11,12 +11,10 @@ import { WishesService } from 'src/app/services/wishes.service';
 export class WishDetailsComponent implements OnInit {
   public wish: IWish
 
-  constructor(private wishesService: WishesService, private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const wishId = this.route.snapshot.paramMap.get('id');
-    this.wish = this.wishesService.getWishById(+wishId);
-    console.log(this.wish);
+    this.wish = this.route.snapshot.data['wish'];
   }
 
 }

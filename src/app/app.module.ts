@@ -32,6 +32,7 @@ import { CreateWishBlockComponent } from './main/main-menu/create-wish-block/cre
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { CanActivateGuard } from './guards/can-activate.guard';
 import { WishDetailsComponent } from './main/main-page/wish-details/wish-details.component';
+import { WishDetailsResolve } from './services/wish-details-resolver.service';
 
 const appRoutes: Routes = [
   {path: 'log-in', component: LoginFormComponent},
@@ -40,7 +41,11 @@ const appRoutes: Routes = [
       children: [
       {path: '', component: MainPageContentComponent},
       {path: 'edit-my-profile', component: ProfileEditFormComponent},
-      {path: 'wish-details/:id', component: WishDetailsComponent}
+      {path: 'wish-details/:id', component: WishDetailsComponent,
+        resolve: {
+          wish: WishDetailsResolve
+        }
+      }
     ],
     canActivate: [CanActivateGuard]
   },
