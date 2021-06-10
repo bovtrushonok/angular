@@ -4,7 +4,6 @@
       <mat-card-title>{{wish.title}}</mat-card-title>
       <mat-card-subtitle>desired by {{user.userName}}</mat-card-subtitle>
     </mat-card-header>
-    <img *ngIf="wish.imgSrc" mat-card-image src="wish.imgSrc" alt={{wish.description}}>
     <mat-card-content>
       <p> Additional user comment: {{wish.description}} </p>
       <p><a [href]="wish.link" target="_blank" class="wish-link"> {{wish.link}} </a></p>

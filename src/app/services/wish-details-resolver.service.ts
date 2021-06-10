@@ -8,7 +8,6 @@ import { WishesService } from './wishes.service';
 })
 
 export class WishDetailsResolve implements Resolve<IWish> {
-  public isLoggedIn = false;
 
   constructor(private wishesService: WishesService){}
 
