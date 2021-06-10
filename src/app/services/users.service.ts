@@ -35,4 +35,8 @@ export class UsersService {
   
     return false;
   }
+
+  public getUserById(userId: string): IUserInfo {
+    return this.users.find((user) => user.userId === +userId)
+  }
 }

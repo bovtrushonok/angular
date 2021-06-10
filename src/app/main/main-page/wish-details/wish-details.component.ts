@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { IWish } from 'src/app/interface';
-import { WishesService } from 'src/app/services/wishes.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IUserInfo, IWish } from 'src/app/interface';
+import { BirthdayService } from 'src/app/services/birthday.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-wish-details',
@@ -9,12 +10,23 @@ import { WishesService } from 'src/app/services/wishes.service';
   styleUrls: ['./wish-details.component.scss']
 })
 export class WishDetailsComponent implements OnInit {
-  public wish: IWish
+  public wish: IWish;
+  public user: IUserInfo;
+  public daysToBirthdayLeft: number;
+  public date: string;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private usersService: UsersService,
+    private birthdayService: BirthdayService, private router: Router) {}
 
   ngOnInit(): void {
     this.wish = this.route.snapshot.data['wish'];
+    this.user = this.usersService.getUserById(this.wish.userId);
+    this.daysToBirthdayLeft = this.birthdayService.getDaysToBirthday(this.user.birthdate);
+    this.date = this.birthdayService.getMonthAndDay(this.user.birthdate);
+  }
+
+  navigateToMain(): void {
+    this.router.navigateByUrl('main');
   }
 
 }
