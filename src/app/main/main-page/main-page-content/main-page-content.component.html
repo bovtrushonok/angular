@@ -8,9 +8,9 @@
       <div *ngIf="this.wishesService.wishes.length && this.wishesService.filteredWishes[0] !== null; else empty">
         <div class="wishes-field">
           <app-wish-card 
-            *ngFor="let wish of this.wishesService?.wishes"
+            *ngFor="let wish of this.wishesService.wishes"
             [wish]="wish"
-            [filteredWishes]="this.wishesService?.filteredWishes"></app-wish-card>
+            [filteredWishes]="this.wishesService.filteredWishes"></app-wish-card>
         </div>
       </div>
       <ng-template #empty>
