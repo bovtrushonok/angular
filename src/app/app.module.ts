@@ -33,6 +33,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { CanActivateGuard } from './guards/can-activate.guard';
 import { WishDetailsComponent } from './main/main-page/wish-details/wish-details.component';
 import { WishDetailsResolve } from './services/wish-details-resolver.service';
+import { WishFieldComponent } from './main/main-page/main-page-content/wish-field/wish-field.component';
 
 const appRoutes: Routes = [
   {path: 'log-in', component: LoginFormComponent},
@@ -71,6 +72,7 @@ const appRoutes: Routes = [
     ErrorPageComponent,
     CreateWishBlockComponent,
     WishDetailsComponent,
+    WishFieldComponent
   ],
   imports: [
     BrowserModule,

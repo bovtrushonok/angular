@@ -1,0 +1,11 @@
+<div *ngIf="wishes.length && this.wishesService.filteredWishes[0] !== null; else empty">
+  <div class="wishes-field">
+    <app-wish-card  
+      *ngFor="let wish of wishes"
+      [wish]="wish"
+      [filteredWishes]="this.wishesService.filteredWishes"></app-wish-card>
+  </div>
+</div>
+<ng-template #empty>
+  <app-empty-field></app-empty-field>
+</ng-template>

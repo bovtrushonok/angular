@@ -31,6 +31,18 @@
   color: $primaryTextColor;
 }
 
+.mat-nav-list {
+  display: flex;
+  button {
+    width: auto;
+    background-color: white;
+    margin-right: 5px;
+    border: none;
+    font-size: 14px;
+    color: $linkColor;
+  }
+}
+
 .mat-tab-group {
   min-width: 100%;
   margin-bottom: 48px;

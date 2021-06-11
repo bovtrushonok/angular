@@ -1,7 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatTabGroup } from '@angular/material/tabs';
-import { IWish } from '../../../interface';
-import { WishesService } from '../../../services/wishes.service';
+import { Component, OnInit } from '@angular/core';
+import { WishType } from '../../../interface';
 
 @Component({
   selector: 'app-main-page-content',
@@ -9,17 +7,14 @@ import { WishesService } from '../../../services/wishes.service';
   styleUrls: ['./main-page-content.component.scss']
 })
 
-export class MainPageContentComponent {
-  public searchText = '';
-  @ViewChild(MatTabGroup) public matTab: MatTabGroup;
+export class MainPageContentComponent implements OnInit {
+  public state: WishType;
 
-  constructor(public wishesService: WishesService) {}
-
-  public deleteWish(currentWish: IWish): void {
-    this.wishesService.deleteWish(currentWish);
+  ngOnInit() {
+    this.state = WishType.myWishes;
   }
 
-  public updateWishes(currentWish: IWish): void {
-    this.wishesService.updateWishes(currentWish);
+  public toggleState(type: WishType): void {
+    this.state = type;
   }
 }
