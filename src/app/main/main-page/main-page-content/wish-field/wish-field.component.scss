@@ -1,0 +1,12 @@
+:host {
+  min-width: 75%;
+}
+
+.wishes-field {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 20px 0;
+  box-sizing: border-box;
+}

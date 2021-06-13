@@ -17,11 +17,11 @@ export class WishesService {
     const result = await fetch(path);
     const data = await result.json();
     if (type === WishType.myWishes) this.wishes = data.filter(wish => wish.userId === userId);
-    this.friendWishes = data;
+    else this.friendWishes = data;
   }
 
-  public getCurrentWishes(): IWish[] {
-    return this.wishes;
+  public getCurrentWishes(type?: WishType): IWish[] {
+    return (type===WishType.myWishes) ? this.wishes : this.friendWishes;
   }
 
   private detectWishID(currentWish: IWish): number {

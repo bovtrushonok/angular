@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IWish, WishType } from 'src/app/interface';
 import { WishesService } from 'src/app/services/wishes.service';
 
@@ -16,6 +17,7 @@ export class WishFieldComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.wishes = this.wishesService.wishes;
   }
+
 
   ngOnChanges(): void {
     this.wishes = (this.state===0) ? this.wishesService.wishes : this.wishesService.friendWishes;

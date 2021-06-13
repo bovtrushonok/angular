@@ -1,7 +1,7 @@
-<mat-card class="wish-card" [class.hide]="!isSelected" (click)="navigateToDetails()">
+<mat-card class="wish-card" [class.hide]="!isSelected">
   <mat-card-title>
     <mat-icon mat-button (click)="openModalToDelete()">delete</mat-icon>
-    <mat-icon>share</mat-icon>
+    <mat-icon (click)="navigateToDetails()">details</mat-icon>
     <mat-icon mat-button (click)="openModalToEdit()">edit</mat-icon>
   </mat-card-title>
   <mat-card-subtitle>{{ wish?.title }}</mat-card-subtitle>
