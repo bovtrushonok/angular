@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { IWish, WishType } from 'src/app/interface';
 
 @Injectable ({providedIn: 'root'})
@@ -10,14 +11,18 @@ export class WishesService {
   public filteredWishes: IWish[] = [];
   public friendWishes: IWish[] | [] = [];
 
-  // constructor (private http: HttpClient) {}
+  constructor (private http: HttpClient) {}
 
   public async getWishes(path: string, type?: WishType, userId?: number ): Promise<void> {
-    // return this.http.get<IWish[]>(path);
     const result = await fetch(path);
     const data = await result.json();
     if (type === WishType.myWishes) this.wishes = data.filter(wish => wish.userId === userId);
     else this.friendWishes = data;
+  }
+
+  public getMyWishes(path: string, userId: string): Observable<IWish[]> {
+    return this.http.get<IWish[]>(path)
+      .pipe(map(wishes => wishes.filter(wish => wish.userId === userId)));
   }
 
   public getCurrentWishes(type?: WishType): IWish[] {

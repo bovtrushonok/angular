@@ -25,7 +25,7 @@ export class LoginFormComponent {
 
   public onSubmit(): void {
     if (this.userService.confirmCredentials(this.LogInForm.value)) {
-      this.router.navigateByUrl('main');
+      this.router.navigateByUrl('main/wishes');
     } else this.submitError = true;
   }
 
