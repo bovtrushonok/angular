@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { from, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { IWish, WishType } from 'src/app/interface';
+import { WishViewStateService } from './wishview-state.service';
 
 @Injectable ({providedIn: 'root'})
 
@@ -11,7 +12,7 @@ export class WishesService {
   public filteredWishes: IWish[] = [];
   public friendWishes: IWish[] | [] = [];
 
-  constructor (private http: HttpClient) {}
+  constructor (private http: HttpClient, private viewState: WishViewStateService) {}
 
   public async getWishes(path: string, type?: WishType, userId?: number ): Promise<void> {
     const result = await fetch(path);
@@ -44,7 +45,8 @@ export class WishesService {
   }
 
   public filterWishes(seacrhResult: string): void {
-    this.filteredWishes = this.wishes.filter(wish => wish.title === seacrhResult);
+    this.filteredWishes = (this.viewState.state === 0) ? 
+      this.wishes.filter(wish => wish.title === seacrhResult) : this.friendWishes.filter(wish => wish.title === seacrhResult);
     if (!this.filteredWishes.length) this.filteredWishes[0] = null;
     if (!seacrhResult) this.filteredWishes.length = 0;
   }
@@ -54,6 +56,7 @@ export class WishesService {
   }
 
   public getWishById(id: number): IWish {
-    return this.wishes.find(wish => wish.id === id);
+    return (this.viewState.state === 0) ? this.wishes.find(wish => wish.id === id) :
+    this.friendWishes.find(wish => wish.id === id);
   }
 }

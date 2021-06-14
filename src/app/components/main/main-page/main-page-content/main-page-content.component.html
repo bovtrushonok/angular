@@ -4,8 +4,8 @@
     <app-create-wish-block></app-create-wish-block>
   </div>
   <mat-nav-list>
-    <button mat-list-item (click)="toggleState(0)" [ngClass]="(state === 0) ? 'active': ''"> My wishes </button>
-    <button mat-list-item (click)="toggleState(1)" [ngClass]="(state === 1) ? 'active': ''"> My friends' wishes </button>
+    <button mat-list-item (click)="toggleState(0)" [ngClass]="(this.viewState.state === 0) ? 'active': ''"> My wishes </button>
+    <button mat-list-item (click)="toggleState(1)" [ngClass]="(this.viewState.state === 1) ? 'active': ''"> My friends' wishes </button>
   </mat-nav-list>
-  <app-wish-field [state]="state"></app-wish-field>
+  <app-wish-field [state]="this.viewState.state"></app-wish-field>
 </div>

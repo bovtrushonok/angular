@@ -26,7 +26,7 @@ export class InitService {
 
   private initGetWishes(): void {
     this.wishesService.getWishes(myWishesURL, WishType.myWishes,
-      this.profileService.getUserUnfo().userId);
+     this.profileService.getUserUnfo().userId);
     this.wishesService.getWishes(friendWishesURL);
   }
 }

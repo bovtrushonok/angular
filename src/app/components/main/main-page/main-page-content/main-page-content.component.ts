@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WishViewStateService } from 'src/app/services/wishview-state.service';
 import { WishType } from '../../../../interface';
 
 @Component({
@@ -7,14 +8,11 @@ import { WishType } from '../../../../interface';
   styleUrls: ['./main-page-content.component.scss']
 })
 
-export class MainPageContentComponent implements OnInit {
-  public state: WishType;
+export class MainPageContentComponent {
 
-  ngOnInit() {
-    this.state = WishType.myWishes;
-  }
+  constructor(public viewState: WishViewStateService){}
 
   public toggleState(type: WishType): void {
-    this.state = type;
+    this.viewState.toggleState(type);
   }
 }
