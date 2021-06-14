@@ -1,0 +1,15 @@
+:host {
+  min-width: 100%;
+  min-height: 90vh;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+.wishes-field {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  box-sizing: border-box;
+}
