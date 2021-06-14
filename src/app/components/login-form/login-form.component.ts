@@ -13,18 +13,17 @@ import { UsersService } from '../../services/users.service';
 export class LoginFormComponent {
   public constants = m;
   public submitError = false;
-  @Output() logInEvent = new EventEmitter<boolean>();
 
   constructor(private fb: FormBuilder, private userService: UsersService, private router: Router) {}
 
-  public LogInForm = this.fb.group({
+  public logInForm = this.fb.group({
     userName: ['', Validators.required],
     userPassword: ['', [Validators.required,
       Validators.minLength(8)]]
   });
 
   public onSubmit(): void {
-    if (this.userService.confirmCredentials(this.LogInForm.value)) {
+    if (this.userService.confirmCredentials(this.logInForm.value)) {
       this.router.navigateByUrl('main/wishes');
     } else this.submitError = true;
   }
@@ -33,6 +32,6 @@ export class LoginFormComponent {
     this.router.navigateByUrl('sign-up');
   }
 
-  public get name(): AbstractControl { return this.LogInForm.controls.userName; }
-  public get password(): AbstractControl { return this.LogInForm.controls.userPassword; }
+  public get name(): AbstractControl { return this.logInForm.controls.userName; }
+  public get password(): AbstractControl { return this.logInForm.controls.userPassword; }
 }

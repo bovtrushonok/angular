@@ -1,4 +1,4 @@
-<form [formGroup]="LogInForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="outline">
     <mat-label> {{constants?.nameFormLabel}} </mat-label>
     <input matInput type="text" formControlName="userName" required>
