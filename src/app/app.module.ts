@@ -34,14 +34,14 @@ import { CanActivateGuard } from './guards/can-activate.guard';
 import { WishDetailsComponent } from './main/main-page/wish-details/wish-details.component';
 import { WishDetailsResolve } from './services/wish-details-resolver.service';
 import { WishFieldComponent } from './main/main-page/main-page-content/wish-field/wish-field.component';
-// import { WishesResolve } from './services/wishes-resolver.service';
+import { WishesResolve } from './services/wishes-resolver.service';
 
 const appRoutes: Routes = [
   {path: 'log-in', component: LoginFormComponent},
   {path: 'main', 
     component: MainPageComponent,
       children: [
-      {path: 'wishes', component: MainPageContentComponent},
+      {path: 'wishes', component: MainPageContentComponent, resolve: {wishes: WishesResolve}},
       {path: 'edit-my-profile', component: ProfileEditFormComponent},
       {path: 'wish-details/:id', component: WishDetailsComponent,
         resolve: {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { myWishesURL } from '../constants/path';
 import { IWish } from '../interface';
 import { ProfileService } from './profile.service';
@@ -10,11 +10,11 @@ import { WishesService } from './wishes.service';
   providedIn: 'root'
 })
 
-export class WishesResolve { // implements Resolve<Observable<IWish[]>> 
+export class WishesResolve implements Resolve<IWish[]> { 
 
-  // constructor(private wishesService: WishesService, private profileService: ProfileService){}
-
-  // public resolve() {
-    // return this.wishesService.getMyWishes(myWishesURL, this.profileService.getUserUnfo().userId + '')
-  // }
+  constructor(private wishesService: WishesService){}
+  
+  public resolve() {
+    return this.wishesService.getMyWishes(myWishesURL);
+  }
 }

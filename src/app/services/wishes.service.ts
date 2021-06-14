@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { from, Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { IWish, WishType } from 'src/app/interface';
 
 @Injectable ({providedIn: 'root'})
@@ -20,9 +20,8 @@ export class WishesService {
     else this.friendWishes = data;
   }
 
-  public getMyWishes(path: string, userId: string): Observable<IWish[]> {
-    return this.http.get<IWish[]>(path)
-      .pipe(map(wishes => wishes.filter(wish => wish.userId === userId)));
+  public getMyWishes(path: string): Observable<IWish[]> {
+    return this.http.get<IWish[]>(path);
   }
 
   public getCurrentWishes(type?: WishType): IWish[] {

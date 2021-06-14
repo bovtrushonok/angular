@@ -33,6 +33,9 @@
     font-size: 14px;
     color: $linkColor;
   }
+  .active {
+    border-bottom: 5px solid $secondaryAddBcgColor;
+  }
 }
 
 .mat-tab-group {

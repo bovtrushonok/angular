@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IWish, WishType } from 'src/app/interface';
+import { ProfileService } from 'src/app/services/profile.service';
 import { WishesService } from 'src/app/services/wishes.service';
 
 @Component({
@@ -12,12 +13,17 @@ export class WishFieldComponent implements OnInit, OnChanges {
   @Input() state: WishType;
   public wishes: IWish[];
 
-  constructor(public wishesService: WishesService) {}
+  constructor(public wishesService: WishesService, private route: ActivatedRoute,
+    private profileService: ProfileService) {}
 
   ngOnInit(): void {
-    this.wishes = this.wishesService.wishes;
+    const userId = this.profileService.getUserUnfo().userId;
+    
+    this.route.data.subscribe(data => {
+      this.wishes = data.wishes
+        .filter(wish => +wish.userId === userId);;
+    });
   }
-
 
   ngOnChanges(): void {
     this.wishes = (this.state===0) ? this.wishesService.wishes : this.wishesService.friendWishes;
