@@ -27,9 +27,7 @@ export interface ICredentials {
   userPassword: string;
 }
 
-const enum WishType {
+export enum WishType {
   myWishes,
   friendWishes,
 }
-export { WishType };
-

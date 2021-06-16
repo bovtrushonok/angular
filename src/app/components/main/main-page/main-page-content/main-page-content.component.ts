@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { WishType } from 'src/app/interface';
 import { WishViewStateService } from 'src/app/services/wishview-state.service';
-import { WishType } from '../../../../interface';
 
 @Component({
   selector: 'app-main-page-content',
@@ -9,6 +9,7 @@ import { WishType } from '../../../../interface';
 })
 
 export class MainPageContentComponent {
+  public WishType = WishType;
 
   constructor(public viewState: WishViewStateService){}
 
