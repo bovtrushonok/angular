@@ -56,7 +56,7 @@ export class WishesService {
   }
 
   public getWishById(id: number): IWish {
-    return (this.viewState.state === WishType.myWishes) ? this.wishes.find(wish => wish.id === id) :
-    this.friendWishes.find(wish => wish.id === id);
+    return (this.viewState.state === WishType.myWishes) ? this.wishes.find((wish: IWish) => wish.id === id) :
+    this.friendWishes.find((wish: IWish) => wish.id === id);
   }
 }
