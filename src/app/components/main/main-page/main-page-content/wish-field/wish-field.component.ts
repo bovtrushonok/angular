@@ -10,12 +10,12 @@ import { WishViewStateService } from 'src/app/services/wishview-state.service';
   templateUrl: './wish-field.component.html',
   styleUrls: ['./wish-field.component.scss']
 })
-export class WishFieldComponent implements OnInit, OnChanges, OnDestroy {
+export class WishFieldComponent implements OnInit, OnChanges {
   @Input() public state: WishType;
   public wishes: IWish[];
 
   constructor(public wishesService: WishesService, private route: ActivatedRoute,
-    private profileService: ProfileService) {}
+              private profileService: ProfileService) {}
 
   ngOnInit(): void {
     const userId = this.profileService.getUserUnfo().userId;
@@ -23,7 +23,7 @@ export class WishFieldComponent implements OnInit, OnChanges, OnDestroy {
     if (this.wishes.length) return;
     this.route.data.subscribe(data => {
       this.wishes = data.wishes
-        .filter((wish: IWish) => wish.userId === userId);;
+        .filter((wish: IWish) => wish.userId === userId);
     });
   }
 
@@ -37,9 +37,5 @@ export class WishFieldComponent implements OnInit, OnChanges, OnDestroy {
 
   public updateWishes(currentWish: IWish): void {
     this.wishesService.updateWishes(currentWish);
-  }
-
-  ngOnDestroy(): void {
-    
   }
 }

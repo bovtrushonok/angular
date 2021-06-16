@@ -16,7 +16,7 @@ export class WishDetailsComponent implements OnInit {
   public date: string;
 
   constructor(private route: ActivatedRoute, private usersService: UsersService,
-    private birthdayService: BirthdayService, private router: Router) {}
+              private birthdayService: BirthdayService, private router: Router) {}
 
   ngOnInit(): void {
     this.wish = this.route.snapshot.data['wish'];

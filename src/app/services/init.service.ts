@@ -12,7 +12,7 @@ import { WishesService } from './wishes.service';
 export class InitService {
 
   constructor(private authService: AuthService, private profileService: ProfileService,
-    private wishesService: WishesService){}
+              private wishesService: WishesService){}
 
   public init(checkResult: IUserInfo): void {
     this.initSavingUserInfo(checkResult);

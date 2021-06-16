@@ -11,12 +11,12 @@ export class BirthdayService {
     const currentDate: any = new Date();
     const thisYearBirthday: any = new Date(new Date().getFullYear(), new Date(date).getMonth(),
       new Date(date).getDate());
-    
-    const daysLeft = 
+
+    const daysLeft =
       ((thisYearBirthday - currentDate) > 0) ?
-      Math.trunc((thisYearBirthday - currentDate) / msInHour / hoursInDay):
+      Math.trunc((thisYearBirthday - currentDate) / msInHour / hoursInDay) :
       daysInYear + Math.trunc((thisYearBirthday - currentDate) / msInHour / hoursInDay);
-    
+
     return daysLeft;
   }
 
@@ -24,6 +24,6 @@ export class BirthdayService {
     const month = new Date(date).getUTCMonth();
     const day = new Date(date).getUTCDate();
 
-    return `${monthsArr[month]} ${day}`
+    return `${monthsArr[month]} ${day}`;
   }
 }

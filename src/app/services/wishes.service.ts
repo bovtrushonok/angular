@@ -11,7 +11,7 @@ export class WishesService {
   public filteredWishes: IWish[] = [];
   public friendWishes: IWish[] | [] = [];
 
-  constructor (private http: HttpClient, private viewState: WishViewStateService) {}
+  constructor(private http: HttpClient, private viewState: WishViewStateService) {}
 
   public async getWishes(path: string, type?: WishType, userId?: number ): Promise<void> {
     const result = await fetch(path);
@@ -44,7 +44,7 @@ export class WishesService {
   }
 
   public filterWishes(seacrhResult: string): void {
-    this.filteredWishes = (this.viewState.state === WishType.myWishes) ? 
+    this.filteredWishes = (this.viewState.state === WishType.myWishes) ?
       this.wishes.filter((wish: IWish) => wish.title === seacrhResult) :
       this.friendWishes.filter((wish: IWish) => wish.title === seacrhResult);
     if (!this.filteredWishes.length) this.filteredWishes[0] = null;

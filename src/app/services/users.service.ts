@@ -18,7 +18,7 @@ export class UsersService {
 
   public addNewUser(newUser: IUserInfo): void {
     if (!this.users.find(user => user.userName === newUser.userName)) {
-      const user = {...this.users[this.users.length -1], ...newUser };
+      const user = { ...this.users[this.users.length - 1], ...newUser };
       user.userId += 1;
       this.users.push(user);
     }
@@ -32,11 +32,11 @@ export class UsersService {
       this.initService.init(checkResult);
       return true;
     }
-  
+
     return false;
   }
 
   public getUserById(userId: number): IUserInfo {
-    return this.users.find((user) => user.userId === +userId)
+    return this.users.find((user) => user.userId === +userId);
   }
 }

@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { myWishesURL } from '../constants/path';
 import { IWish } from '../interface';
-import { ProfileService } from './profile.service';
 import { WishesService } from './wishes.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class WishesResolve implements Resolve<IWish[]> { 
-
+export class WishesResolve implements Resolve<IWish[]> {
   constructor(private wishesService: WishesService){}
-  
-  public resolve() {
+
+  public resolve(): Observable<IWish[]> {
     return this.wishesService.getMyWishes(myWishesURL);
   }
 }

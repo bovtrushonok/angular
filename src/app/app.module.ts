@@ -37,12 +37,12 @@ import { WishesResolve } from './services/wishes-resolver.service';
 
 const appRoutes: Routes = [
   {path: 'log-in', component: LoginFormComponent},
-  {path: 'main', 
+  {path: 'main',
     component: MainPageComponent,
       children: [
       {path: 'wishes', component: MainPageContentComponent, resolve: {wishes: WishesResolve}},
       {path: 'edit-my-profile', component: ProfileEditFormComponent},
-      {path: 'wish-details/:id', 
+      {path: 'wish-details/:id',
         loadChildren: () => import('./wish-details/wish-details.module')
           .then(m => m.WishDetailsModule),
         resolve: {

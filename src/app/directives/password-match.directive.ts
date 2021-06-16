@@ -6,7 +6,7 @@ export const PasswordMatchValidator: ValidatorFn = (control: AbstractControl): n
   const confirmPassword = control.get('confirmPassword');
 
   return (password && confirmPassword && password.value === confirmPassword.value) ?
-    null : { passwordMismatch: true }
+    null : { passwordMismatch: true };
 };
 
 @Directive({

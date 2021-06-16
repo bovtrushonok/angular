@@ -11,7 +11,7 @@ export class WishDetailsResolve implements Resolve<IWish> {
 
   constructor(private wishesService: WishesService){}
 
-  public resolve(route: ActivatedRouteSnapshot) {
+  public resolve(route: ActivatedRouteSnapshot): IWish {
     return this.wishesService.getWishById(+route.paramMap.get('id'));
   }
 }
