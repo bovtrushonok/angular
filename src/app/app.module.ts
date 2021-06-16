@@ -31,7 +31,6 @@ import { MainPageComponent } from './components/main/main-page/main-page.compone
 import { CreateWishBlockComponent } from './components/main/main-menu/create-wish-block/create-wish-block.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { Authorize } from './guards/authorization.guard';
-import { WishDetailsComponent } from './components/main/main-page/wish-details/wish-details.component';
 import { WishDetailsResolve } from './services/wish-details-resolver.service';
 import { WishFieldComponent } from './components/main/main-page/main-page-content/wish-field/wish-field.component';
 import { WishesResolve } from './services/wishes-resolver.service';
@@ -43,7 +42,9 @@ const appRoutes: Routes = [
       children: [
       {path: 'wishes', component: MainPageContentComponent, resolve: {wishes: WishesResolve}},
       {path: 'edit-my-profile', component: ProfileEditFormComponent},
-      {path: 'wish-details/:id', component: WishDetailsComponent,
+      {path: 'wish-details/:id', 
+        loadChildren: () => import('./wish-details/wish-details.module')
+          .then(m => m.WishDetailsModule),
         resolve: {
           wish: WishDetailsResolve
         }
@@ -72,7 +73,6 @@ const appRoutes: Routes = [
     MainPageComponent,
     ErrorPageComponent,
     CreateWishBlockComponent,
-    WishDetailsComponent,
     WishFieldComponent
   ],
   imports: [
