@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IWish, WishType } from 'src/app/interface';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -10,7 +10,7 @@ import { WishViewStateService } from 'src/app/services/wishview-state.service';
   templateUrl: './wish-field.component.html',
   styleUrls: ['./wish-field.component.scss']
 })
-export class WishFieldComponent implements OnInit, OnChanges {
+export class WishFieldComponent implements OnInit, OnChanges, OnDestroy {
   @Input() public state: WishType;
   public wishes: IWish[];
 
@@ -23,12 +23,12 @@ export class WishFieldComponent implements OnInit, OnChanges {
     if (this.wishes.length) return;
     this.route.data.subscribe(data => {
       this.wishes = data.wishes
-        .filter((wish: IWish) => +wish.userId === userId);;
+        .filter((wish: IWish) => wish.userId === userId);;
     });
   }
 
   ngOnChanges(): void {
-    this.wishes = (this.state===0) ? this.wishesService.wishes : this.wishesService.friendWishes;
+    this.wishes = (this.state === WishType.myWishes) ? this.wishesService.wishes : this.wishesService.friendWishes;
   }
 
   public deleteWish(currentWish: IWish): void {
@@ -37,5 +37,9 @@ export class WishFieldComponent implements OnInit, OnChanges {
 
   public updateWishes(currentWish: IWish): void {
     this.wishesService.updateWishes(currentWish);
+  }
+
+  ngOnDestroy(): void {
+    
   }
 }

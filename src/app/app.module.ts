@@ -30,7 +30,7 @@ import { MainPageContentComponent } from './components/main/main-page/main-page-
 import { MainPageComponent } from './components/main/main-page/main-page.component';
 import { CreateWishBlockComponent } from './components/main/main-menu/create-wish-block/create-wish-block.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
-import { CanActivateGuard } from './guards/can-activate.guard';
+import { Authorize } from './guards/authorization.guard';
 import { WishDetailsComponent } from './components/main/main-page/wish-details/wish-details.component';
 import { WishDetailsResolve } from './services/wish-details-resolver.service';
 import { WishFieldComponent } from './components/main/main-page/main-page-content/wish-field/wish-field.component';
@@ -49,7 +49,7 @@ const appRoutes: Routes = [
         }
       }
     ],
-    canActivate: [CanActivateGuard]
+    canActivate: [Authorize]
   },
   {path: 'sign-up', component: RegisterFormComponent},
   {path: '**', component: ErrorPageComponent}

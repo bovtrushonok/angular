@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { IWish, WishType } from 'src/app/interface';
 import { WishViewStateService } from './wishview-state.service';
 
@@ -26,7 +25,7 @@ export class WishesService {
   }
 
   public getCurrentWishes(type?: WishType): IWish[] {
-    return (type===WishType.myWishes) ? this.wishes : this.friendWishes;
+    return (type === WishType.myWishes) ? this.wishes : this.friendWishes;
   }
 
   private detectWishID(currentWish: IWish): number {
@@ -45,10 +44,11 @@ export class WishesService {
   }
 
   public filterWishes(seacrhResult: string): void {
-    this.filteredWishes = (this.viewState.state === 0) ? 
-      this.wishes.filter(wish => wish.title === seacrhResult) : this.friendWishes.filter(wish => wish.title === seacrhResult);
+    this.filteredWishes = (this.viewState.state === WishType.myWishes) ? 
+      this.wishes.filter((wish: IWish) => wish.title === seacrhResult) :
+      this.friendWishes.filter((wish: IWish) => wish.title === seacrhResult);
     if (!this.filteredWishes.length) this.filteredWishes[0] = null;
-    if (!seacrhResult) this.filteredWishes.length = 0;
+    if (!seacrhResult) this.filteredWishes = [];
   }
 
   public addNewWish(value: IWish): void {
@@ -56,7 +56,7 @@ export class WishesService {
   }
 
   public getWishById(id: number): IWish {
-    return (this.viewState.state === 0) ? this.wishes.find(wish => wish.id === id) :
+    return (this.viewState.state === WishType.myWishes) ? this.wishes.find(wish => wish.id === id) :
     this.friendWishes.find(wish => wish.id === id);
   }
 }

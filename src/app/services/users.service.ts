@@ -36,7 +36,7 @@ export class UsersService {
     return false;
   }
 
-  public getUserById(userId: string): IUserInfo {
+  public getUserById(userId: number): IUserInfo {
     return this.users.find((user) => user.userId === +userId)
   }
 }

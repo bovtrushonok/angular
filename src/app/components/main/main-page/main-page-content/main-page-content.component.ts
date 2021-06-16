@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { WishViewStateService } from 'src/app/services/wishview-state.service';
 import { WishType } from '../../../../interface';
 

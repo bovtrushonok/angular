@@ -16,7 +16,7 @@ export class WishcardModalComponent implements OnInit {
     id: 9,
     link: '',
     imgSrc: '',
-    userId: '',
+    userId: 78376,
   };
 
   public wishFormMsg: string = wishFormMsg;
