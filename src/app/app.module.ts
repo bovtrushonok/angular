@@ -14,32 +14,34 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HeaderComponent } from './header/header.component';
-import { ProfileSidebarComponent } from './main/profile/profile-sidebar/profile-sidebar.component';
-import { WishCardComponent } from './main/main-page/main-page-content/wish-card/wish-card.component';
-import { SearchInputComponent } from './main/main-menu/search-input/search-input.component';
-import { ModalWindowComponent } from './main/main-page/main-page-content/wish-card/modal-window/modal-window.component';
-import { EmptyFieldComponent } from './main/main-page/main-page-content/empty-field/empty-field.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ProfileSidebarComponent } from './components/main/profile/profile-sidebar/profile-sidebar.component';
+import { WishCardComponent } from './components/main/main-page/main-page-content/wish-card/wish-card.component';
+import { SearchInputComponent } from './components/main/main-menu/search-input/search-input.component';
+import { ModalWindowComponent } from './components/main/main-page/main-page-content/wish-card/modal-window/modal-window.component';
+import { EmptyFieldComponent } from './components/main/main-page/main-page-content/empty-field/empty-field.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { WishcardModalComponent } from './main/main-page/main-page-content/wish-card/wishcard-modal/wishcard-modal.component';
-import { ProfileEditFormComponent } from './main/profile/profile-edit-form/profile-edit-form.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
+import { WishcardModalComponent } from './components/main/main-page/main-page-content/wish-card/wishcard-modal/wishcard-modal.component';
+import { ProfileEditFormComponent } from './components/main/profile/profile-edit-form/profile-edit-form.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { RouterModule, Routes } from '@angular/router';
-import { MainPageContentComponent } from './main/main-page/main-page-content/main-page-content.component';
-import { MainPageComponent } from './main/main-page/main-page.component';
-import { CreateWishBlockComponent } from './main/main-menu/create-wish-block/create-wish-block.component';
-import { ErrorPageComponent } from './error-page/error-page.component';
-import { CanActivateGuard } from './guards/can-activate.guard';
-import { WishDetailsComponent } from './main/main-page/wish-details/wish-details.component';
+import { MainPageContentComponent } from './components/main/main-page/main-page-content/main-page-content.component';
+import { MainPageComponent } from './components/main/main-page/main-page.component';
+import { CreateWishBlockComponent } from './components/main/main-menu/create-wish-block/create-wish-block.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { Authorize } from './guards/authorization.guard';
+import { WishDetailsComponent } from './components/main/main-page/wish-details/wish-details.component';
 import { WishDetailsResolve } from './services/wish-details-resolver.service';
+import { WishFieldComponent } from './components/main/main-page/main-page-content/wish-field/wish-field.component';
+import { WishesResolve } from './services/wishes-resolver.service';
 
 const appRoutes: Routes = [
   {path: 'log-in', component: LoginFormComponent},
   {path: 'main', 
     component: MainPageComponent,
       children: [
-      {path: '', component: MainPageContentComponent},
+      {path: 'wishes', component: MainPageContentComponent, resolve: {wishes: WishesResolve}},
       {path: 'edit-my-profile', component: ProfileEditFormComponent},
       {path: 'wish-details/:id', component: WishDetailsComponent,
         resolve: {
@@ -47,7 +49,7 @@ const appRoutes: Routes = [
         }
       }
     ],
-    canActivate: [CanActivateGuard]
+    canActivate: [Authorize]
   },
   {path: 'sign-up', component: RegisterFormComponent},
   {path: '**', component: ErrorPageComponent}
@@ -71,6 +73,7 @@ const appRoutes: Routes = [
     ErrorPageComponent,
     CreateWishBlockComponent,
     WishDetailsComponent,
+    WishFieldComponent
   ],
   imports: [
     BrowserModule,
