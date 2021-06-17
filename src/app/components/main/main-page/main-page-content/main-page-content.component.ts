@@ -16,4 +16,5 @@ export class MainPageContentComponent {
   public toggleState(type: WishType): void {
     this.viewState.toggleState(type);
   }
+
 }

@@ -2,12 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IWish, WishType } from 'src/app/interface';
+import { friendWishesURL, myWishesURL } from '../constants/path';
 import { WishViewStateService } from './wishview-state.service';
 
 @Injectable ({providedIn: 'root'})
 
 export class WishesService {
   public wishes: IWish[] = [];
+  public wishes$: Observable<IWish[]>;
   public filteredWishes: IWish[] = [];
   public friendWishes: IWish[] | [] = [];
 
@@ -20,8 +22,10 @@ export class WishesService {
     else this.friendWishes = data;
   }
 
-  public getMyWishes(path: string): Observable<IWish[]> {
-    return this.http.get<IWish[]>(path);
+  public getMyWishes(type: string): Observable<IWish[]> {
+    return (type === 'my-wishes') ?
+      this.http.get<IWish[]>(myWishesURL) :
+      this.http.get<IWish[]>(friendWishesURL);
   }
 
   public getCurrentWishes(type?: WishType): IWish[] {

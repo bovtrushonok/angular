@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
 import { myWishesURL } from '../constants/path';
 import { IWish } from '../interface';
@@ -12,7 +12,7 @@ import { WishesService } from './wishes.service';
 export class WishesResolve implements Resolve<IWish[]> {
   constructor(private wishesService: WishesService){}
 
-  public resolve(): Observable<IWish[]> {
-    return this.wishesService.getMyWishes(myWishesURL);
+  public resolve(route: ActivatedRouteSnapshot): Observable<IWish[]> {
+    return this.wishesService.getMyWishes(route.paramMap.get('type'));
   }
 }

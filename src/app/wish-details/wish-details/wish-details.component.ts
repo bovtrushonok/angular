@@ -26,7 +26,7 @@ export class WishDetailsComponent implements OnInit {
   }
 
   navigateToMain(): void {
-    this.router.navigateByUrl('main/wishes');
+    this.router.navigateByUrl('main/wishes/my-wishes');
   }
 
 }

@@ -36,13 +36,20 @@ import { WishFieldComponent } from './components/main/main-page/main-page-conten
 import { WishesResolve } from './services/wishes-resolver.service';
 
 const appRoutes: Routes = [
-  {path: 'log-in', component: LoginFormComponent},
-  {path: 'main',
+  { path: 'log-in', component: LoginFormComponent },
+  {
+    path: 'main',
     component: MainPageComponent,
-      children: [
-      {path: 'wishes', component: MainPageContentComponent, resolve: {wishes: WishesResolve}},
-      {path: 'edit-my-profile', component: ProfileEditFormComponent},
-      {path: 'wish-details/:id',
+    children: [
+      {
+        path: '', component: MainPageContentComponent,
+        children: [
+          { path: 'wishes/:type', component: WishFieldComponent, resolve: { wishes: WishesResolve } }
+        ],
+      },
+      { path: 'edit-my-profile', component: ProfileEditFormComponent },
+      {
+        path: 'wish-details/:id',
         loadChildren: () => import('./wish-details/wish-details.module')
           .then(m => m.WishDetailsModule),
         resolve: {
@@ -52,8 +59,8 @@ const appRoutes: Routes = [
     ],
     canActivate: [Authorize]
   },
-  {path: 'sign-up', component: RegisterFormComponent},
-  {path: '**', component: ErrorPageComponent}
+  { path: 'sign-up', component: RegisterFormComponent },
+  { path: '**', component: ErrorPageComponent }
 ];
 
 @NgModule({

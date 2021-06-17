@@ -26,7 +26,7 @@ export class RegisterFormComponent {
   public onSubmit(): void {
     this.usersService.addNewUser(this.registerUserForm.value);
     if (this.usersService.confirmCredentials(this.registerUserForm.value)) {
-      this.router.navigateByUrl('main/wishes');
+      this.router.navigateByUrl('main/wishes/my-wishes');
     } else this.submitError = true;
   }
 
