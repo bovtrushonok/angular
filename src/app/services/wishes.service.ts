@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { merge, Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { IWish, WishType } from 'src/app/interface';
 import { friendWishesURL, myWishesURL } from '../constants/path';
-import { WishViewStateService } from './wishview-state.service';
+import { ProfileService } from './profile.service';
 
 @Injectable ({providedIn: 'root'})
 
@@ -11,25 +12,27 @@ export class WishesService {
   public wishes: IWish[] = [];
   public wishes$: Observable<IWish[]>;
   public filteredWishes: IWish[] = [];
+  public filteredWishes$: Observable<IWish[]>;
   public friendWishes: IWish[] | [] = [];
 
-  constructor(private http: HttpClient, private viewState: WishViewStateService) {}
+  constructor(private http: HttpClient, private profileService: ProfileService) {}
 
-  public async getWishes(path: string, type?: WishType, userId?: number ): Promise<void> {
+  /* public async getAllWishes(path: string, type?: WishType, userId?: number ): Promise<void> {
     const result = await fetch(path);
     const data = await result.json();
     if (type === WishType.myWishes) this.wishes = data.filter(wish => wish.userId === userId);
     else this.friendWishes = data;
-  }
+  } */
 
-  public getMyWishes(type: string): Observable<IWish[]> {
-    return (type === 'my-wishes') ?
-      this.http.get<IWish[]>(myWishesURL) :
+  public getWishes(type: string): Observable<IWish[]> {
+    const userId = this.profileService.getUserUnfo().userId;
+ 
+    this.wishes$ = (type === 'my-wishes') ? 
+      this.http.get<IWish[]>(myWishesURL)
+        .pipe(map(wishes => wishes.filter(wish => wish.userId === userId))) :
       this.http.get<IWish[]>(friendWishesURL);
-  }
-
-  public getCurrentWishes(type?: WishType): IWish[] {
-    return (type === WishType.myWishes) ? this.wishes : this.friendWishes;
+  
+    return this.wishes$;
   }
 
   private detectWishID(currentWish: IWish): number {
@@ -48,19 +51,16 @@ export class WishesService {
   }
 
   public filterWishes(seacrhResult: string): void {
-    this.filteredWishes = (this.viewState.state === WishType.myWishes) ?
-      this.wishes.filter((wish: IWish) => wish.title === seacrhResult) :
-      this.friendWishes.filter((wish: IWish) => wish.title === seacrhResult);
-    if (!this.filteredWishes.length) this.filteredWishes[0] = null;
-    if (!seacrhResult) this.filteredWishes = [];
+    this.filteredWishes$ = this.wishes$
+      .pipe(map(wishes => wishes.filter(wish => wish.title === seacrhResult)));
   }
 
   public addNewWish(value: IWish): void {
     this.wishes.push(value);
   }
 
-  public getWishById(id: number): IWish {
-    return (this.viewState.state === WishType.myWishes) ? this.wishes.find((wish: IWish) => wish.id === id) :
-    this.friendWishes.find((wish: IWish) => wish.id === id);
+  public getWishById(id: number): Observable<IWish> {
+    return this.wishes$
+      .pipe(map(wishes => wishes.find((wish: IWish) => wish.id === id)));
   }
 }

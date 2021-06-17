@@ -19,7 +19,7 @@ export class WishDetailsComponent implements OnInit {
               private birthdayService: BirthdayService, private router: Router) {}
 
   ngOnInit(): void {
-    this.wish = this.route.snapshot.data['wish'];
+    this.route.data.subscribe(data => this.wish = data.wish);
     this.user = this.usersService.getUserById(this.wish.userId);
     this.daysToBirthdayLeft = this.birthdayService.getDaysToBirthday(this.user.birthdate);
     this.date = this.birthdayService.getMonthAndDay(this.user.birthdate);
