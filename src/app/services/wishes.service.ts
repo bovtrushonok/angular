@@ -52,11 +52,14 @@ export class WishesService {
 
   public filterWishes(seacrhResult: string): void {
     this.filteredWishes$ = this.wishes$
-      .pipe(map(wishes => wishes.filter(wish => wish.title === seacrhResult)));
+    .pipe(map(wishes => wishes.filter(wish => wish.title === seacrhResult)));
   }
 
   public addNewWish(value: IWish): void {
-    this.wishes.push(value);
+    this.wishes$ = this.wishes$.pipe(map(wishes => {
+      wishes.push(value);
+      return wishes;
+    }));
   }
 
   public getWishById(id: number): Observable<IWish> {

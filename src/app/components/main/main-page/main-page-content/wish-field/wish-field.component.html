@@ -1,9 +1,9 @@
-<div *ngIf="(this.wishesService.wishes$ | async) && this.wishesService.filteredWishes[0] !== null; else empty">
+<div *ngIf="this.wishesService.wishes$ | async; else empty">
   <div class="wishes-field">
     <app-wish-card  
       *ngFor="let wish of this.wishesService.wishes$ | async"
       [wish]="wish"
-      [filteredWishes]="this.wishesService.filteredWishes"></app-wish-card>
+      [filteredWishes]="this.wishesService.filteredWishes$ | async"></app-wish-card>
   </div>
 </div>
 <ng-template #empty>
