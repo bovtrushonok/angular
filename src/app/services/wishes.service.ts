@@ -36,23 +36,33 @@ export class WishesService {
   }
 
   private detectWishID(currentWish: IWish): number {
-    return this.wishes.findIndex((wish: IWish) => currentWish.id === wish.id);
+    let wishIdx: number;
+    this.wishes$.pipe(map(wishes => {
+      wishIdx = wishes.findIndex(wish => currentWish.id === wish.id);
+    }));
+
+    return wishIdx;
   }
 
   public deleteWish(currentWish: IWish): void {
     const wishIdx = this.detectWishID(currentWish);
-    this.wishes.splice(wishIdx, 1);
-    if (this.filteredWishes.length) this.filteredWishes[0] = null;
+
+    this.wishes$.pipe(map(wishes => {
+      wishes.splice(wishIdx, 1);
+      return wishes;
+    }));
+
+    // if (this.filteredWishes.length) this.filteredWishes[0] = null;
   }
 
   public updateWishes(currentWish: IWish): void {
     const wishIdx = this.detectWishID(currentWish);
-    this.wishes[wishIdx] = currentWish;
+    this.wishes$.pipe(map(wishes => wishes[wishIdx] = currentWish));
   }
 
-  public filterWishes(seacrhResult: string): void {
-    this.filteredWishes$ = this.wishes$
-    .pipe(map(wishes => wishes.filter(wish => wish.title === seacrhResult)));
+  public filterWishes(seacrhResult: string): Observable<IWish[]> {
+    return this.filteredWishes$ = this.wishes$
+      .pipe(map(wishes => wishes.filter(wish => wish.title === seacrhResult)));
   }
 
   public addNewWish(value: IWish): void {

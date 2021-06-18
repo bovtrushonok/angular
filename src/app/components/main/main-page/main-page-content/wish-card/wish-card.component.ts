@@ -50,7 +50,8 @@ export class WishCardComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-    this.isSelected = !this.filteredWishes?.length || this.filteredWishes?.includes(this.wish);
+    this.isSelected = !this.filteredWishes?.length ||
+      !!this.filteredWishes?.find(wish => wish.id === this.wish.id);
   }
 
   public navigateToDetails(): void {
