@@ -22,6 +22,10 @@ export class WishCardComponent implements OnChanges {
     this.wishesService.deleteWish(this.wish);
   }
 
+  private updateWish(): void {
+    this.wishesService.updateWishes(this.wish);
+  }
+
   public openModalToDelete(): void {
     const modalRef = this.dialog.open(ModalWindowComponent, {
       width: '370px',
@@ -45,7 +49,7 @@ export class WishCardComponent implements OnChanges {
     modalRef.afterClosed().subscribe(result => {
       if (!result) return;
       this.wish = result;
-      this.wishesService.updateWishes(this.wish);
+      this.updateWish();
     });
   }
 

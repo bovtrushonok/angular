@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { IWish } from 'src/app/interface';
 import { WishesService } from 'src/app/services/wishes.service';
 
 
@@ -9,7 +8,5 @@ import { WishesService } from 'src/app/services/wishes.service';
   styleUrls: ['./wish-field.component.scss']
 })
 export class WishFieldComponent {
-
   constructor(public wishesService: WishesService) {}
-
 }

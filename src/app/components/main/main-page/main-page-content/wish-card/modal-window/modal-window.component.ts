@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./modal-window.component.scss']
 })
 
-export class ModalWindowComponent {
-
-}
+export class ModalWindowComponent {}
