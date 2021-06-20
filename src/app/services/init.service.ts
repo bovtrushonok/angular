@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { friendWishesURL, myWishesURL } from '../constants/path';
-import { IUserInfo, WishType } from '../interface';
+import { IUserInfo } from '../interface';
 import { AuthService } from './auth.service';
 import { ProfileService } from './profile.service';
-import { WishesService } from './wishes.service';
 
 @Injectable({
   providedIn: 'root'

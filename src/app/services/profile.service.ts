@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { statusExample } from '../constants/messages';
 import { IUserInfo } from '../interface';
 
@@ -13,13 +14,16 @@ export class ProfileService {
     userPictureURL: '',
     userId: 0,
   };
+  public userInfo$: BehaviorSubject<IUserInfo> = new BehaviorSubject(this.userInfo);
+
   constructor() { }
 
   public saveUserInfo(userInfo: IUserInfo): void {
     this.userInfo = {...this.userInfo, ...userInfo};
+    this.userInfo$.next(this.userInfo);
   }
 
-  public getUserUnfo(): IUserInfo {
-    return this.userInfo;
+  public getUserUnfo(): BehaviorSubject<IUserInfo> {
+    return this.userInfo$;
   }
 }

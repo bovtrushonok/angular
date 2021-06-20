@@ -25,7 +25,7 @@ export class WishcardModalComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: IWish, private profileService: ProfileService) {}
 
   ngOnInit(): void {
-    this.wish.userId = this.profileService.getUserUnfo().userId;
+    this.profileService.getUserUnfo().subscribe(data => this.wish.userId = data.userId);
     if (this.data) this.wish = this.data;
   }
 }

@@ -19,7 +19,8 @@ export class WishesService {
   constructor(private http: HttpClient, private profileService: ProfileService) {}
 
   public getWishes(type: string): Observable<IWish[]> {
-    const userId = this.profileService.getUserUnfo().userId;
+    let userId;
+    this.profileService.getUserUnfo().subscribe(data => userId = data.userId);
  
     this.wishes$ = (type === 'my-wishes') ? 
       this.http.get<IWish[]>(myWishesURL)

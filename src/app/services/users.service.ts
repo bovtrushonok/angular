@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ICredentials, IUserInfo, WishType } from '../interface';
+import { ICredentials, IUserInfo } from '../interface';
 import { InitService } from './init.service';
 
 @Injectable({
@@ -11,6 +11,7 @@ import { InitService } from './init.service';
 export class UsersService {
   private users$: BehaviorSubject<IUserInfo[]>;
   public users: IUserInfo[];
+
   constructor(private initService: InitService) {}
 
   public async getUsers(): Promise<void> {
@@ -22,10 +23,11 @@ export class UsersService {
 
   private checkIfUsernameIsTaken(newUser: IUserInfo): boolean {
     let result: boolean;
+
     this.users$.pipe(map(users => users.find(user => user.userName === newUser.userName)))
       .subscribe(data => result = !data);
 
-      return result;
+    return result;
   }
 
   public addNewUser(newUser: IUserInfo): void {
@@ -40,11 +42,13 @@ export class UsersService {
   public confirmCredentials(value: ICredentials): boolean {
     let checkResult: IUserInfo;
 
-    this.users$.pipe(map(users => users.find((user) => user.userName === value.userName &&
-      user.userPassword === value.userPassword))).subscribe(data => checkResult = data);
+    const currentUser$ = this.users$.pipe(map(users => users.find((user) => user.userName === value.userName &&
+      user.userPassword === value.userPassword)));
+
+    currentUser$.subscribe(data => checkResult = data);
 
     if (checkResult) {
-      this.initService.init(checkResult);
+       this.initService.init(checkResult);
       return true;
     }
 
