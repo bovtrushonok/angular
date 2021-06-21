@@ -4,7 +4,7 @@ export interface IWish {
   link: string;
   imgSrc: string;
   id: number;
-  userId: string;
+  userId: number;
 }
 
 export interface IAppComponent {
@@ -27,7 +27,7 @@ export interface ICredentials {
   userPassword: string;
 }
 
-export const enum WishType {
+export enum WishType {
   myWishes,
   friendWishes,
 }

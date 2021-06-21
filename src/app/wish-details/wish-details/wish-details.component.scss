@@ -1,0 +1,37 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  min-height: 90vh;
+  min-width: 75%;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-items: center;
+  align-items: center;
+  padding: 20px 0;
+  box-sizing: border-box;
+  min-height: 90vh;
+}
+
+.wish-details-card {
+  max-width: 400px;
+  .wish-link {
+    text-decoration: none;
+    color: $primaryTextColor;
+  }
+}
+
+.modal-btn {
+  color: $secondaryTextColor;
+  border-radius: 0%;
+  margin: 10px auto;
+}
+.ok-btn {
+  background-color: $secondaryAddBcgColor;
+  width: 25%;
+}

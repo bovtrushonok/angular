@@ -1,0 +1,56 @@
+@import 'variables';
+
+:host {
+  max-width: 30%;
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: 5px;
+  margin-left: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.wish-card {
+  width: 100%;
+  min-width: 217px;
+  min-height: 350px;
+  max-height: 370px;
+  margin: 10px 5px;
+  margin-left: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+  .mat-card-title {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 10px;
+    mat-icon:hover {
+      cursor: pointer;
+    }
+  }
+  .wish-img {
+    width: 85%;
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .no-image {
+    width: 95%;
+    height: 50%;
+    background-color: $primaryBcgColor;
+  }
+  .wish-link {
+    text-decoration: none;
+    color: $primaryTextColor;
+  }
+  .mat-caption {
+    max-height: 60px;
+    overflow: hidden;
+  }
+  .mat-caption:hover {
+    cursor: pointer;
+  }
+}

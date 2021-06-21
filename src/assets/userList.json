@@ -4,6 +4,7 @@
     "userPassword": "123jkl90",
     "userDescription": "",
     "userPictureURL": "",
+    "birthdate": "1996-06-08",
     "userId": 2
   },
   {
@@ -11,6 +12,7 @@
     "userPassword": "345the98",
     "userDescription": "",
     "userPictureURL": "",
+    "birthdate": "1993-12-06",
     "userId": 3
   },
   {
@@ -18,6 +20,7 @@
     "userPassword": "uier76lk",
     "userDescription": "",
     "userPictureURL": "",
+    "birthdate": "1992-05-08",
     "userId": 4
   }
 ]
