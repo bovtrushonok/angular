@@ -8,7 +8,7 @@ import { WishesService } from './wishes.service';
   providedIn: 'root'
 })
 
-export class WishDetailsResolve implements Resolve<IWish> {
+export class WishDetailsResolver implements Resolve<IWish> {
 
   constructor(private wishesService: WishesService){}
 

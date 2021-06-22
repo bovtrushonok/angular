@@ -4,8 +4,8 @@
     <app-create-wish-block></app-create-wish-block>
   </div>
   <mat-nav-list>
-    <a mat-list-item routerLink="wishes/my-wishes" routerLinkActive="active"> My wishes </a>
-    <a mat-list-item routerLink="wishes/friend-wishes" routerLinkActive="active"> My friends' wishes </a>
+    <a mat-list-item [routerLink]="['/main/wishes', WishType.myWishes]" routerLinkActive="active"> My wishes </a>
+    <a mat-list-item [routerLink]="['/main/wishes', WishType.friendWishes]" routerLinkActive="active"> My friends' wishes </a>
   </mat-nav-list>
   <router-outlet></router-outlet>
 </div>

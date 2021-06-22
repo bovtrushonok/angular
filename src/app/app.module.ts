@@ -30,10 +30,10 @@ import { MainPageContentComponent } from './components/main/main-page/main-page-
 import { MainPageComponent } from './components/main/main-page/main-page.component';
 import { CreateWishBlockComponent } from './components/main/main-menu/create-wish-block/create-wish-block.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
-import { Authorize } from './guards/authorization.guard';
-import { WishDetailsResolve } from './services/wish-details-resolver.service';
+import { AuthorizationGuard } from './guards/authorization.guard';
+import { WishDetailsResolver } from './services/wish-details-resolver.service';
 import { WishFieldComponent } from './components/main/main-page/main-page-content/wish-field/wish-field.component';
-import { WishesResolve } from './services/wishes-resolver.service';
+import { WishesResolver } from './services/wishes-resolver.service';
 
 const appRoutes: Routes = [
   { path: 'log-in', component: LoginFormComponent },
@@ -44,7 +44,7 @@ const appRoutes: Routes = [
       {
         path: '', component: MainPageContentComponent,
         children: [
-          { path: 'wishes/:type', component: WishFieldComponent, resolve: { wishes: WishesResolve } }
+          { path: 'wishes/:type', component: WishFieldComponent}
         ],
       },
       { path: 'edit-my-profile', component: ProfileEditFormComponent },
@@ -53,11 +53,11 @@ const appRoutes: Routes = [
         loadChildren: () => import('./wish-details/wish-details.module')
           .then(m => m.WishDetailsModule),
         resolve: {
-          wish: WishDetailsResolve
+          wish: WishDetailsResolver
         }
       }
     ],
-    canActivate: [Authorize]
+    canActivate: [AuthorizationGuard]
   },
   { path: 'sign-up', component: RegisterFormComponent },
   { path: '**', component: ErrorPageComponent }

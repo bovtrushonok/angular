@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WishType } from 'src/app/interface';
 
 @Component({
   selector: 'app-main-page-content',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-page-content.component.scss']
 })
 
-export class MainPageContentComponent {}
+export class MainPageContentComponent {
+  public WishType = WishType;
+}

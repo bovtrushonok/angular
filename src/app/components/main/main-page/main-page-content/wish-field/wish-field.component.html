@@ -1,7 +1,7 @@
-<div *ngIf="this.wishesService.wishes$ | async; else empty">
+<div *ngIf="wishes$ | async as wishes; else empty">
   <div class="wishes-field">
     <app-wish-card  
-      *ngFor="let wish of this.wishesService.wishes$ | async"
+      *ngFor="let wish of wishes"
       [wish]="wish"
       [filteredWishes]="this.wishesService.filteredWishes$ | async"></app-wish-card>
   </div>

@@ -30,6 +30,7 @@ export class UsersService {
     return result;
   }
 
+  // refactor adding new user without copying
   public addNewUser(newUser: IUserInfo): void {
     if (this.checkIfUsernameIsTaken(newUser)) {
       const user = { ...this.users[this.users.length - 1], ...newUser };
@@ -48,7 +49,7 @@ export class UsersService {
     currentUser$.subscribe(data => checkResult = data);
 
     if (checkResult) {
-       this.initService.init(checkResult);
+      this.initService.init(currentUser$);
       return true;
     }
 

@@ -13,9 +13,6 @@ export class AppComponent implements OnInit {
   constructor(private usersService: UsersService, private router: Router) {}
 
   ngOnInit(): void {
-    // this.wishService.getWishes(myWishesURL).subscribe(wishes => this.wishes = wishes);
-    // this.wishService.getWishes(friendWishesURL)
-     // .subscribe(wishes => this.friendWishes = wishes);
     this.usersService.getUsers();
     this.router.navigateByUrl('log-in');
   }
