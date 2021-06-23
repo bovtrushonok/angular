@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { daysInYear, msInHour, hoursInDay, monthsArr } from '../constants/data';
+import { daysInYear, msInHour, hoursInDay } from '../constants/data';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +18,5 @@ export class BirthdayService {
       daysInYear + Math.trunc((thisYearBirthday - currentDate) / msInHour / hoursInDay);
 
     return daysLeft;
-  }
-
-  public getMonthAndDay(date: string): string {
-    const month = new Date(date).getUTCMonth();
-    const day = new Date(date).getUTCDate();
-
-    return `${monthsArr[month]} ${day}`;
   }
 }

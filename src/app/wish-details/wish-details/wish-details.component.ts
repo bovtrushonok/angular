@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of, Subject } from 'rxjs';
-import { map, switchMap, takeUntil } from 'rxjs/operators';
+import { Observable, of, ReplaySubject } from 'rxjs';
+import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { IUserInfo, IWish, WishType } from 'src/app/interface';
 import { BirthdayService } from 'src/app/services/birthday.service';
 import { UsersService } from 'src/app/services/users.service';
@@ -13,19 +13,19 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class WishDetailsComponent implements OnInit, OnDestroy {
   public wish$: Observable<IWish>;
-  public user: IUserInfo;
-  public daysToBirthdayLeft: number;
-  public date: string;
-  private unsubscribe$ = new Subject();
+  public user$: Observable<IUserInfo>;
+  public daysToBirthdayLeft$: Observable<number>;
+  private unsubscribe$ = new ReplaySubject();
 
   constructor(private route: ActivatedRoute, private usersService: UsersService,
               private birthdayService: BirthdayService, private router: Router) {}
 
   ngOnInit(): void {
-    this.route.data.pipe(switchMap(data => this.wish$ = of(data.wish))).subscribe(data => this.user = data);
-    // this.wish$.pipe(map((wish: IWish) => this.usersService.getUserById(wish.userId)).pipe(takeUntil(this.unsubscribe$)).subscribe(data => this.user = data);
-    // this.daysToBirthdayLeft = this.birthdayService.getDaysToBirthday(this.user.birthdate);
-    // this.date = this.birthdayService.getMonthAndDay(this.user.birthdate);
+    this.route.data.pipe(switchMap(data => this.wish$ = of(data.wish))).subscribe();
+    this.user$ = this.wish$.pipe(map((wish: IWish) => wish.userId),
+      switchMap((userId: number) => this.usersService.getUserById(userId).pipe(takeUntil(this.unsubscribe$))));
+    this.user$.pipe(switchMap(user => this.daysToBirthdayLeft$ = of(this.birthdayService.getDaysToBirthday(user.birthdate))),
+      takeUntil(this.unsubscribe$)).subscribe();
   }
 
   public navigateToMain(): void {

@@ -12,7 +12,6 @@ export class WishesService {
   public wishes$: Observable<IWish[]>;
   public filteredWishes$: Observable<IWish[]>;
   public friendWishes$: Observable<IWish[]>;
-  private wishIdx: number;
 
   constructor(private http: HttpClient, private profileService: ProfileService) {}
 
@@ -29,26 +28,19 @@ export class WishesService {
     return (type == WishType.myWishes) ? this.wishes$ : this.friendWishes$;
   }
 
-  private detectWishID(currentWish: IWish): void {
-    this.wishes$.pipe(map(wishes => wishes.findIndex(wish => wish.id === currentWish.id)))
-      .subscribe(data => {
-        this.wishIdx = data;
-      });
-  }
-
-  public deleteWish(currentWish: IWish): Observable<IWish[]> {
-    this.detectWishID(currentWish);
-    return this.wishes$.pipe(map(wishes => {
-      wishes.splice(this.wishIdx, 1);
-      return wishes;
+  public deleteWish(currentWish: IWish): void {
+    this.wishes$ = this.wishes$.pipe(map(wishes => {
+      const idx = wishes.findIndex(wish => wish.id === currentWish.id);
+      return [...wishes.slice(0, idx), ...wishes.slice(idx+1)]
     }));
-
-    // if (this.filteredWishes.length) this.filteredWishes[0] = null;
+     // if (this.filteredWishes.length) this.filteredWishes[0] = null;
   }
 
   public updateWishes(currentWish: IWish): void {
-    this.detectWishID(currentWish);
-    this.wishes$.pipe(map((wishes => wishes[this.wishIdx] = currentWish)));
+    this.wishes$ = this.wishes$.pipe(map((wishes => wishes.map(wish => {
+      if (wish.id = currentWish.id) return currentWish;
+      return wish;
+    }))));
   }
 
   public filterWishes(seacrhResult: string): void {

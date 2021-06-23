@@ -1,14 +1,14 @@
 <div class="wrapper" *ngIf="wish$ | async as wish">
   <mat-card class="wish-details-card">
     <mat-card-header>
-      <mat-card-title>{{wish}}</mat-card-title>
-      <mat-card-subtitle>desired by {{user.userName}}</mat-card-subtitle>
+      <mat-card-title>{{wish.title}}</mat-card-title>
+      <mat-card-subtitle *ngIf="user$ | async as user">desired by {{user.userName}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <p> Additional user comment: {{wish.description}} </p>
       <p><a [href]="wish.link" target="_blank" class="wish-link"> {{wish.link}} </a></p>
-      <p> Birthday is on <b>{{date}}</b></p>
-      <p>Days left {{daysToBirthdayLeft}}</p>
+      <p *ngIf="user$ | async as user"> Birthday is on <b>{{user.birthdate | date:'MMMM d'}}</b></p>
+      <p>Days left {{daysToBirthdayLeft | async }}</p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>LIKE</button>

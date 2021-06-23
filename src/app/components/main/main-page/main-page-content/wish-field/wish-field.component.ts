@@ -18,7 +18,7 @@ export class WishFieldComponent implements OnInit /* , OnDestroy */ {
   constructor(public wishesService: WishesService, private route: ActivatedRoute) {}
 
   public ngOnInit(): void {
-    this.route.data.pipe(switchMap(wishes => this.wishes$ = of(wishes.wishes)), tap(console.log), takeUntil(this.unsubscribe$)).subscribe();
+    this.route.data.pipe(switchMap(wishes => this.wishes$ = of(wishes.wishes)), takeUntil(this.unsubscribe$)).subscribe();
   }
 
   public ngOnDestroy(): void {
