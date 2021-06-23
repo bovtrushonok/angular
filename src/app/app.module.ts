@@ -44,7 +44,7 @@ const appRoutes: Routes = [
       {
         path: '', component: MainPageContentComponent,
         children: [
-          { path: 'wishes/:type', component: WishFieldComponent}
+          { path: 'wishes/:type', component: WishFieldComponent, resolve: {wishes: WishesResolver}}
         ],
       },
       { path: 'edit-my-profile', component: ProfileEditFormComponent },

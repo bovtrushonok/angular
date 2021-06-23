@@ -1,7 +1,7 @@
-<div class="wrapper">
+<div class="wrapper" *ngIf="wish$ | async as wish">
   <mat-card class="wish-details-card">
     <mat-card-header>
-      <mat-card-title>{{wish.title}}</mat-card-title>
+      <mat-card-title>{{wish}}</mat-card-title>
       <mat-card-subtitle>desired by {{user.userName}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
