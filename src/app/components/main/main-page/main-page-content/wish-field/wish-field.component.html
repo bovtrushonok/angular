@@ -1,6 +1,6 @@
 <div *ngIf="wishes$ | async as wishes; then checkFilterBlock; else empty"></div>
 <ng-template #checkFilterBlock>
-  <div class="wishes-field" *ngIf="(this.wishesService.filteredWishes$ | async) !== null">
+  <div class="wishes-field" *ngIf="(this.wishesService.filteredWishes$ | async) !== null; else empty">
     <app-wish-card  
       *ngFor="let wish of wishes$ | async as wishes"
       [wish]="wish"
