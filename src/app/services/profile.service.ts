@@ -22,7 +22,7 @@ export class ProfileService {
 
   public saveUserInfo(userInfo$: Observable<IUserInfo>): void {
     userInfo$.subscribe(this.userInfo$);
-  } 
+  }
 
   public updateUserInfo(userInfo: IUserInfo): void {
     this.userInfo$.pipe(map(user => user = {...user, ...userInfo}));

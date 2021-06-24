@@ -10,11 +10,10 @@ import { WishesService } from './wishes.service';
 })
 
 export class WishesResolver implements Resolve<IWish[]> {
- 
+
   constructor(private wishesService: WishesService){}
 
   public resolve(route: ActivatedRouteSnapshot): Observable<IWish[]>{
     return this.wishesService.getWishes(route.params.type).pipe(take(1));
   }
-  
 }

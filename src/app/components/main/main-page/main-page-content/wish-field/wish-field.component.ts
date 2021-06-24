@@ -15,7 +15,7 @@ export class WishFieldComponent implements OnInit, OnDestroy {
   public checkFilterBlock: TemplateRef<any>|null = null;
   public wishes$: Observable<IWish[]>;
   private unsubscribe$ = new ReplaySubject();
-  
+
   constructor(public wishesService: WishesService, private route: ActivatedRoute) {}
 
   public ngOnInit(): void {
@@ -26,5 +26,5 @@ export class WishFieldComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-  } 
+  }
 }

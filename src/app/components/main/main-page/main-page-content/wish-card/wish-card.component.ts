@@ -1,19 +1,18 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { IWish } from '../../../../../interface';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { WishesService } from 'src/app/services/wishes.service';
 import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.component';
 import { Router } from '@angular/router';
-import { Observable, ReplaySubject } from 'rxjs';
-import { map, takeUntil, tap } from 'rxjs/operators';
+import { ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'app-wish-card',
   templateUrl: './wish-card.component.html',
   styleUrls: ['./wish-card.component.scss']
 })
-export class WishCardComponent implements OnChanges {
+export class WishCardComponent implements OnChanges, OnDestroy {
   @Input() public wish: IWish;
   @Input() private filteredWishes: IWish[];
   public isSelected = true;
@@ -25,8 +24,8 @@ export class WishCardComponent implements OnChanges {
     this.wishesService.deleteWish(this.wish);
   }
 
-  private updateWish(): void {
-    this.wishesService.updateWishes(this.wish);
+  private updateWish(result): void {
+    this.wishesService.updateWishes(result);
   }
 
   public openModalToDelete(): void {
@@ -51,14 +50,13 @@ export class WishCardComponent implements OnChanges {
 
     modalRef.afterClosed().subscribe(result => {
       if (!result) return;
-      this.wish = result;
-      this.updateWish();
+      this.updateWish(result);
     });
   }
 
   public ngOnChanges(): void {
     this.isSelected = !this.filteredWishes.length ||
-      !!this.filteredWishes.find(wish => wish.id === this.wish.id)
+      !!this.filteredWishes.find(wish => wish.id === this.wish.id);
   }
 
   public navigateToDetails(): void {
@@ -68,5 +66,5 @@ export class WishCardComponent implements OnChanges {
   public ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-  } 
+  }
 }
