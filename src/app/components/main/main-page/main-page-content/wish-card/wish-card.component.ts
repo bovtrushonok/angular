@@ -56,14 +56,6 @@ export class WishCardComponent implements OnChanges {
     });
   }
 
-  /* ngOnInit(): void {
-    this.wishesService.filteredWishes$?.pipe(map(wishes => {
-      if (!wishes.length) this.isSelected = true;
-      else if (wishes.find(wish => wish.id === this.wish.id)) this.isSelected = true;
-      else this.isSelected = false;
-    }), tap(console.log), takeUntil(this.unsubscribe$)).subscribe();
-  } */
-
   public ngOnChanges(): void {
     this.isSelected = !this.filteredWishes.length ||
       !!this.filteredWishes.find(wish => wish.id === this.wish.id)

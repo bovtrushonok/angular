@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of, ReplaySubject } from 'rxjs';
-import { switchMap, takeUntil } from 'rxjs/operators';
+import { switchMap, takeUntil, tap } from 'rxjs/operators';
 import { IWish } from 'src/app/interface';
 import { WishesService } from 'src/app/services/wishes.service';
 
@@ -12,10 +12,10 @@ import { WishesService } from 'src/app/services/wishes.service';
   styleUrls: ['./wish-field.component.scss']
 })
 export class WishFieldComponent implements OnInit, OnDestroy {
-  checkFilterBlock: TemplateRef<any>|null = null;
-  private unsubscribe$ = new ReplaySubject();
+  public checkFilterBlock: TemplateRef<any>|null = null;
   public wishes$: Observable<IWish[]>;
-
+  private unsubscribe$ = new ReplaySubject();
+  
   constructor(public wishesService: WishesService, private route: ActivatedRoute) {}
 
   public ngOnInit(): void {

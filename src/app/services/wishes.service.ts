@@ -58,7 +58,7 @@ export class WishesService {
   }
 
   public addNewWish(value: IWish): void {
-    this.wishes$ = this.wishes$.pipe(map(wishes => wishes = [...wishes, value]));
+    this.wishes$ = this.wishes$.pipe(map(wishes => wishes = [...wishes, value]), tap(console.log));
   }
 
   public getWishById(id: number): Observable<IWish> {
