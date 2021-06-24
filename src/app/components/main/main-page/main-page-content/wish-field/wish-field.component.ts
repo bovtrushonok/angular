@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, of, Subject } from 'rxjs';
-import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { Observable, of, ReplaySubject } from 'rxjs';
+import { switchMap, takeUntil } from 'rxjs/operators';
 import { IWish } from 'src/app/interface';
 import { WishesService } from 'src/app/services/wishes.service';
 
@@ -11,14 +11,16 @@ import { WishesService } from 'src/app/services/wishes.service';
   templateUrl: './wish-field.component.html',
   styleUrls: ['./wish-field.component.scss']
 })
-export class WishFieldComponent implements OnInit /* , OnDestroy */ {
-  private unsubscribe$ = new Subject();
+export class WishFieldComponent implements OnInit, OnDestroy {
+  checkFilterBlock: TemplateRef<any>|null = null;
+  private unsubscribe$ = new ReplaySubject();
   public wishes$: Observable<IWish[]>;
 
   constructor(public wishesService: WishesService, private route: ActivatedRoute) {}
 
   public ngOnInit(): void {
-    this.route.data.pipe(switchMap(wishes => this.wishes$ = of(wishes.wishes)), takeUntil(this.unsubscribe$)).subscribe();
+    this.route.data.pipe(switchMap(wishes => this.wishes$ = of(wishes.wishes)),
+      takeUntil(this.unsubscribe$)).subscribe();
   }
 
   public ngOnDestroy(): void {

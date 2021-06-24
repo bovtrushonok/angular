@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable} from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { Observable, of} from 'rxjs';
+import { map, switchMap, take, tap } from 'rxjs/operators';
 import { IWish, WishType } from 'src/app/interface';
 import { friendWishesURL, myWishesURL } from '../constants/path';
 import { ProfileService } from './profile.service';
@@ -22,6 +22,7 @@ export class WishesService {
           .pipe(map(wishes => wishes.filter(wish => wish.userId === userId)))));
     
     this.friendWishes$ = this.http.get<IWish[]>(friendWishesURL);
+    this.filteredWishes$ = of([]);
   }
 
   public getWishes(type: WishType): Observable<IWish[]> {
@@ -43,13 +44,17 @@ export class WishesService {
     }))));
   }
 
-  public filterWishes(seacrhResult: string): void {
-    this.filteredWishes$ = this.wishes$
+  public filterWishes(seacrhResult: Observable<string>): void {
+    seacrhResult.pipe(map(searchStr => searchStr),
+    tap(console.log),
+      switchMap(searchStr => this.wishes$
       .pipe(map(wishes => {
-        if (!seacrhResult) return [];
-        const filteredArr = wishes.filter(wish => wish.title === seacrhResult)
-        return (filteredArr.length) ? filteredArr : [null];
-      }));
+        if (!searchStr) this.filteredWishes$ = of([]);
+        else {
+          const filteredArr = wishes.filter(wish => wish.title === searchStr);
+          this.filteredWishes$ = (filteredArr.length) ? of(filteredArr) : of(null);
+        }
+    })))).subscribe();
   }
 
   public addNewWish(value: IWish): void {

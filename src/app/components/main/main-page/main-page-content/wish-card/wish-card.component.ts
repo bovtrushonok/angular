@@ -1,10 +1,12 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { IWish } from '../../../../../interface';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { WishesService } from 'src/app/services/wishes.service';
 import { WishcardModalComponent } from './wishcard-modal/wishcard-modal.component';
 import { Router } from '@angular/router';
+import { Observable, ReplaySubject } from 'rxjs';
+import { map, takeUntil, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-wish-card',
@@ -13,8 +15,9 @@ import { Router } from '@angular/router';
 })
 export class WishCardComponent implements OnChanges {
   @Input() public wish: IWish;
-  @Input() public filteredWishes: IWish[];
+  @Input() private filteredWishes: IWish[];
   public isSelected = true;
+  private unsubscribe$ = new ReplaySubject();
 
   constructor(private dialog: MatDialog, public wishesService: WishesService, private router: Router) {}
 
@@ -53,12 +56,25 @@ export class WishCardComponent implements OnChanges {
     });
   }
 
-  ngOnChanges(): void {
-    this.isSelected = !this.filteredWishes?.length ||
-      !!this.filteredWishes?.find(wish => wish.id === this.wish.id);
+  /* ngOnInit(): void {
+    this.wishesService.filteredWishes$?.pipe(map(wishes => {
+      if (!wishes.length) this.isSelected = true;
+      else if (wishes.find(wish => wish.id === this.wish.id)) this.isSelected = true;
+      else this.isSelected = false;
+    }), tap(console.log), takeUntil(this.unsubscribe$)).subscribe();
+  } */
+
+  public ngOnChanges(): void {
+    this.isSelected = !this.filteredWishes.length ||
+      !!this.filteredWishes.find(wish => wish.id === this.wish.id)
   }
 
   public navigateToDetails(): void {
     this.router.navigate(['main/wish-details', this.wish.id]);
   }
+
+  public ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  } 
 }
