@@ -12,6 +12,6 @@ export class ErrorPageComponent {
   constructor(private router: Router) {}
 
   public navigateToMain(): void {
-    this.router.navigateByUrl('main');
+    this.router.navigateByUrl('main/wishes/my-wishes');
   }
 }

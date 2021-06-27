@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
-import { Observable } from 'rxjs';
-import { myWishesURL } from '../constants/path';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
+import { take, takeUntil, tap } from 'rxjs/operators';
 import { IWish } from '../interface';
 import { WishesService } from './wishes.service';
 
@@ -9,10 +9,11 @@ import { WishesService } from './wishes.service';
   providedIn: 'root'
 })
 
-export class WishesResolve implements Resolve<IWish[]> {
+export class WishesResolver implements Resolve<IWish[]> {
+
   constructor(private wishesService: WishesService){}
 
-  public resolve(): Observable<IWish[]> {
-    return this.wishesService.getMyWishes(myWishesURL);
+  public resolve(route: ActivatedRouteSnapshot): Observable<IWish[]>{
+    return this.wishesService.getWishes(route.params.type).pipe(take(1));
   }
 }

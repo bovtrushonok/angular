@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { IWish } from 'src/app/interface';
 import { WishesService } from 'src/app/services/wishes.service';
 import { WishcardModalComponent } from '../../main-page/main-page-content/wish-card/wishcard-modal/wishcard-modal.component';
 
@@ -19,7 +20,7 @@ export class CreateWishBlockComponent {
       panelClass: 'wish-modal',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: IWish) => {
       if (result) this.wishService.addNewWish(result);
     });
   }

@@ -4,12 +4,8 @@
     <app-create-wish-block></app-create-wish-block>
   </div>
   <mat-nav-list>
-    <button mat-list-item
-      (click)="toggleState(WishType.myWishes)"
-      [ngClass]="(this.viewState.state === WishType.myWishes) ? 'active': ''"> My wishes </button>
-    <button mat-list-item
-      (click)="toggleState(WishType.friendWishes)"
-      [ngClass]="(this.viewState.state === WishType.friendWishes) ? 'active': ''"> My friends' wishes </button>
+    <a mat-list-item [routerLink]="['/main/wishes', WishType.myWishes]" routerLinkActive="active"> My wishes </a>
+    <a mat-list-item [routerLink]="['/main/wishes', WishType.friendWishes]" routerLinkActive="active"> My friends' wishes </a>
   </mat-nav-list>
-  <app-wish-field [state]="this.viewState.state"></app-wish-field>
+  <router-outlet></router-outlet>
 </div>

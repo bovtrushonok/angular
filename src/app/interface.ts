@@ -28,6 +28,6 @@ export interface ICredentials {
 }
 
 export enum WishType {
-  myWishes,
-  friendWishes,
+  myWishes = 'my-wishes',
+  friendWishes = 'friend-wishes',
 }

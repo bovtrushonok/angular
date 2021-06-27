@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { WishType } from 'src/app/interface';
 import * as m from '../../constants/messages';
 import { UsersService } from '../../services/users.service';
 
@@ -24,7 +25,7 @@ export class LoginFormComponent {
 
   public onSubmit(): void {
     if (this.userService.confirmCredentials(this.logInForm.value)) {
-      this.router.navigateByUrl('main/wishes');
+      this.router.navigate(['main/wishes', WishType.myWishes]);
     } else this.submitError = true;
   }
 
